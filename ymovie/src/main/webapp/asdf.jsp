@@ -19,7 +19,7 @@
 		//memberDTO dto = new memberDTO("asdf", "asdf1234", "jaeik");
 		
 		//dao.insertMember(dto);
-		dao.selectMember("asdf", "asdf1234");
+		System.out.println(dao.selectMember("asdf", "asdf1234"));
 		apiToDb ATD = new apiToDb();
 		ATD.getApiData();
 		%>
