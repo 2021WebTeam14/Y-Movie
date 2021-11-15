@@ -38,7 +38,7 @@ public class movieDAO {
 		String query = "select * from movie where mov_name =\"" + targetName + ")";
 		//System.out.println(query);
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
@@ -76,7 +76,7 @@ public class movieDAO {
 		String query = "select * from movie where mov_code =\"" + targetCode + ")";
 		//System.out.println(query);
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
@@ -112,7 +112,7 @@ public class movieDAO {
 		int result = 0;
 	
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, dto.getMov_name());
