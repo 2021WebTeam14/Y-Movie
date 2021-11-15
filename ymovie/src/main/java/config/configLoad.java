@@ -13,7 +13,6 @@ public class configLoad {
 		StringBuilder path = new StringBuilder(configLoad.class.getClassLoader().getResource("").getPath());
 		path.append("../../../../../../../../ymovie/config.properties");
 		path.deleteCharAt(0);
-		System.out.println(path.toString());
 		BufferedReader br = new BufferedReader(new FileReader(path.toString()));
 		while(true) {
 			String line = br.readLine();
