@@ -60,9 +60,12 @@ public class apiDAO {
 		} catch (Exception e) {
 			return "API load error!";
 		}
-		for(int i = 0; i < dtos.size(); i++) {
-			System.out.printf("%d ", i);
-			dao.insertMovie(dtos.get(i));
+		int size = dtos.size();
+		for(int i = 0; i < size; i++) {
+			System.out.printf("( %d / %d )\n", i+1, size);
+			if(!(dtos.get(i).getMov_genre().contains("성인")) && !(dtos.get(i).getMov_genre().contains("멜로"))) {
+				dao.insertMovie(dtos.get(i));				
+			}
 		}
 		return "Update Success!";
 	}
