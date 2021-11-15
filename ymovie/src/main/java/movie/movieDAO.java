@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import config.configLoad;
 
 public class movieDAO {
-	
 	private String jdbcDriver = "jdbc:mysql://";
 	private String jdbcDriverRear = "/ymovie?allowPublicKeyRetrieval=true&useSSL=false";
 	private String dbUser;
@@ -39,6 +38,7 @@ public class movieDAO {
 		String query = "select * from movie where mov_name =\"" + targetName + ")";
 		//System.out.println(query);
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
@@ -47,7 +47,7 @@ public class movieDAO {
 				String mov_name = rs.getString("mov_name");
 				String mov_code = rs.getString("mov_code");
 				int mov_year = rs.getInt("mov_year");
-				int mov_state = rs.getInt("mov_state");
+				String mov_state = rs.getString("mov_state");
 				String mov_genre = rs.getString("mov_genre");
 
 				dto = new movieDTO(mov_name, mov_code , mov_year, mov_state, mov_genre);
@@ -76,6 +76,7 @@ public class movieDAO {
 		String query = "select * from movie where mov_code =\"" + targetCode + ")";
 		//System.out.println(query);
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
@@ -84,7 +85,7 @@ public class movieDAO {
 				String mov_name = rs.getString("mov_name");
 				String mov_code = rs.getString("mov_code");
 				int mov_year = rs.getInt("mov_year");
-				int mov_state = rs.getInt("mov_state");
+				String mov_state = rs.getString("mov_state");
 				String mov_genre = rs.getString("mov_genre");
 
 				dto = new movieDTO(mov_name, mov_code , mov_year, mov_state, mov_genre);
@@ -107,16 +108,17 @@ public class movieDAO {
 	public int insertMovie(movieDTO dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String query = "insert into movie values (?, ?, ?, ?, ?)";
+		String query = "replace into movie values (?, ?, ?, ?, ?)";
 		int result = 0;
 	
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, dto.getMov_name());
 			pstmt.setString(2, dto.getMov_code());
 			pstmt.setString(3, Integer.toString(dto.getMov_year()));
-			pstmt.setString(4, Integer.toString(dto.getMov_state()));
+			pstmt.setString(4, dto.getMov_state());
 			pstmt.setString(5, dto.getMov_genre());
 			
 			result = pstmt.executeUpdate();

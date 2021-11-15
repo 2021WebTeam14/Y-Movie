@@ -9,15 +9,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import config.configLoad;
+import movie.*;
 
 
 public class apiDAO {
-	
-	private ArrayList<String> mov_name = new ArrayList<String>();
-	private ArrayList<String> mov_code = new ArrayList<String>();
-	private ArrayList<Integer> mov_year = new ArrayList<Integer>();
-	private ArrayList<Integer> mov_state = new ArrayList<Integer>();
-	private ArrayList<String> mov_genre = new ArrayList<String>();
 	
 	private static String getTagValue(String tag, Element eElement) {
 	    NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
@@ -27,7 +22,7 @@ public class apiDAO {
 	    return nValue.getNodeValue();
 	}
 
-	private void getAPI() throws Exception {
+	private ArrayList<movieDTO> getAPIAboutMovie() throws Exception {
 				
 		StringBuilder preUrl = new StringBuilder("http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.xml?key=");
 		preUrl.append(configLoad.readByLine().get(3));
@@ -42,34 +37,32 @@ public class apiDAO {
 		// 파싱할 tag
 		NodeList nList = doc.getElementsByTagName("movie");
 		//System.out.println("파싱할 리스트 수 : "+ nList.getLength());
-		
+
+		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
 		for(int temp = 0; temp < nList.getLength(); temp++){
 			Node nNode = nList.item(temp);
 			if(nNode.getNodeType() == Node.ELEMENT_NODE){
 				
 				Element eElement = (Element) nNode;
-				mov_name.add(getTagValue("movieNm", eElement));
-				mov_code.add(getTagValue("movieCd", eElement));
-				mov_year.add(Integer.parseInt(getTagValue("prdtYear", eElement)));
-				mov_state.add(Integer.parseInt(getTagValue("prdtStatNm", eElement)));
-				mov_genre.add(getTagValue("genreAlt", eElement));
+				movieDTO dto = new movieDTO(getTagValue("movieNm", eElement), getTagValue("movieCd", eElement), 
+								Integer.parseInt(getTagValue("prdtYear", eElement)), getTagValue("prdtStatNm", eElement), getTagValue("genreAlt", eElement));
+				dtos.add(dto);
 			}
 		}
+		return dtos;
 	}
 	
 	public String updateDB() {
+		movieDAO dao = new movieDAO();
+		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
 		try {
-			getAPI();
+			dtos = getAPIAboutMovie();
 		} catch (Exception e) {
 			return "API load error!";
 		}
-		for(int i = 0; i < mov_name.size(); i++) {
-			System.out.println(mov_name.get(i));
-			System.out.println(mov_code.get(i));
-			System.out.println(mov_year.get(i));
-			System.out.println(mov_state.get(i));
-			System.out.println(mov_genre.get(i));
-			System.out.println("##################");
+		for(int i = 0; i < dtos.size(); i++) {
+			System.out.printf("%d ", i);
+			dao.insertMovie(dtos.get(i));
 		}
 		return "Update Success!";
 	}

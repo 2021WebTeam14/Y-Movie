@@ -10,9 +10,6 @@ public class configLoad {
 	public static ArrayList<String> readByLine() throws Exception{
 		ArrayList<String> result = new ArrayList<String>();
 		
-		InputStream in = configLoad.class.getClass().getResourceAsStream("/config.properties");
-		System.out.println(in.read());
-		
 		StringBuilder path = new StringBuilder(configLoad.class.getClassLoader().getResource("").getPath());
 		path.append("../../../../../../../../ymovie/config.properties");
 		path.deleteCharAt(0);

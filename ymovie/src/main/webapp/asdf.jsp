@@ -20,7 +20,9 @@
 			//dao.insertMember(dto);
 			
 			apiDAO a = new apiDAO();
-			%>alert(<%a.updateDB();%>);<%
+			%>
+			<script> alert(<%=a.updateDB()%>); </script>
+			<%
  		%>
 
 </body>
