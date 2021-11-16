@@ -21,7 +21,7 @@
 			
 			apiDAO a = new apiDAO();
 			%>
-			<script> alert("<%=a.updateDB()%>"); </script>
+			<script> alert("<%=a.bulk()%>"); </script>
 			<%
  		%>
 
