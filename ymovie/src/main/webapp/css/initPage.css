@@ -5,11 +5,6 @@ footer {
 	border: 2px solid black;
 	text-align: center;
 }
-#center {
-	border: 2px solid black;
-	margin: 50vh;
-	text-align: center;
-}
 a {
   	vertical-align: center;	
 	text-decoration: none;
