@@ -21,7 +21,7 @@ public class apiDAO {
 	    return nValue.getNodeValue();
 	}
 
-	private ArrayList<movieDTO> getAPIAboutMovie() throws Exception {
+	public ArrayList<movieDTO> getAPIAboutMovie() throws Exception {
 		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
 		
 		DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
@@ -84,38 +84,6 @@ public class apiDAO {
 			}
 		}
 		return dtos;
-	}
-	
-	public String updateDB() {
-		movieDAO dao = new movieDAO();
-		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
-		try {
-			dtos = getAPIAboutMovie();
-		} catch (Exception e) {
-			return "API load error!";
-		}
-		int size = dtos.size();
-		for(int i = 0; i < size; i++) {
-			System.out.printf("DB insertion ( %d / %d )\n", i+1, size);
-			if(!(dtos.get(i).getMov_genre().contains("성인")) && !(dtos.get(i).getMov_genre().contains("멜로"))) {
-				dao.insertMovie(dtos.get(i));				
-			}
-		}
-		return "Update Success!";
-	}
-	
-	
-	
-	public String bulk() {
-		movieDAO dao = new movieDAO();
-		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
-		try {
-			dtos = getAPIAboutMovie();
-		} catch (Exception e) {
-			return "API load error!";
-		}
-		dao.insertMovie(dtos);		
-		return "Update Success!";
 	}
 }
 

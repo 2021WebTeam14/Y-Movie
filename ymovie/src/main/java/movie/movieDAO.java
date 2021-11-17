@@ -104,65 +104,45 @@ public class movieDAO {
 		}
 		return dtos;
 	}
-	
-	public int insertMovie(movieDTO dto) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		String query = "replace into movie values (?, ?, ?, ?, ?)";
-		int result = 0;
-	
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, dto.getMov_name());
-			pstmt.setString(2, dto.getMov_code());
-			pstmt.setString(3, Integer.toString(dto.getMov_year()));
-			pstmt.setString(4, dto.getMov_state());
-			pstmt.setString(5, dto.getMov_genre());
-			
-			result = pstmt.executeUpdate();
-			pstmt.close();
-			con.close();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
-	public void insertMovie(ArrayList<movieDTO> dtos) {
+	public String insertMovie(ArrayList<movieDTO> dtos, int j) {
 		String query = "insert ignore into movie values (?, ?, ?, ?, ?)";
 		
 		int size = dtos.size() / 1000;
 		int last = dtos.size() % 1000;
-
-		for (int j = 0; j < size; j++) {
-			try {
-				Connection con = null;
-				PreparedStatement pstmt = null;
-				Class.forName("com.mysql.cj.jdbc.Driver");
-				con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-				pstmt = con.prepareStatement(query);
-    			System.out.printf("DB insertion ( %d / %d )\n", (j)*1000+1, 1000*size + last);
-				for (int i = 0; i < 1000; i++) {
-	    			if(dtos.get(i+j*1000).getMov_genre() != null) {
-		    			if(!(dtos.get(i+j*1000).getMov_genre().contains("성인"))) {
-			    			pstmt.setString(1, dtos.get(i+j*1000).getMov_name());
-			    			pstmt.setString(2, dtos.get(i+j*1000).getMov_code());
-			    			pstmt.setString(3, Integer.toString(dtos.get(i+j*1000).getMov_year()));
-			    			pstmt.setString(4, dtos.get(i+j*1000).getMov_state());
-			    			pstmt.setString(5, dtos.get(i+j*1000).getMov_genre());
-			                pstmt.addBatch();
-		    			}	    				
-	    			}
-	            }
-				pstmt.executeBatch();
-				pstmt.close();
-				con.close();
-				} catch(Exception e) {
-					e.printStackTrace();
-				}
-		}
-
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			pstmt = con.prepareStatement(query);
+			System.out.printf("DB insertion ( %d / %d )\n", (j)*1000+1, 1000*size + last);
+			for (int i = 0; i < 1000; i++) {
+    			if(dtos.get(i+j*1000).getMov_genre() != null) {
+	    			if(!(dtos.get(i+j*1000).getMov_genre().contains("성인"))) {
+		    			pstmt.setString(1, dtos.get(i+j*1000).getMov_name());
+		    			pstmt.setString(2, dtos.get(i+j*1000).getMov_code());
+		    			pstmt.setString(3, Integer.toString(dtos.get(i+j*1000).getMov_year()));
+		    			pstmt.setString(4, dtos.get(i+j*1000).getMov_state());
+		    			pstmt.setString(5, dtos.get(i+j*1000).getMov_genre());
+		                pstmt.addBatch();
+	    			}	    				
+    			}
+            }
+			pstmt.executeBatch();
+			pstmt.close();
+			con.close();
+			} catch(Exception e) {
+				return "Update Error On Server";
+			}
+		return "Update Success!";
+	}
+	
+	public String insertMovieLast(ArrayList<movieDTO> dtos) {
+		String query = "insert ignore into movie values (?, ?, ?, ?, ?)";
+		
+		int size = dtos.size() / 1000;
+		int last = dtos.size() % 1000;
+	
 		try {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -186,8 +166,9 @@ public class movieDAO {
 			pstmt.executeBatch();
 			pstmt.close();
 			con.close();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+			} catch(Exception e) {
+				return "Update Error On Server";
+			}
+		return "Update Success!";
 	}
 }
