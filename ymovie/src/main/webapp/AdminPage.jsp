@@ -11,7 +11,7 @@
 <style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
 <script type="text/javascript">
 	function updateMovieConfirm() {
-		var c = confirm("영화리스트 업데이트를 진행합니다. \n10분 이상 소요될 수 있습니다. \n*세부 진행사항은 콘솔을 참고하세요*");
+		var c = confirm("영화리스트 업데이트를 진행합니다. \n10분 이상 소요될 수 있습니다.");
 		if (c) {
 			location.href='updateMovie.jsp';			
 		}

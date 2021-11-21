@@ -40,6 +40,7 @@ public class directorDAO {
 		String query = "select * from director";
 		//System.out.println(query);
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
@@ -75,6 +76,7 @@ public class directorDAO {
 		String query = "select * from director where mov_name =\"" + targetMov + "\")";
 		//System.out.println(query);
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
@@ -100,7 +102,7 @@ public class directorDAO {
 		return dtos;
 	}
 	
-	public ArrayList<directorDTO> selectBydirector(String targetDir)  {
+	public ArrayList<directorDTO> selectByDirector(String targetDir)  {
 		ArrayList<directorDTO> dtos = new ArrayList<directorDTO>();
 		directorDTO dto;
 		
@@ -110,6 +112,7 @@ public class directorDAO {
 		String query = "select * from director where dir_director =\"" + targetDir + "\")";
 		//System.out.println(query);
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
@@ -135,13 +138,14 @@ public class directorDAO {
 		return dtos;
 	}
 	
-	public int insertdirector(directorDTO dto) {
+	public int insertDirector(directorDTO dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String query = "insert into director values (?, ?)";
+		String query = "insert ignore into director values (?, ?)";
 		int result = 0;
 	
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, dto.getMov_name());
@@ -163,6 +167,7 @@ public class directorDAO {
 		String query = "delete from director where mov_name = ? and dir_director = ?";
 		int result = 0;
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, targetMov);
