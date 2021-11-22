@@ -13,7 +13,7 @@
 	function updateMovieConfirm() {
 		var c = confirm("영화리스트 업데이트를 진행합니다. \n10분 이상 소요될 수 있습니다.");
 		if (c) {
-			location.href='updateMovie.jsp';			
+			location.href='updateMovie.jsp';
 		}
 		else {
 			alert("취소되었습니다.");
