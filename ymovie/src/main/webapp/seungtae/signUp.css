@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+ul
+		{
+			list-style-type: none;
+		}
+		
+		#avatarList li
+		{
+			display: inline;
+		}
+	
+	
+		body{margin: 10vh 15vw 10vh 15vw;}
+     
+		input[type=text], input[type=password] 
+		{   
+	        width: 100%;   
+	        margin: 8px 0;  
+	        padding: 12px 20px;   
+	        display: inline-block;   
+	        border: 2px solid blue;   
+	        box-sizing: border-box;          
+	    }  
+    
+    	button 
+    	{   
+	        background-color: blue;   
+	        width: 100px;  
+	        color: white;   
+	        padding: 15px;   
+	        margin: 10px 0px;   
+	        border: none;   
+	        cursor: pointer;   
+        } 
+          
+		.container
+		{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.inner
+		{
+			display: flex;
+			flex-direction: column;
+			margin-left: 30px;
+			margin-right: 30px;
+		}
+		
+		div #avatar
+		{
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			width: 100%;
+			justify-content: center;
+			margin: auto;
+		}		
+		
+		#avatarID
+		{
+			box-sizing: border-box;
+			flex-basis: 100%;
+			text-align: center;
+		}
+		
+		#join
+		{
+			text-align: center;
+		}
