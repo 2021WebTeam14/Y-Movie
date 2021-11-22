@@ -44,7 +44,7 @@ public class reviewDAO {
 			rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
-				int rev_num = rs.getInt("rev_num");
+				int rev_num = rs.getInt("rev_num"); 
 				String mov_name = rs.getString("mov_name");
 				String mem_id = rs.getString("mem_id");
 				int rev_star = rs.getInt("rev_star");
