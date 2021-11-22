@@ -10,19 +10,13 @@
 		apiDAO apiDao = new apiDAO();
 		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
 		try {
-			dtos = apiDao.getAPIAboutMovie();
+			apiDao.getAPIAboutActor();
 		} catch (Exception e) {
+			e.printStackTrace();
 			%>alert("API load error...");<%
 		}
-
-		int size = dtos.size() / 1000;
-		int last = dtos.size() % 1000;
-		
-		for(int j =0; j < size; j++){
-			movieDao.insertMovie(dtos, j);
-		}
 		%>
-		alert("<%=movieDao.insertMovieLast(dtos)%>");
+		alert("Update Success!");
 		location.href='AdminPage.jsp';
 	}
 	

@@ -35,7 +35,7 @@ public class movieDAO {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query = "select * from movie where mov_name =\"" + targetName + ")";
+		String query = "select * from movie where mov_name =\"" + targetName + "\"";
 		//System.out.println(query);
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -73,7 +73,7 @@ public class movieDAO {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query = "select * from movie where mov_code =\"" + targetCode + ")";
+		String query = "select * from movie where mov_code =\"" + targetCode + "\"";
 		//System.out.println(query);
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -115,7 +115,7 @@ public class movieDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			pstmt = con.prepareStatement(query);
-			System.out.printf("DB insertion ( %d / %d )\n", (j)*1000+1, 1000*size + last);
+			System.out.printf("Movie insertion ( %d / %d )\n", (j)*1000+1, 1000*size + last);
 			for (int i = 0; i < 1000; i++) {
     			if(dtos.get(i+j*1000).getMov_genre() != null) {
 	    			pstmt.setString(1, dtos.get(i+j*1000).getMov_name());
@@ -147,7 +147,7 @@ public class movieDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			pstmt = con.prepareStatement(query);
-			System.out.printf("DB insertion ( %d / %d )\n", 1000*size, 1000*size + last);			
+			System.out.printf("Movie insertion ( %d / %d )\n", 1000*size, 1000*size + last);			
 	        for (int i = 0; i < last; i++) {
     			if(dtos.get(i+size*1000).getMov_genre() != null) {
 					pstmt.setString(1, dtos.get(1000*size + i).getMov_name());
@@ -158,7 +158,7 @@ public class movieDAO {
 		            pstmt.addBatch();
     			}
 	        }
-			System.out.printf("DB insertion ( %d / %d )\n", 1000*size + last, 1000*size + last);	
+			System.out.printf("Movie insertion ( %d / %d )\n", 1000*size + last, 1000*size + last);	
 			pstmt.executeBatch();
 			pstmt.close();
 			con.close();

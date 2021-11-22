@@ -36,7 +36,7 @@ public class reviewDAO {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query = "select * from review where mov_name =\"" + targetMovie + ")";
+		String query = "select * from review where mov_name =\"" + targetMovie + "\"";
 		//System.out.println(query);
 		try {
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
@@ -74,7 +74,7 @@ public class reviewDAO {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query = "select * from review where mem_id =\"" + targetId + ")";
+		String query = "select * from review where mem_id =\"" + targetId + "\"";
 		//System.out.println(query);
 		try {
 			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);

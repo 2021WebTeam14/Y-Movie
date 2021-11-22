@@ -73,7 +73,7 @@ public class directorDAO {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query = "select * from director where mov_name =\"" + targetMov + "\")";
+		String query = "select * from director where mov_name =\"" + targetMov + "\"";
 		//System.out.println(query);
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -109,7 +109,7 @@ public class directorDAO {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query = "select * from director where dir_director =\"" + targetDir + "\")";
+		String query = "select * from director where dir_director =\"" + targetDir + "\"";
 		//System.out.println(query);
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

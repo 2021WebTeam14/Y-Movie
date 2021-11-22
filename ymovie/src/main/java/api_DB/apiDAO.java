@@ -8,6 +8,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import actor.actorDAO;
+import actor.actorDTO;
 import config.configLoad;
 import director.directorDAO;
 import director.directorDTO;
@@ -62,7 +64,7 @@ public class apiDAO {
 		preUrl.append("&itemPerPage=100&curPage=");
 		
 		StringBuilder url = new StringBuilder(preUrl.toString());
-		for(int j = 1; j < 4/*size+1*/; j++) {
+		for(int j = 1; j < size+1; j++) {
 			System.out.printf("API Loading ( %d00 / %d )\n", j, size*100+last);
 			url = new StringBuilder(preUrl.toString());
 			url.append(j);
@@ -125,10 +127,68 @@ public class apiDAO {
 				if (directors.get(i).get(j).getDir_director() != null) {
 					dircDAO.insertDirector(directors.get(i).get(j));						
 				}
-			}
-			System.out.println(i);			
+			}		
 		}
 		
 		return dtos;
+	}
+	
+	private static ArrayList<actorDTO> getTagValueAct(String movName, Element eElement) {
+	    ArrayList<actorDTO> actors= new ArrayList<actorDTO>();
+	    
+	    NodeList preNList = eElement.getElementsByTagName("actors");
+	    for (int i = 0; i < preNList.item(0).getChildNodes().getLength(); i++) {
+	    	if (preNList.item(0).getChildNodes().item(i) == null || i == 10) {
+	    	    break;			
+			}
+	        Node nlList = preNList.item(0).getChildNodes().item(i);
+	        if(nlList == null) 
+	            break;
+	        Node nValue = (Node) nlList.getChildNodes().item(0).getChildNodes().item(0);
+	        actorDTO dto = new actorDTO(movName, nValue.getNodeValue());
+	        actors.add(dto);
+	    }
+	    return actors;
+	}
+	
+	public void getAPIAboutActor() throws Exception {
+	    actorDAO dao = new actorDAO();
+	    ArrayList<String> codes = dao.selectAllCode();
+	    ArrayList<ArrayList<actorDTO>> actors= new ArrayList<ArrayList<actorDTO>>();
+	    
+	    DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
+	    DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
+	    
+	    StringBuilder preUrl = new StringBuilder("http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=");
+	    preUrl.append(configLoad.readByLine().get(3));
+	    
+	    Document doc = dBuilder.parse(preUrl.toString());
+	    doc.getDocumentElement().normalize();
+	    NodeList nList = doc.getElementsByTagName("movieInfoResult");
+	    Node nNode = nList.item(0);
+	    Element eElement = (Element) nNode;
+	    preUrl.append("&movieCd=");
+	    
+	    StringBuilder url = new StringBuilder(preUrl.toString());
+	    for(int j = 2500; j < 5000; j++) {
+			System.out.printf("Actor API Loading ( %d / %d )\n", j, codes.size());
+	        url = new StringBuilder(preUrl.toString());
+	        url.append(codes.get(j));
+	        
+	        doc = dBuilder.parse(url.toString());
+	        doc.getDocumentElement().normalize();
+
+	        nList = doc.getElementsByTagName("movieInfo");
+	        nNode = nList.item(0);
+	        if(nNode.getNodeType() == Node.ELEMENT_NODE){
+	            eElement = (Element) nNode;
+	            actors.add(getTagValueAct(getTagValue("movieNm", eElement), eElement));
+	        }
+	    }
+
+	    for(int j =0; j < actors.size()/100; j++){
+	        dao.insertActor(actors, j);
+	    }
+	    dao.insertActorLast(actors);
 	}
 }

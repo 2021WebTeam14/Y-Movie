@@ -23,12 +23,12 @@
 </script>
 </head>
 <body>
-    <iframe src="header.html" style="width: 100%; border: none; height: 10vw"></iframe>
+    <iframe src="../header.html" style="width: 100%; border: none; height: 10vw"></iframe>
     <div class="sTitle">
     <h1>관리자 전용 페이지</h1>
     <hr>
     </div>
     
     <input type="button" onclick="updateMovieConfirm()" value="영화리스트 업데이트">
-    <iframe src="footer.html" style="width: 100%; border: none"></iframe>
+    <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>
