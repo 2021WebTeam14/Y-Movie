@@ -76,7 +76,6 @@ public class actorDAO {
 	        con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 	        stmt = con.createStatement();
 	        rs = stmt.executeQuery(query);
-	        int  i = 0;
 	        while (rs.next()) {
 	            codes.add(rs.getString("mov_code"));
 	        }
