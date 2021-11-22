@@ -2,9 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
 
 div {
-	width: 100%;
-
 	margin-bottom: 30px;
+}
+
+.info-star{
+	display: flex;
+	flex-direction: column;	
 }
 
 .poster-box {
@@ -16,18 +19,14 @@ div {
 }
 
 .info-box {
-	width:auto;
-	object-fit:cover;
 	float: left;
 	font-size: 20px;
-	flex-direction: column;
 }
 
 .star-rating {
   display: flex;
- position: bottom;
- margin-bottom: 0px;
-  flex-direction: row-reverse;
+  position: bottom;
+  margin-bottom: 0px;
   font-size: 2.25rem;
   line-height: 2.5rem;
   justify-content: space-around;
