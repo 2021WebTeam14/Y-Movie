@@ -31,4 +31,3 @@
     
     <input type="button" onclick="updateMovieConfirm()" value="영화리스트 업데이트">
     <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
-</body>

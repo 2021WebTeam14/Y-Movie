@@ -21,4 +21,3 @@
 	}
 	
 </script>
-<body onload="updateMovieRun()"></body>
