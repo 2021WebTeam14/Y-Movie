@@ -1,44 +1,19 @@
 package member;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-
-import config.configLoad;
 
 public class memberDAO {
-	
-	private String jdbcDriver = "jdbc:mysql://";
-	private String jdbcDriverRear = "/ymovie?allowPublicKeyRetrieval=true&useSSL=false";
-	private String dbUser;
-	private String dbPass;
-	
-	public memberDAO() {
-		ArrayList<String> Info = new ArrayList<String>();
-		try {
-			Info = configLoad.readByLine();
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
-		jdbcDriver += Info.get(0);
-		jdbcDriver += jdbcDriverRear;
-		dbUser = Info.get(1);
-		dbPass = Info.get(2);
-	}
-	
-	public memberDTO selectMember(String targetId, String targetPw)  {
+	public memberDTO selectMember(Connection con, String targetId, String targetPw)  {
 		memberDTO dto = new memberDTO("","","",0);
 		
-		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		String query = "select * from member where mem_id =\"" + targetId + "\" and mem_pw = " + "sha1(\"" + targetPw + "\")";
 		//System.out.println(query);
 		try {
-			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 
@@ -59,7 +34,6 @@ public class memberDAO {
 			try {
 				if(rs != null) rs.close();
 				if(stmt != null) stmt.close();
-				if(con != null) con.close();
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -67,14 +41,12 @@ public class memberDAO {
 		return dto;
 	}
 	
-	public int insertMember(memberDTO dto) {
-		Connection con = null;
+	public int insertMember(Connection con, memberDTO dto) {
 		PreparedStatement pstmt = null;
 		String query = "insert into member values (?, sha1(?), ?, ?, ?, ?, ?, ?)";
 		int result = 0;
 	
 		try {
-			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, dto.getMem_id());
 			pstmt.setString(2, dto.getMem_pw());
@@ -87,21 +59,18 @@ public class memberDAO {
 			
 			result = pstmt.executeUpdate();
 			pstmt.close();
-			con.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
 	
-	public int deleteMember(String targetId, String targerPw) {
-		Connection con = null;
+	public int deleteMember(Connection con, String targetId, String targerPw) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String query = "delete from member where mem_id = ? and mem_pw = sha1(?)";
 		int result = 0;
 		try {
-			con = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, targetId);
 			pstmt.setString(2, targerPw);
@@ -111,7 +80,6 @@ public class memberDAO {
 		} finally {
 			try {
 				if(rs != null) rs.close();
-				if(con != null) con.close();
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
