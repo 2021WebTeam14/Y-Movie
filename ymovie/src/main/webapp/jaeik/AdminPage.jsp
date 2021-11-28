@@ -11,7 +11,7 @@
 <style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
 <script type="text/javascript">
 	function updateMovieConfirm() {
-		var c = alert("영화리스트 업데이트를 진행합니다. \n10분 이상 소요될 수 있습니다. \n\"작업중...\"이 사라질 때까지 대기하세요.");
+		var c = alert("영화리스트 업데이트를 진행합니다. \n10분 이상 소요될 수 있습니다. \n알림창이 뜰 때까지 대기하세요.");
 		location.href='updateMovie.jsp';
 	}
 	function getStart() {
