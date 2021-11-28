@@ -11,20 +11,35 @@
 <style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
 <script type="text/javascript">
 	function updateMovieConfirm() {
-		var c = confirm("영화리스트 업데이트를 진행합니다. \n10분 이상 소요될 수 있습니다.");
-		if (c)
-			location.href='updateMovie.jsp';
-		else
-			alert("취소되었습니다.");
+		var c = alert("영화리스트 업데이트를 진행합니다. \n10분 이상 소요될 수 있습니다. \n\"작업중...\"이 사라질 때까지 대기하세요.");
+		location.href='updateMovie.jsp';
+	}
+	function getStart() {
+		<%posterAPI tmp = new posterAPI();%>
+		document.getElementById("poster").src = "<%=tmp.getPoster("20163069")%>";
 	}
 	function getPoster() {
-		<%asdf test = new asdf();%>
-		 document.getElementById("poster").src = "<%=test.getPoster("19158001")%>";
+		<%posterAPI tmp2 = new posterAPI();%>
+		 document.getElementById("poster").src = "<%=tmp2.getPoster("20163069")%>";
 	}
 	function erasePoster() {
-		 document.getElementById("poster").src = "";
+		document.getElementById("poster").src = "";
 	}
-	
+	function updateState() {
+	    fetch("./test.jsp")
+	    .then(
+	    		function(res){
+	        		return res.text();
+	        	}
+	    )
+	    .then(
+	    		function(res){
+	    			var doc = new DOMParser().parseFromString(res, "text/xml");
+	    			document.getElementById("state").innerHTML = doc.getElementById("data").innerHTML;
+	        	}
+	    )
+	}
+	setInterval(updateState, 500);
 </script>
 <style>
 
@@ -39,6 +54,8 @@
 }
 .centered{
 	text-align: center;
+	align-content: center;
+	align-items: center;
 }
 input[type="button"]{
 	background-color: white;
@@ -46,14 +63,21 @@ input[type="button"]{
 	border-radius: 10px;
 	width: 20%;
 	margin: 5% 10%;
-	font-size: 150%;
 }
 img{
 	width: 192px; height: 280px; border: 1px solid black; margin: 0; padding: 0; white-space:pre
 }
+li{
+	list-style: none;
+	padding-left: 0;
+	text-align: left;
+}
+ul{
+	text-align: left;
+}
 </style>
 </head>
-<body onload="getPoster()">
+<body onload="getStart()">
     <iframe src="../header.html" style="width: 100%; border: none; height: 10vw"></iframe>
     <div class="sTitle">
     <h1>관리자 전용 페이지</h1>
@@ -68,8 +92,11 @@ img{
 		    <input type="button" onclick="getPoster()" value="포스터 로드">
 		    <input type="button" onclick="erasePoster()" value="포스터 지우기">
 	    </div>
-    	<div class="outer bordered centered">	    
-	    	<input type="button" onclick="updateMovieConfirm()" value="영화리스트 업데이트">
+    	<div class="outer bordered centered flex">	    
+	    	<input type="button" onclick="updateMovieConfirm()" value="영화 업데이트">
+			<div id="state"></div>
 	    </div>
     </div>
 	    <iframe src="../footer.html" style="width: 100%; border: none;"></iframe>
+</body>
+</html>

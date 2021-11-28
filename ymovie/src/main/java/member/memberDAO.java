@@ -40,7 +40,18 @@ public class memberDAO {
 		}
 		return dto;
 	}
-	
+	public void addReviewCount(Connection con, String targetId)  {
+		String query = "update movie set mem_reviewCount = mem_reviewCount + 1 where mem_id= ?";
+		try {
+			PreparedStatement pstmt = null;
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, targetId);
+			pstmt.execute();
+			pstmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+	}
 	public int insertMember(Connection con, memberDTO dto) {
 		PreparedStatement pstmt = null;
 		String query = "insert into member values (?, sha1(?), ?, ?, ?, ?, ?, ?)";

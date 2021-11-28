@@ -9,11 +9,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import actor.actorDAO;
-import actor.actorDTO;
+import actor.*;
 import config.configLoad;
-import director.directorDAO;
-import director.directorDTO;
+import director.*;
 import movie.*;
 
 
@@ -45,9 +43,12 @@ public class apiDAO {
 	    return directors;	    
 	}
 	
-	public ArrayList<movieDTO> getAPIAboutMovie(Connection con) throws Exception {
+	public Pair getAPIAboutMovie(Connection con) throws Exception {
 		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
 		ArrayList<ArrayList<directorDTO>> directors = new ArrayList<ArrayList<directorDTO>>();
+		Pair result = new Pair(dtos, directors);
+		movieDAO Modao = new movieDAO();
+		ArrayList<String> existCodes = Modao.selectAllCode(con);
 		
 		DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
@@ -65,7 +66,7 @@ public class apiDAO {
 		preUrl.append("&itemPerPage=100&curPage=");
 		
 		StringBuilder url = new StringBuilder(preUrl.toString());
-		for(int j = 1; j < size+1; j++) {
+		for(int j = 850; j < size+1; j++) {
 			System.out.printf("API Loading ( %d00 / %d )\n", j, size*100+last);
 			url = new StringBuilder(preUrl.toString());
 			url.append(j);
@@ -82,9 +83,12 @@ public class apiDAO {
 				if(nNode.getNodeType() == Node.ELEMENT_NODE){
 					eElement = (Element) nNode;
 					tmpCode = getTagValue("movieCd", eElement);
+					if (existCodes.contains(tmpCode)) {
+						continue;
+					}
 					tmpGenre = getTagValue("genreAlt", eElement);
-					tmpYear = getTagValue("prdtYear", eElement);
 	    			if((tmpGenre == null) || (!tmpGenre.contains("성인"))) {
+						tmpYear = getTagValue("prdtYear", eElement);
 						directors.add(getTagValueDirec(tmpCode, "director", eElement));
 						dtos.add(new movieDTO(getTagValue("movieNm", eElement), getTagValue("movieCd", eElement), Integer.parseInt(tmpYear == null ? "0" : tmpYear), 
 								getTagValue("prdtStatNm", eElement), tmpGenre));
@@ -111,29 +115,19 @@ public class apiDAO {
 			if(nNode.getNodeType() == Node.ELEMENT_NODE){
 				eElement = (Element) nNode;
 				tmpCode = getTagValue("movieCd", eElement);
+				if (existCodes.contains(tmpCode)) {
+					continue;
+				}
 				tmpGenre = getTagValue("genreAlt", eElement);
-				tmpYear = getTagValue("prdtYear", eElement);
 				if((tmpGenre == null) || (!tmpGenre.contains("성인"))) {
+					tmpYear = getTagValue("prdtYear", eElement);
 					directors.add(getTagValueDirec(tmpCode, "director", eElement));
 					dtos.add(new movieDTO(getTagValue("movieNm", eElement), tmpCode, Integer.parseInt(tmpYear == null ? "0" : tmpYear), 
 							getTagValue("prdtStatNm", eElement), tmpGenre));
     			}
 			}
 		}
-
-		directorDAO dircDAO = new directorDAO();
-		
-		for (int i = 0; i < directors.size(); i++) {
-			for (int j = 0; j < directors.get(i).size(); j++) {
-				if (directors.get(i).get(j).getDir_director() != null) {
-					System.out.printf("Director insertion ( %d / %d )\n", i, directors.size());		
-					dircDAO.insertDirector(con, directors.get(i).get(j));					
-				}
-			}		
-		}	
-		System.out.printf("Dirctor insertion ( %d / %d )\n", directors.size(), directors.size());	
-		
-		return dtos;
+		return result;
 	}
 	
 	private static ArrayList<actorDTO> getTagValueAct(String movCode, Element eElement) {
@@ -151,13 +145,16 @@ public class apiDAO {
 	        actorDTO dto = new actorDTO(movCode, nValue.getNodeValue());
 	        actors.add(dto);
 	    }
+	    if (actors.size() == 0) {
+	        actorDTO dto = new actorDTO(movCode, "");
+	        actors.add(dto);
+		}
 	    return actors;
 	}
 	
-	public void getAPIAboutActor(Connection con) throws Exception {
-	    actorDAO AcDao = new actorDAO();
+	public ArrayList<ArrayList<actorDTO>> getAPIAboutActor(Connection con) throws Exception {
 	    movieDAO MoDao = new movieDAO();
-	    ArrayList<String> codes = MoDao.selectAllCode(con);
+	    ArrayList<String> codes = MoDao.selectAllCodeActX(con);
 	    ArrayList<ArrayList<actorDTO>> actors= new ArrayList<ArrayList<actorDTO>>();
 	    
 	    DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
@@ -189,10 +186,6 @@ public class apiDAO {
 	            actors.add(getTagValueAct(codes.get(j), eElement));
 	        }
 	    }
-
-	    for(int j =0; j < actors.size()/100; j++){
-	    	AcDao.insertActor(con, actors, j);
-	    }
-	    AcDao.insertActorLast(con, actors);
+		return actors;
 	}
 }

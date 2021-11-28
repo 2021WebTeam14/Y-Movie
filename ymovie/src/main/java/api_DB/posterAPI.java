@@ -6,7 +6,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 
-public class asdf {
+public class posterAPI {
 	public String getPoster(String movCode) {
 		String URL = "https://kobis.or.kr/kobis/business/mast/mvie/searchMovieDtl.do?code=" + movCode;
 		Document document;

@@ -6,12 +6,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 public class directorDAO {	
 
 	public ArrayList<directorDTO> selectAll(Connection con)  {
 		ArrayList<directorDTO> dtos = new ArrayList<directorDTO>();
 		directorDTO dto;
-		
+
 		Statement stmt = null;
 		ResultSet rs = null;
 		String query = "select * from director";

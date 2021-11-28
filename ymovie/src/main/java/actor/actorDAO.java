@@ -115,14 +115,18 @@ public class actorDAO {
 	        PreparedStatement pstmt = null;
 	        pstmt = con.prepareStatement(query);
 	        String code;
+	        String actor;
 	        System.out.printf("Actor insertion ( %d / %d )\n", (j)*100+1, 100*size + last);
 	        for (int i = 0; i < 100; i++) {
 	        	for (int k= 0; k < dtos.get(i+j*100).size(); k++) {
+	        		actor = dtos.get(i+j*100).get(k).getAct_actor();			
 	        		code = dtos.get(i+j*100).get(k).getMov_code();
-	                pstmt.setString(1, code);
-	        		dao.updateActor(con, code);
-	                pstmt.setString(2, dtos.get(i+j*100).get(k).getAct_actor());
-	                pstmt.addBatch();
+	        		dao.updateActor(con, code);			
+	        		if (actor != "") {
+		                pstmt.setString(1, code);
+		                pstmt.setString(2, actor);
+		                pstmt.addBatch();
+					}
 				}
 	        }
 	        pstmt.executeBatch();
@@ -144,14 +148,18 @@ public class actorDAO {
 	        PreparedStatement pstmt = null;
 	        pstmt = con.prepareStatement(query);
 	        String code;
+	        String actor;
 	        System.out.printf("Actor insertion ( %d / %d )\n", 100*size, 100*size + last);			
 	        for (int i = 0; i < last; i++) {
-	        	for (int j = 0; j < dtos.get(100*size + i).size(); j++) {
-	        		code = dtos.get(100*size + i).get(j).getMov_code();
-	                pstmt.setString(1, code);
+	        	for (int j = 0; j < dtos.get(100*size + i).size(); j++) {	       
+	        		actor = dtos.get(100*size + i).get(j).getAct_actor();
+	        		code = dtos.get(100*size + i).get(0).getMov_code();
 	        		dao.updateActor(con, code);
-	                pstmt.setString(2, dtos.get(100*size + i).get(j).getAct_actor());
-	                pstmt.addBatch();
+	        		if (actor != "") {
+		                pstmt.setString(1, code);
+		                pstmt.setString(2, actor);
+		                pstmt.addBatch();						
+					}
 				}
 	        }
 	        System.out.printf("Actor insertion ( %d / %d )\n", 100*size + last, 100*size + last);	
