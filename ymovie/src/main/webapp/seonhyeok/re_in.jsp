@@ -1,264 +1,294 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="movie.*" %>
+<%@ page import="api_DB.*" %>
+<%@ page import="java.util.ArrayList" %>
 	
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Y-Movie</title>
-    <link href="css/initPage.css" rel="stylesheet" />
-    <link href="css/re_in.css" rel="stylesheet" />
+	 <link href="css/re_in.css" rel="stylesheet" type="text/css">
+	 <script>
+	 function getRecommand() {
+		 <%movieDAO dao = new movieDAO();%>
+		 <%posterAPI posterAPI = new posterAPI();%>
+	        <%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%> 
+	        <%for(int i=0;i<16;i++){%>
+	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
+	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
+	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";	       
+	        <%}%>
+	    }
+	 </script>
 </head>
-<body>
-	<div class="header">
-		<img src="img/logo.png" alt="Y-Movie" width="297px" height="100px"/>
-		<div class = "signNav">
-			<div class = "sign">
-				<input class = "signIn" type="button" value="Sign in" onclick="location.href='signIn.jsp';"/>
-				<input class = "signOut" type="button" value="Sign up" onclick="location.href='signUp.jsp';"/>
-			</div>
-			<nav class="nav">
-			    <a href="/html/intro">영화 추천</a> | 
-			    <a href="/css/intro">영화 리뷰</a> | 
-			    <a href="/javascript/intro">박스오피스 순위</a> | 
-			    <a href="/javascript/intro">영화관 찾기</a> | 
-			    <a href="/javascript/intro">마이페이지</a>
-			</nav>
-		</div>	
-		</div>
-	<div class="box_office">
-		<ol class="list_movie">
-			<li><div class="poster">
-				<div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div>
-			</div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>
-			<li><div class="poster"><div class="thumb">				
-				<div class="poster_movie">				
-				<img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F7d54d4dec506b1386961fbac801aaff2287d953d" class="img_thumb" alt="장르만 로맨스">
-					<span class="rank">1</span></div>					
-				</div>
-				<div class="content">
-					<strong class="item">
-						<a href="/moviedb/main?movieId=128599" class="link_txt">장르만 로맨스</a>
-					</strong>
-					<span class="txt">
-						<span class="info_txt">개봉<span class="txt_num">21.11.17</span></span>
-						<span class="info_txt"><span class="screen_out">관객수</span>331,655명</span>
-					</span>
-				</div></div></li>						
+<body onload="getRecommand()">
+
+<div class ="head_section">
+		<h1 class=tit_section>통합추천</h1>
+		</div>		
+	<div class="box_boxoffice">
+		<ol class="list_movieranking">
+				<li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img0" src="" class="img_thumb">
+                                        
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name0"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year0" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+			
+			<li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img1" src="" class="img_thumb">
+                                      
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name1"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year1" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+			<li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img2" src="" class="img_thumb">
+                                     
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name2"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year2" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                   <li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img3" src="" class="img_thumb">
+                                                             
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name3"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year3" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+			<li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img4" src="" class="img_thumb">
+                                        
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name4"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year4" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                   <li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img5" src="" class="img_thumb">
+                                           
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name5"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year5" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+			<li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img6" src="" class="img_thumb">
+                                       
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name6"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year6" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img7" src="" class="img_thumb">
+                                       
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name7"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year7" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+			<li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img8" src="" class="img_thumb">
+                                        
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name8"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year8" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                   <li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img9" src="" class="img_thumb">
+                                       
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name9"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year9" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+			 <li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img10" src="" class="img_thumb">
+                                      
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name10"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year10" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+		 <li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img11" src="" class="img_thumb">
+                                       
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name11"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year11" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+			 <li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img12" src="" class="img_thumb">
+                                       
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name12"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year12" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img13" src="" class="img_thumb">
+                                     
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name13"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year13" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img14" src="" class="img_thumb">
+                                      
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name14"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year14" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="item_poster" >
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img id="img15" src="" class="img_thumb">
+                                        
+                                </div>                             
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item" id="Name15"></strong>
+                                <span class="txt_info">
+                                        <span class="info_txt">개봉<span id="Year15" class="txt_num"></span></span>                                   
+                                </span>
+                            </div>
+                        </div>
+                    </li>	
+                     							
 		</ol>
 	</div>
-	<footer>
-		<div>
-			test
-		</div>
-	</footer>
+	
 </body>
 </html>
