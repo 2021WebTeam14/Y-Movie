@@ -31,7 +31,7 @@
 		
 		Connection con = getCon.getConnection();
 		try {
-			result = apiDao.getAPIAboutMovie(con);
+			result = apiDao.getAPIAboutMovie(con, request);
 			session.setAttribute("movieDown", "성공");
 			Thread.sleep(3000);
 		} 

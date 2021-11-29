@@ -10,20 +10,29 @@
 <title>Admin Page</title>
 <style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
 <script type="text/javascript">
+	function checkDB() {
+		<%movieDAO dao = new movieDAO();%>
+		document.getElementById("DBchecker").innerText="<%=dao.isDBalive()%>";
+	}
+
 	function updateMovieConfirm() {
 		var c = alert("영화리스트 업데이트를 진행합니다. \n10분 이상 소요될 수 있습니다. \n알림창이 뜰 때까지 대기하세요.");
 		location.href='updateMovie.jsp';
 	}
 	function getStart() {
-		<%posterAPI tmp = new posterAPI();%>
-		document.getElementById("poster").src = "<%=tmp.getPoster("20163069")%>";
+		<%posterAPI posterAPI = new posterAPI();%>
+		document.getElementById("poster").src = "<%=posterAPI.getPoster("20163069")%>";
 	}
 	function getPoster() {
-		<%posterAPI tmp2 = new posterAPI();%>
-		 document.getElementById("poster").src = "<%=tmp2.getPoster("20163069")%>";
+		 document.getElementById("poster").src = "<%=posterAPI.getPoster("20163069")%>";
 	}
 	function erasePoster() {
 		document.getElementById("poster").src = "";
+	}
+	function getRecommand() {
+		<%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%>
+		 document.getElementById("poster").src = "<%=posterAPI.getPoster(data.get(0).getCode())%>";
+		 document.getElementById("recomm").value = "<%=data.get(0).getName()%>";
 	}
 	function updateState() {
 	    fetch("./test.jsp")
@@ -57,6 +66,12 @@
 	align-content: center;
 	align-items: center;
 }
+.right{
+	text-align: right;
+	align-content: right;
+	align-items: right;
+}
+
 input[type="button"]{
 	background-color: white;
 	border: 2px solid black;
@@ -75,6 +90,9 @@ li{
 ul{
 	text-align: left;
 }
+#DBchecker{
+margin: 0 150px 0 150px;
+}
 </style>
 </head>
 <body onload="getStart()">
@@ -91,10 +109,15 @@ ul{
 오류입니다.">
 		    <input type="button" onclick="getPoster()" value="포스터 로드">
 		    <input type="button" onclick="erasePoster()" value="포스터 지우기">
+		    <input id="recomm" type="button" onclick="getRecommand()" value="추천 시스템 확인">
 	    </div>
     	<div class="outer bordered centered flex">	    
 	    	<input type="button" onclick="updateMovieConfirm()" value="영화 업데이트">
 			<div id="state"></div>
+	    </div>
+    	<div class="outer bordered centered flex">
+	    	<input type="button" onclick="checkDB()" value="DB연결 확인">
+	    	<div id="DBchecker" class="right"> </div>
 	    </div>
     </div>
 	    <iframe src="../footer.html" style="width: 100%; border: none;"></iframe>
