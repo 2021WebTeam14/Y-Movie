@@ -24,9 +24,7 @@ public class memberDAO {
 			rs = stmt.executeQuery(query);
 
 			if (rs.next()) {
-				if (rs.getString("mem_id") == targetId) {
-					result = 0;
-				}
+				result = 0;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

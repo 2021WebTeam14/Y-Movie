@@ -8,9 +8,13 @@
 <meta charset="UTF-8">
 <title>Sign in</title>
 	 <link rel="stylesheet" type="text/css" href="signIn.css">
-</head>  
+</head>
 <body>  
-	<iframe id="head" src="../header.html" style="width: 100%; border: none;"></iframe>
+	<%
+		loginSession sessionHandler = new loginSession();
+		sessionHandler.rmSession(request, response);
+	%>
+	<iframe id="head" src="../header.jsp" style="width: 100%; border: none;"></iframe>
 	   <h1 style="text-align: center"> Login </h1> 
 	   
 	    <form style="padding-top: 50px; padding-bottom: 50px;" method="POST" action="signInProcess.jsp">
@@ -31,15 +35,15 @@
 			        			<button type="button" onclick="document.location='signUp.jsp'">Sign up</button> 
 			        		</div>
 			        	</div>
-				    
-				        	<div class="innerBoxes">    							        	
-					            <button type="button" onclick="document.location='findPassword.jsp'" style="width: auto;"> 비밀번호 찾기 </button> 
-				        	</div>
-			        	</div>				        			           
-			        </div>	        	
-		        </div>    
+			        	<div class="innerBoxes">    							        	
+				            <button type="button" onclick="document.location='findPassword.jsp'" style="width: auto;"> 비밀번호 찾기 </button> 
+		        		</div>
+		        	</div>				        			           
+		        </div>	        	
+	        </div>    
 	    </form>
 	    <% 
+        	request.setCharacterEncoding("UTF-8");
             String msg=request.getParameter("msg");
             
             if(msg!=null && msg.equals("1")) 

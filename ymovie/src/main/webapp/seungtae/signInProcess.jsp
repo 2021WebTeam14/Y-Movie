@@ -12,9 +12,9 @@
 <script type="text/javascript">
 
 	function setCookie(key, value, expiredays) {
-    var todayDate = new Date();
-    todayDate.setDate(todayDate.getDate() + expiredays);
-    document.cookie = key + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+	    var todayDate = new Date();
+	    todayDate.setDate(todayDate.getDate() + expiredays);
+	    document.cookie = key + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
 	}
 	
 	function getCookie(key) {
@@ -33,31 +33,32 @@
 	    });
 	    return result;
 	}
-
-</script>
-
-<body>
-    <%
+	function onstart() {
+	<%
         request.setCharacterEncoding("UTF-8"); 
-    
-        String targetId= request.getParameter("userID");
-        String targetPw = request.getParameter("userPW");
+        String targetId= request.getParameter("username");
+        String targetPw = request.getParameter("password");
         System.out.println(targetId);
         System.out.println(targetPw);
-        request.removeAttribute("userID");
-        request.removeAttribute("userPW");
+        request.removeAttribute("username");
+        request.removeAttribute("password");
         memberDAO dao = new memberDAO();
         int check = dao.signInCheck(targetId, targetPw);
 
         String msg = "";
         
         if(check == 0) {
-        	loginSession sessionHandler = new loginSession();
-            msg = "../initPage.jsp?SID=" + sessionHandler.setSession(request, response, targetId);
+            msg = "../initPage.jsp";
         }
         else
             msg = "signIn.jsp?msg=1";
-        response.sendRedirect(msg);
     %>
+    setCookie("currID", "<%loginSession sessionHandler = new loginSession();%><%=sessionHandler.setSession(request, response, targetId)%>", 1);
+	location.href="<%=msg%>";
+	}
+</script>
+
+<body onload="onstart()">
+    
 </body>
 </html>

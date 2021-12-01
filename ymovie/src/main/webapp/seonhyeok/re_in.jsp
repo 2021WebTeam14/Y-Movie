@@ -8,7 +8,7 @@
 <html>
 <head>
 	<title>Y-Movie</title>
-	 <link href="css/re_in.css" rel="stylesheet" type="text/css">
+	 <link href="re_in.css" rel="stylesheet" type="text/css">
 	 <script>
 	 function getRecommand() {
 		 <%movieDAO dao = new movieDAO();%>

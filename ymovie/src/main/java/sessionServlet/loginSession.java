@@ -46,4 +46,21 @@ public class loginSession extends HttpServlet{
 
 		return session.getId();
 	}
+	public String getSession(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html;charset=utf-8");
+
+		HttpSession session = req.getSession(false);
+		
+		if(session != null && session.getAttribute("ID") != null) {
+			return session.getAttribute("ID").toString();
+		}
+
+		return null;
+	}
+	public void rmSession(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html;charset=utf-8");
+		HttpSession session = req.getSession(false);
+		session.removeAttribute("ID");
+		session.invalidate();
+	}
 }

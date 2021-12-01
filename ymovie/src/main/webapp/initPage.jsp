@@ -7,7 +7,7 @@
 <style>	body{margin: 10vh 15vw 10vh 15vw;}</style>
 </head>
 <body>
-    <iframe src="header.html" style="width: 100%; border: none; height: 10vw"></iframe>
+    <iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
     프레임셋(frameset)을 이용하면 하나의 브라우저 창에 둘 이상의 페이지를 표시할 수 있습니다.<br><br><br>
 	<br><br><br>
 	이러한 프레임셋은 iframe 요소와는 달리 하나 이상의 페이지를 동시에 가질 수 있습니다.<br><br><br>
