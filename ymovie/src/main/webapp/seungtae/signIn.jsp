@@ -6,35 +6,46 @@
 <meta charset="UTF-8">
 <title>Sign in</title>
 	 <link rel="stylesheet" type="text/css" href="css/signIn.css">
+	 <script type="text/javascript">
+	 	function checkLogin() 
+	 	{
+	 		var warn = document.getElementById("warning");
+	 		var id = document.getElementById("userID").value;
+	 		var pw = document.getElementById("userPW").value;
+	 	 		
+			return true;
+		}
+	 </script>
 </head>  
 <body>  
-	<iframe src="header.html" style="width: 100%; border: none;"></iframe>
+	<iframe id="head" src="header.html" style="width: 100%; border: none;"></iframe>
 	   <h1 style="text-align: center"> Login </h1> 
-	    <form>
+	   
+	    <form onsubmit="return checkLogin()" style="padding-top: 50px; padding-bottom: 50px;">
 	        <div class="container"> 
 		        <div class="inner1">
-			        <div class="inner2">
+			        <div class="inner2">	
+			        	<p id="warning" style="text-align: center; color: red; visibility: hidden;">asdf</p>	        
 			        	<div class="loginbox">
 				        	<label>아이디: </label> 
-				            <input type="text" placeholder="아이디" name="username" required>
+				            <input type="text" id="userID" placeholder="아이디" name="username" required>
 				            <label>비빌번호: </label> 
-				            <input type="password" placeholder="비밀번호" name="password" required>
+				            <input type="password" id="userPW" placeholder="비밀번호" name="password" required>
 			        	</div>
 			        	
 			        	<div class="buttons">
 			        		<div class="innerButtons">
 			        			<button type="submit">Sign in</button> 
-			        			<button type="button">Sign up</button> 
+			        			<button type="button" onclick="document.location='signUp.jsp'">Sign up</button> 
 			        		</div>
-				        	
-				        	<div class="innerBoxes">
-				        		<div><input type="checkbox" checked="checked"> 로그인 상태 유지 </div>					        	
-					            <a href="#" style="text-decoration: none;"> 비밀번호 찾기 </a> 
+			        	</div>
+				    
+				        	<div class="innerBoxes">    							        	
+					            <button type="button" onclick="document.location='findPassword.jsp'" style="width: auto;"> 비밀번호 찾기 </button> 
 				        	</div>
 			        	</div>				        			           
 			        </div>	        	
 		        </div>    
-	        </div> 
 	    </form>   
 	    <iframe src="footer.html" style="width: 100%; border: none"></iframe>
 </body>   
