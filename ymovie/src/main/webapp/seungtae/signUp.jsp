@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Sign Up</title>
-	<link rel="stylesheet" type="text/css" href="css/signUp.css">
+	<link rel="stylesheet" type="text/css" href="signUp.css">
 	<script type="text/javascript">
 		var profile = null;
 		
