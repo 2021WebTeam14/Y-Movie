@@ -478,6 +478,22 @@ public class movieDAO {
 			}
 		}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		if (dtos.size() < 18) {
+			int lastLoad = 18 - dtos.size();
+			query = new StringBuilder("select mov_code, mov_name, mov_year from movie order by rand() limit ");
+			query.append(String.valueOf(lastLoad));
+			
+			try {
+				rs = stmt.executeQuery(query.toString());
+				while(rs.next()) {
+					dto = new CodeNameYearDTO(rs.getString("mov_code"), rs.getString("mov_name"), rs.getString("mov_year"));
+					dtos.add(dto);				
+				}
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		try {
 			if(rs != null) rs.close();
 			if(stmt != null) stmt.close();

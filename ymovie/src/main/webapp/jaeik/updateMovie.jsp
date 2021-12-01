@@ -31,7 +31,8 @@
 		
 		Connection con = getCon.getConnection();
 		try {
-			result = apiDao.getAPIAboutMovie(con, request);
+			session.setAttribute("movieDown", "진행");
+			result = apiDao.getAPIAboutMovie(con, session);
 			session.setAttribute("movieDown", "성공");
 			Thread.sleep(3000);
 		} 
@@ -45,11 +46,14 @@
 		ArrayList<ArrayList<actorDTO>> actors = new ArrayList<ArrayList<actorDTO>>();
 		
 		try {
-			int size = movieDto.size() / 1000;
-			for(int j =0; j < size; j++){
-				movieDao.insertMovie(con, movieDto, j);
+			session.setAttribute("movieUP", "진행");
+			if(movieDto != null){
+				int size = movieDto.size() / 1000;
+				for(int j =0; j < size; j++){
+					movieDao.insertMovie(con, movieDto, j);
+				}
+				movieDao.insertMovieLast(con, movieDto);
 			}
-			movieDao.insertMovieLast(con, movieDto);
 			session.setAttribute("movieUP", "성공");
 			Thread.sleep(3000);
 		} 
@@ -59,16 +63,19 @@
 			%>alert("Movie DB error...");<%
 		}
 		try {
-			directorDAO dircDAO = new directorDAO();
-			for (int i = 0; i < directorDto.size(); i++) {
-				System.out.printf("Director insertion ( %d / %d )\n", i, directorDto.size());		
-				for (int j = 0; j < directorDto.get(i).size(); j++) {
-					if (directorDto.get(i).get(j).getDir_director() != null) {
-						dircDAO.insertDirector(con, directorDto.get(i).get(j));					
-					}
-				}		
-			}	
-			System.out.printf("Director insertion ( %d / %d )\n", directorDto.size(), directorDto.size());	
+			session.setAttribute("direcUP", "진행");
+			if(directorDto != null){
+				directorDAO dircDAO = new directorDAO();
+				for (int i = 0; i < directorDto.size(); i++) {
+					System.out.printf("Director insertion ( %d / %d )\n", i, directorDto.size());		
+					for (int j = 0; j < directorDto.get(i).size(); j++) {
+						if (directorDto.get(i).get(j).getDir_director() != null) {
+							dircDAO.insertDirector(con, directorDto.get(i).get(j));					
+						}
+					}		
+				}	
+				System.out.printf("Director insertion ( %d / %d )\n", directorDto.size(), directorDto.size());	
+			}
 			session.setAttribute("direcUP", "성공");
 			Thread.sleep(3000);
 		} 
@@ -78,6 +85,7 @@
 			%>alert("Director DB error...");<%
 		}
 		try {
+			session.setAttribute("actorDown", "진행");
 			actors = apiDao.getAPIAboutActor(con);
 			session.setAttribute("actorDown", "성공");
 			Thread.sleep(3000);
@@ -89,6 +97,7 @@
 		} 
 		
 		try {
+			session.setAttribute("actorUP", "진행");
 		    actorDAO AcDao = new actorDAO();
 		    for(int j =0; j < actors.size()/100; j++){
 		    	AcDao.insertActor(con, actors, j);

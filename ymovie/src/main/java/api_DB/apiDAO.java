@@ -3,7 +3,6 @@ package api_DB;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -46,8 +45,7 @@ public class apiDAO {
 	    return directors;	    
 	}
 	
-	public Pair getAPIAboutMovie(Connection con, HttpServletRequest request) throws Exception {
-		HttpSession httpSession = request.getSession(true);
+	public Pair getAPIAboutMovie(Connection con, HttpSession session) throws Exception {
 		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
 		ArrayList<ArrayList<directorDTO>> directors = new ArrayList<ArrayList<directorDTO>>();
 		Pair result = new Pair(dtos, directors);
@@ -68,12 +66,11 @@ public class apiDAO {
 		int size = Integer.parseInt(getTagValue("totCnt", eElement))/100;
 		int last = Integer.parseInt(getTagValue("totCnt", eElement))%100;
 		preUrl.append("&itemPerPage=100&curPage=");
-		
+		double tmpForPer = 0.0;
 		StringBuilder url = new StringBuilder(preUrl.toString());
 		for(int j = 1; j < size+1; j++) {
-			if (j % 100 == 0) {
-				httpSession.setAttribute("movieDown", Integer.toString(j/(size+1)*100) + '%');				
-			}
+			tmpForPer = j;
+			session.setAttribute("movieDown", (String.format("%.2f", (tmpForPer/size)*100)) + '%');
 			System.out.printf("API Loading ( %d00 / %d )\n", j, size*100+last);
 			url = new StringBuilder(preUrl.toString());
 			url.append(j);
@@ -104,7 +101,8 @@ public class apiDAO {
 			}
 			
 		}
-		
+		tmpForPer = size;
+		session.setAttribute("movieDown", (String.format("%.2f", (tmpForPer*100/tmpForPer*100+last)*100)) + '%');
 		System.out.printf("API Loading ( %d / %d )\n", size*100+last, size*100+last);
 		url = new StringBuilder(preUrl.toString());
 		url.append(size+1);
