@@ -5,23 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Sign in</title>
-	 <link rel="stylesheet" type="text/css" href="css/signIn.css">
+	 <link rel="stylesheet" type="text/css" href="signIn.css">
 	 <script type="text/javascript">
 	 	function checkLogin() 
 	 	{
 	 		var warn = document.getElementById("warning");
 	 		var id = document.getElementById("userID").value;
 	 		var pw = document.getElementById("userPW").value;
-	 	 		
+	 		
 			return true;
 		}
 	 </script>
 </head>  
 <body>  
-	<iframe id="head" src="header.html" style="width: 100%; border: none;"></iframe>
+	<iframe id="head" src="../header.html" style="width: 100%; border: none;"></iframe>
 	   <h1 style="text-align: center"> Login </h1> 
 	   
-	    <form onsubmit="return checkLogin()" style="padding-top: 50px; padding-bottom: 50px;">
+	    <form onsubmit="checkLogin()" style="padding-top: 50px; padding-bottom: 50px;" method="POST">
 	        <div class="container"> 
 		        <div class="inner1">
 			        <div class="inner2">	
@@ -47,6 +47,6 @@
 			        </div>	        	
 		        </div>    
 	    </form>   
-	    <iframe src="footer.html" style="width: 100%; border: none"></iframe>
+	    <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>   
 </html>
