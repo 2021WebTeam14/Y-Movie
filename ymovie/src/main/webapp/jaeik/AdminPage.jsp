@@ -16,7 +16,7 @@
 	}
 
 	function updateMovieConfirm() {
-		var c = alert("영화리스트 업데이트를 진행합니다. \n10분 이상 소요될 수 있습니다. \n작업 취소는 불가능합니다.");
+		var c = alert("영화리스트 업데이트를 진행합니다. \n10분 이상 소요될 수 있습니다. \n작업 취소는 불가능합니다.\n 1일 2회까지만 가능합니다.");
 		location.href='updateMovie.jsp';
 	}
 	function getStart() {
@@ -101,11 +101,6 @@ margin: 0 150px 0 150px;
     <div class="sTitle">
     <h1>관리자 전용 페이지</h1>
     <hr>
-    </div>
-    <div id="qwer">
-    	<div id="zxcv">
-    		<img id="asdf" src="">
-    	</div>
     </div>
     <div class="outer">
     	<div class="outer bordered flex">	
