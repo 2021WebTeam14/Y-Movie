@@ -50,9 +50,66 @@ body{
     font-family: 'SF Pro Display','AppleSDGothicNeo','Malgun Gothic','\B9D1\C740 \ACE0\B515','\B3CB\C6C0',dotum,sans-serif;
     color: #000;
 }
+.section_ranking {
+  padding-top: 80px; }
+  .detail_rankinginfo {
+  position: relative; }
+
+.detail_rankinginfo + .detail_rankinginfo {
+  margin-top: 70px; }
+  
+  .head_section {
+  height: 28px; }
+  .head_section {
+  position: relative; }
+
+.head_section:after {
+  display: block;
+  visibility: hidden;
+  height: 0;
+  font-size: 0;
+  clear: both;
+  content: ''; }
+
+.head_section .tit_section {
+  float: left; }
+
+.head_section  {
+
+  padding: 6px 0 0 15px;
+  font-weight: 200;
+  font-size: 14px;
+  color: #000; }
+
+.head_section  {
+  width: 100px;
+  height: 16px;
+  margin: 2px 6px 0 0;
+  background-position: -240px -100px; }
+
+.head_section  {
+ 
+  position: relative; }
+  .tit_section {
+  font-size: 24px;
+  line-height: 28px;
+  color: #000; }
+  .head_section .tit_section {
+  float: left; }
+  .list_movieranking{
+	padding: 0 200px;
+
+}
+.list_movieranking li{
+	padding-top:40px;
+}
 .img_thumb {
     display: block;
     width: 100%;
+}
+.section_ranking {
+    padding-top: 80px;
+
 }
 .item_poster .img_thumb {
   position: relative;

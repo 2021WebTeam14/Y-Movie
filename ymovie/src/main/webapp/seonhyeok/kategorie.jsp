@@ -8,7 +8,7 @@
 <html>
 <head>
 <title>Y-Movie</title>
-<link href="css/re_in.css" rel="stylesheet" type="text/css">
+<link href="css/kategorie.css" rel="stylesheet" type="text/css">
 <script>
 	 function getRecommand() {
 		 <%movieDAO dao = new movieDAO();%>
@@ -25,12 +25,17 @@
 </head>
 <body onload="getRecommand()">
 
-	<div class="head_section">
-		<h1 class=tit_section>통합추천</h1>
-	</div>
-	<div class="box_boxoffice">
-		<ol class="list_movieranking">
-			<li>
+
+6po[]	<div class="section_ranking">
+		<div class="box_ranking" data-tiara-layer="list">
+			<div class="detail_rankinginfo">
+				<div class="head_section">
+					<h3 class="tit_section">장르</h3>
+				</div>
+				<ol class="list_movieranking">
+					
+					
+					<li>
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
@@ -46,7 +51,6 @@
 					</div>
 				</div>
 			</li>
-
 			<li>
 				<div class="item_poster">
 					<div class="thumb_item">
@@ -159,7 +163,16 @@
 					</div>
 				</div>
 			</li>
-			<li>
+				</ol>
+			</div>
+			<div class="detail_rankinginfo">
+				<div class="head_section">
+					<h3 class="tit_section">
+						배우
+					</h3>
+				</div>
+				<ol class="list_movieranking">
+					<li>
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
@@ -287,8 +300,148 @@
 					</div>
 				</div>
 			</li>
+					
+				</ol>
+			</div>
+			<div class="detail_rankinginfo">
+				<div class="head_section">
+					<h3 class="tit_section">
+						감독
+					</h3>
+				</div>
+				<ol class="list_movieranking">
+					<li>
+				<div class="item_poster">
+					<div class="thumb_item">
+						<div class="poster_movie">
+							<img id="img8" src="" class="img_thumb">
 
-		</ol>
+						</div>
+					</div>
+					<div class="thumb_cont">
+						<strong class="tit_item" id="Name8"></strong> <span
+							class="txt_info"> <span class="info_txt">개봉<span
+								id="Year8" class="txt_num"></span></span>
+						</span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="item_poster">
+					<div class="thumb_item">
+						<div class="poster_movie">
+							<img id="img9" src="" class="img_thumb">
+
+						</div>
+					</div>
+					<div class="thumb_cont">
+						<strong class="tit_item" id="Name9"></strong> <span
+							class="txt_info"> <span class="info_txt">개봉<span
+								id="Year9" class="txt_num"></span></span>
+						</span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="item_poster">
+					<div class="thumb_item">
+						<div class="poster_movie">
+							<img id="img10" src="" class="img_thumb">
+
+						</div>
+					</div>
+					<div class="thumb_cont">
+						<strong class="tit_item" id="Name10"></strong> <span
+							class="txt_info"> <span class="info_txt">개봉<span
+								id="Year10" class="txt_num"></span></span>
+						</span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="item_poster">
+					<div class="thumb_item">
+						<div class="poster_movie">
+							<img id="img11" src="" class="img_thumb">
+
+						</div>
+					</div>
+					<div class="thumb_cont">
+						<strong class="tit_item" id="Name11"></strong> <span
+							class="txt_info"> <span class="info_txt">개봉<span
+								id="Year11" class="txt_num"></span></span>
+						</span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="item_poster">
+					<div class="thumb_item">
+						<div class="poster_movie">
+							<img id="img12" src="" class="img_thumb">
+
+						</div>
+					</div>
+					<div class="thumb_cont">
+						<strong class="tit_item" id="Name12"></strong> <span
+							class="txt_info"> <span class="info_txt">개봉<span
+								id="Year12" class="txt_num"></span></span>
+						</span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="item_poster">
+					<div class="thumb_item">
+						<div class="poster_movie">
+							<img id="img13" src="" class="img_thumb">
+
+						</div>
+					</div>
+					<div class="thumb_cont">
+						<strong class="tit_item" id="Name13"></strong> <span
+							class="txt_info"> <span class="info_txt">개봉<span
+								id="Year13" class="txt_num"></span></span>
+						</span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="item_poster">
+					<div class="thumb_item">
+						<div class="poster_movie">
+							<img id="img14" src="" class="img_thumb">
+
+						</div>
+					</div>
+					<div class="thumb_cont">
+						<strong class="tit_item" id="Name14"></strong> <span
+							class="txt_info"> <span class="info_txt">개봉<span
+								id="Year14" class="txt_num"></span></span>
+						</span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="item_poster">
+					<div class="thumb_item">
+						<div class="poster_movie">
+							<img id="img15" src="" class="img_thumb">
+
+						</div>
+					</div>
+					<div class="thumb_cont">
+						<strong class="tit_item" id="Name15"></strong> <span
+							class="txt_info"> <span class="info_txt">개봉<span
+								id="Year15" class="txt_num"></span></span>
+						</span>
+					</div>
+				</div>
+			</li>
+					
+				</ol>
+			</div>
+		</div>
 	</div>
 
 </body>
