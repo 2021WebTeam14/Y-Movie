@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="movie.*" %>
+<%@ page import="api_DB.*" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,15 +11,27 @@
 <link href="css/commonranking.css" rel="stylesheet" />
 
 <style>	body{margin: 10vh 15vw 10vh 15vw;}</style>
+<script>
+	 function getRecommand() {
+		 <%movieDAO dao = new movieDAO();%>
+		 <%posterAPI posterAPI = new posterAPI();%>
+		 <%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%> 
+	        <%for(int i=0;i<16;i++){%>
+	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
+	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
+	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";	       
+	        <%}%>
+	    }
+	 </script>
 </head>
-<body>
-    <iframe src="header.html" style="width: 69vw; border: none;"></iframe>
+<body onload="getRecommand()">
+    <iframe src="../header.html" style="width: 69vw; border: none;"></iframe>
     <h2>공통 순위</h2>
     
 <div class="table">
   <div class="table-row">
     <div class="table-cell">
-      <p>1</p>
+      <img id="img0" src="" class="img_thumb">
     </div>
     <div class="table-cell">
       <p>2</p>
@@ -59,6 +74,6 @@
 </div>
 
 	
-    <iframe src="footer.html" style="width: 69vw; border: none"></iframe>
+    <iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
 </body>
 </html>

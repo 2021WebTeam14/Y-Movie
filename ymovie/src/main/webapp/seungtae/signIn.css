@@ -1,9 +1,4 @@
 @charset "UTF-8";
-
-	form 
-	 {   
-       border: 3px solid #f1f1f1;   
-     }   
      
      body{margin: 10vh 15vw 10vh 15vw;}
      
@@ -44,6 +39,8 @@
 		width: 100%;
 		height: 100%;
 		justify-content: center;
+		border: 3px solid #f1f1f1;
+		padding: 50px;
 	}
 	
 	.container
@@ -79,7 +76,7 @@
 	{
 		display: flex;
 		flex-direction: row;
-		justify-content: space-between;
-		width: 70%;
+		justify-content: center;
+		width: 100%;
 		height: 100%;
 	}
