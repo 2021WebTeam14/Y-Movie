@@ -11,7 +11,7 @@
 <body>
 	<div class="header">
 		<div class="imgWrapper">
-		<img src="img/logo.png" alt="Y-Movie" width="100%" height="100%"/>
+		<img src="img/logo.png" alt="Y-Movie" width="100%" height="100%" onclick="window.top.location.replace('/ymovie/initPage.jsp')"/>
 		</div>
 		<div class = "signNav">
 		    <div class="sign">
