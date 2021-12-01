@@ -13,7 +13,7 @@ public class reviewDAO {
 		
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query = "select * from review where mov_name =\"" + targetMovie + "\"";
+		String query = "select * from review where mov_code =\"" + targetMovie + "\"";
 		//System.out.println(query);
 		try {
 			stmt = con.createStatement();
@@ -21,13 +21,13 @@ public class reviewDAO {
 
 			while (rs.next()) {
 				int rev_num = rs.getInt("rev_num"); 
-				String mov_name = rs.getString("mov_name");
+				String mov_code = rs.getString("mov_code");
 				String mem_id = rs.getString("mem_id");
 				int rev_star = rs.getInt("rev_star");
 				int rev_thumbs = rs.getInt("rev_thumbs");
 				String rev_context = rs.getString("rev_context");
 
-				dto = new reviewDTO(rev_num, mov_name, mem_id , rev_star, rev_thumbs, rev_context);
+				dto = new reviewDTO(rev_num, mov_code, mem_id , rev_star, rev_thumbs, rev_context);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
@@ -56,13 +56,13 @@ public class reviewDAO {
 
 			while (rs.next()) {
 				int rev_num = rs.getInt("rev_num");
-				String mov_name = rs.getString("mov_name");
+				String mov_code = rs.getString("mov_code");
 				String mem_id = rs.getString("mem_id");
 				int rev_star = rs.getInt("rev_star");
 				int rev_thumbs = rs.getInt("rev_thumbs");
 				String rev_context = rs.getString("rev_context");
 
-				dto = new reviewDTO(rev_num, mov_name, mem_id , rev_star, rev_thumbs, rev_context);
+				dto = new reviewDTO(rev_num, mov_code, mem_id , rev_star, rev_thumbs, rev_context);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
@@ -85,7 +85,7 @@ public class reviewDAO {
 	
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, dto.getMov_name());
+			pstmt.setString(1, dto.getMov_code());
 			pstmt.setString(2, dto.getMem_id());
 			pstmt.setString(3, Integer.toString(dto.getRev_star()));
 			pstmt.setString(4, Integer.toString(dto.getRev_thumbs()));

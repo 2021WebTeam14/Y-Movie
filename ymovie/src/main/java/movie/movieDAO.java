@@ -9,17 +9,60 @@ import java.util.ArrayList;
 import defaultConn.getConn;
 
 public class movieDAO {
-	
-	public String isDBalive() {
-		String result = "연결 실패";
+	public ArrayList<Integer> getAmount(Connection con) {
+		ArrayList<Integer> result = new ArrayList<Integer>();
 		
-		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String query1 = "select count(*) from movie";
+		String query2 = "select count(*) from actor";
+		String query3 = "select count(*) from director";
+		String query4 = "select count(*) from member";
+		String query5 = "select count(*) from review";
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query1);
+	        while (rs.next()) {
+	        	result.add(rs.getInt("count(*)"));
+	        }
+	        rs.close();
+			rs = stmt.executeQuery(query2);
+	        while (rs.next()) {
+	        	result.add(rs.getInt("count(*)"));
+	        }
+	        rs.close();
+			rs = stmt.executeQuery(query3);
+	        while (rs.next()) {
+	        	result.add(rs.getInt("count(*)"));
+	        }
+	        rs.close();
+			rs = stmt.executeQuery(query4);
+	        while (rs.next()) {
+	        	result.add(rs.getInt("count(*)"));
+	        }
+	        rs.close();
+			rs = stmt.executeQuery(query5);
+	        while (rs.next()) {
+	        	result.add(rs.getInt("count(*)"));
+	        }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;	
+	}
+	public String isDBalive(Connection con) {
+		String result = "연결 실패";
 		Statement stmt = null;
 		ResultSet rs = null;
 		String query = "select * from movie limit 1";
 		try {
-			getConn getCon = new getConn();
-			con = getCon.getConnection();
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 	        while (rs.next()) {

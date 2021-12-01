@@ -2,6 +2,8 @@
 <%@ page import="movie.*" %>
 <%@ page import="api_DB.*" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="defaultConn.getConn" %>
+<%@ page import="java.sql.Connection" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,8 +13,19 @@
 <style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
 <script type="text/javascript">
 	function checkDB() {
-		<%movieDAO dao = new movieDAO();%>
-		document.getElementById("DBchecker").innerText="<%=dao.isDBalive()%>";
+		<%
+		movieDAO dao = new movieDAO();
+		Connection con = null;
+		getConn getCon = new getConn();
+		con = getCon.getConnection();
+		ArrayList<Integer> counts = dao.getAmount(con);
+		for(int i =0; i<5; i++){
+			%>document.getElementById("count" + <%=i%>).innerText="<%=counts.get(i)%>";<%
+		}
+		%>
+	}
+	function checkDBCon() {
+		document.getElementById("DBConchecker").innerText="<%=dao.isDBalive(con)%>";
 	}
 
 	function updateMovieConfirm() {
@@ -20,6 +33,7 @@
 		location.href='updateMovie.jsp';
 	}
 	function getStart() {
+		checkDB();
 		document.getElementById("poster<%=0%>");
 		<%posterAPI posterAPI = new posterAPI();%>
 		document.getElementById("poster").src = "<%=posterAPI.getPoster("20163069")%>";
@@ -29,11 +43,6 @@
 	}
 	function erasePoster() {
 		document.getElementById("poster").src = "";
-	}
-	function getRecommand() {
-		<%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%>
-		 document.getElementById("poster").src = "<%=posterAPI.getPoster(data.get(0).getCode())%>";
-		 document.getElementById("recomm").value = "<%=data.get(0).getName()%>";
 	}
 	function updateState() {
 	    fetch("./test.jsp")
@@ -72,7 +81,15 @@
 	align-content: right;
 	align-items: right;
 }
-
+.autoMargin {
+	margin: auto;
+}
+.noMargin {
+	margin: 0;
+}
+.noPadding{
+	padding: 0;
+}
 input[type="button"]{
 	background-color: white;
 	border: 2px solid black;
@@ -91,18 +108,48 @@ li{
 ul{
 	text-align: left;
 }
-#DBchecker{
+#DBConchecker{
 margin: 0 150px 0 150px;
+}
+#DBchecker{
+margin-bottom: 20px;
 }
 </style>
 </head>
 <body onload="getStart()">
-    <iframe src="../header.html" style="width: 100%; border: none; height: 10vw"></iframe>
+    <iframe src="../header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
     <div class="sTitle">
     <h1>관리자 전용 페이지</h1>
     <hr>
     </div>
     <div class="outer">
+    	<div class="outer bordered centered flex">
+    		<div class="centered autoMargin">
+		    	<div class="centered noMargin noPadding"><h2>DB 현황</h2></div>
+		    	<div id="DBchecker" class="outer bordered centered">
+		    		<div class="flex">
+			    		<div>영화 정보 : &nbsp;</div>
+			    		<div id="count0" class="right"></div>
+		    		</div>
+		    		<div class="flex">
+			    		<div>배우 정보 : &nbsp;</div>
+			    		<div id="count1" class="right"></div>
+		    		</div>
+		    		<div class="flex">
+			    		<div>감독 정보 : &nbsp;</div>
+			    		<div id="count2" class="right"></div>
+		    		</div>
+		    		<div class="flex">
+			    		<div>전체 회원 : &nbsp;</div>
+			    		<div id="count3" class="right"></div>
+		    		</div>
+		    		<div class="flex">
+			    		<div>전체 리뷰 : &nbsp;</div>
+			    		<div id="count4" class="right"></div>
+		    		</div>
+		    	</div>
+	    	</div>
+	    </div>
     	<div class="outer bordered flex">	
 	    	<img id="poster" src="" alt="
 로드해도 포스터가 
@@ -110,15 +157,14 @@ margin: 0 150px 0 150px;
 오류입니다.">
 		    <input type="button" onclick="getPoster()" value="포스터 로드">
 		    <input type="button" onclick="erasePoster()" value="포스터 지우기">
-		    <input id="recomm" type="button" onclick="getRecommand()" value="추천 시스템 확인">
 	    </div>
     	<div class="outer bordered centered flex">	    
 	    	<input type="button" onclick="updateMovieConfirm()" value="영화 업데이트">
 			<div id="state"></div>
 	    </div>
     	<div class="outer bordered centered flex">
-	    	<input type="button" onclick="checkDB()" value="DB연결 확인">
-	    	<div id="DBchecker" class="right"> </div>
+	    	<input type="button" onclick="checkDBCon()" value="DB연결 확인">
+	    	<div id="DBConchecker" class="right"> </div>
 	    </div>
     </div>
 	    <iframe src="../footer.html" style="width: 100%; border: none;"></iframe>

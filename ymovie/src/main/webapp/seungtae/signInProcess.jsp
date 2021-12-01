@@ -36,22 +36,23 @@
 	function onstart() {
 	<%
         request.setCharacterEncoding("UTF-8"); 
-        String targetId= request.getParameter("username");
-        String targetPw = request.getParameter("password");
-        request.removeAttribute("username");
-        request.removeAttribute("password");
         memberDAO dao = new memberDAO();
-        int check = dao.signInCheck(targetId, targetPw);
+        int check = dao.signInCheck(request.getParameter("username"), request.getParameter("password"));
 
         String msg = "";
         
         if(check == 0) {
-            msg = "../initPage.jsp";
+        	if(request.getParameter("username").equals("god")){
+                msg = "../jaeik/AdminPage.jsp";
+        	}
+        	else {
+                msg = "../initPage.jsp";        		
+        	}
         }
         else
             msg = "signIn.jsp?msg=1";
     %>
-    setCookie("currID", "<%loginSession sessionHandler = new loginSession();%><%=sessionHandler.setSession(request, response, targetId)%>", 1);
+    setCookie("currID", "<%loginSession sessionHandler = new loginSession();%><%=sessionHandler.setSession(request, response, request.getParameter("username"))%>", 1);
 	location.href="<%=msg%>";
 	}
 </script>
