@@ -38,8 +38,6 @@
         request.setCharacterEncoding("UTF-8"); 
         String targetId= request.getParameter("username");
         String targetPw = request.getParameter("password");
-        System.out.println(targetId);
-        System.out.println(targetPw);
         request.removeAttribute("username");
         request.removeAttribute("password");
         memberDAO dao = new memberDAO();

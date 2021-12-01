@@ -18,7 +18,7 @@
 			<%
 				loginSession sessionHandler = new loginSession();
 				if(sessionHandler.getSession(request, response) != null) {
-					out.print("<input class = \"signOut\" type=\"button\" value=\"SignOut\" onclick=\"window.top.location.replace('./seungtae/signOut.jsp');\"/>");
+					out.print("<input class = \"signOut\" type=\"button\" value=\"SignOut\" onclick=\"window.top.location.replace('./jaeik/signOut.jsp');\"/>");
 				}
 				else {
 					out.print("<input class = \"signIn\" type=\"button\" value=\"Sign in\" onclick=\"window.top.location.replace('./seungtae/signIn.jsp');\"/>");
