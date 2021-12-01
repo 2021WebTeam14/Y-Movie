@@ -1,3 +1,5 @@
+<%@page import="member.memberDAO"%>
+<%@page import="sessionServlet.loginSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,22 +8,12 @@
 <meta charset="UTF-8">
 <title>Sign in</title>
 	 <link rel="stylesheet" type="text/css" href="signIn.css">
-	 <script type="text/javascript">
-	 	function checkLogin() 
-	 	{
-	 		var warn = document.getElementById("warning");
-	 		var id = document.getElementById("userID").value;
-	 		var pw = document.getElementById("userPW").value;
-	 		
-			return true;
-		}
-	 </script>
 </head>  
 <body>  
 	<iframe id="head" src="../header.html" style="width: 100%; border: none;"></iframe>
 	   <h1 style="text-align: center"> Login </h1> 
 	   
-	    <form onsubmit="checkLogin()" style="padding-top: 50px; padding-bottom: 50px;" method="POST">
+	    <form style="padding-top: 50px; padding-bottom: 50px;" method="POST" action="signInProcess.jsp">
 	        <div class="container"> 
 		        <div class="inner1">
 			        <div class="inner2">	
@@ -46,7 +38,16 @@
 			        	</div>				        			           
 			        </div>	        	
 		        </div>    
-	    </form>   
+	    </form>
+	    <% 
+            String msg=request.getParameter("msg");
+            
+            if(msg!=null && msg.equals("1")) 
+            {
+                out.println("<br>");
+                out.println("<font color='red' size='5'>아이디 혹은 비밀번호가 일치하지 않습니다</font>");
+            }
+        %>    
 	    <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>   
 </html>

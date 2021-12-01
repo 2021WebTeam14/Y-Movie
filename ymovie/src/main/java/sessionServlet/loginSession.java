@@ -21,14 +21,12 @@ import javax.servlet.http.HttpSession;
 
 
 @SuppressWarnings("serial")
-@WebServlet("/session_Servlet")
 public class loginSession extends HttpServlet{
 
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		HttpSession session = req.getSession(true);
 
-		session.setMaxInactiveInterval(60);
 		if(session !=null) session.setAttribute("name", "홍길동");		
 		resp.setContentType("text/html;charset=utf-8");
 
@@ -43,5 +41,15 @@ public class loginSession extends HttpServlet{
 		session.invalidate();
 		out.println("</body></html>");
 		out.close();
+	}
+	
+	public String setSession(HttpServletRequest req, HttpServletResponse resp, String ID) throws ServletException, IOException {
+		resp.setContentType("text/html;charset=utf-8");
+
+		HttpSession session = req.getSession(true);
+
+		if(session !=null) session.setAttribute("ID", ID);		
+
+		return session.getId();
 	}
 }

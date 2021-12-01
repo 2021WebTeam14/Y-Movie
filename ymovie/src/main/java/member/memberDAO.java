@@ -5,7 +5,42 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import defaultConn.getConn;
+
 public class memberDAO {
+	public int signInCheck(String targetId, String targetPw)  {
+		int result = 1;
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		String query = "select * from member where mem_id =\"" + targetId + "\" and mem_pw = " + "sha1(\"" + targetPw + "\")";
+		//System.out.println(query);
+		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+
+			if (rs.next()) {
+				if (rs.getString("mem_id") == targetId) {
+					result = 0;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
 	public memberDTO selectMember(Connection con, String targetId, String targetPw)  {
 		memberDTO dto = new memberDTO("","","",0);
 		
