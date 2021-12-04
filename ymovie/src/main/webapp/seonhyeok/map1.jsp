@@ -26,21 +26,6 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-//장소 검색 객체를 생성합니다
-var ps = new kakao.maps.services.Places(map); 
-
-// 카테고리로 은행을 검색합니다
-ps.categorySearch('CT1', placesSearchCB, {useMapBounds:true}); 
-
-// 키워드 검색 완료 시 호출되는 콜백함수 입니다
-function placesSearchCB (data, status, pagination) {
-    if (status === kakao.maps.services.Status.OK) {
-        for (var i=0; i<data.length; i++) {
-            displayMarker(data[i]);    
-        }       
-    }
-}
-
 // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 if (navigator.geolocation) {
     
@@ -72,7 +57,7 @@ function displayMarker(locPosition, message) {
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
         map: map, 
-        position: locPosition,new kakao.maps.LatLng(place.y, place.x) 
+        position: locPosition
     }); 
     
     kakao.maps.event.addListener(marker, 'click', function() {
