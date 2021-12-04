@@ -222,9 +222,9 @@
 			
 		-->
 		
-		<button type="button" onclick="document.getElementById('editReview').style.display='block'">Add sample review</button>
-		<button type="button" onclick="putReview(createMovieDiv('title', 'reviewText', 1, 4))">Extract</button>		
-		<button type="button" onclick="extract(1)">try editing</button>
+		<button type="button" onclick="document.getElementById('editReview').style.display='block'">수정 창 열기</button>
+		<button type="button" onclick="putReview(createMovieDiv('title', 'reviewText', 1, 4))">샘플 넣어보기</button>		
+		<button type="button" onclick="extract(1)">2번째 영화 수정 해보기</button>
 		<p id="ext">sample text</p>
 		
 		<div id="editReview" class="editing">
