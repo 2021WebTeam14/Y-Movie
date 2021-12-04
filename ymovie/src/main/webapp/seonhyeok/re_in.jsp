@@ -4,6 +4,7 @@
 <%@ page import="movie.*"%>
 <%@ page import="api_DB.*"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.io.PrintWriter"%>
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,10 @@
 		 <%
 		 storeSession sessionDAO = new storeSession();
 		 if (sessionDAO.getSession(session) == ""){
-			response.sendRedirect("../initPage.jsp");
+			 response.setContentType("text/html; charset=UTF-8");
+			 PrintWriter outA = response.getWriter();
+			 outA.println("<script>alert('로그인이 필요합니다.'); location.href='../initPage.jsp';</script>");
+			 outA.flush();
 		 }
 		 %>
 		 <%
