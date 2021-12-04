@@ -1,5 +1,5 @@
 <%@page import="member.memberDAO"%>
-<%@page import="sessionServlet.loginSession"%>
+<%@page import="sessionServlet.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,10 +9,10 @@
 <title>Sign in</title>
 	 <link rel="stylesheet" type="text/css" href="signIn.css">
 </head>
-<body>  
+<body> 
 	<%
-		loginSession sessionHandler = new loginSession();
-		sessionHandler.rmSession(request, response);
+        storeSession sessionDAO = new storeSession();
+		sessionDAO.deleteSession(session);
 	%>
 	<iframe id="head" src="../header.jsp" style="width: 100%; border: none;"></iframe>
 	   <h1 style="text-align: center"> Login </h1> 
