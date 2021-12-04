@@ -1,91 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Y-Movie</title>
-    <link href="css/map1.css" rel="stylesheet" />
-    <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=22e4124c161041fc832c09fac32fb1b1"></script>
-    <script type="text/javascript" src="map1.js"></script>
+<link href="css/map1.css" rel="stylesheet" />
+
 </head>
 <body>
-<div class="header">
-        <img src="img/logo.png" alt="Y-Movie" width="297px" height="100px" />
-        <div class="signNav">
-            <div class="sign">
-                <input class="signIn" type="button" value="Sign in" onclick="location.href='signIn.jsp';" />
-                <input class="signOut" type="button" value="Sign up" onclick="location.href='signUp.jsp';" />
-            </div>
-            <nav class="nav">
-                <a href="/html/intro">영화 추천</a> |
-                <a href="/css/intro">영화 리뷰</a> |
-                <a href="/javascript/intro">박스오피스 순위</a> |
-                <a href="/javascript/intro">영화관 찾기</a> |
-                <a href="/javascript/intro">마이페이지</a>
-            </nav>
-        </div>
-    </div>
-    <label for="adress"></label>
-    <div class=searchbar>
-        <input type="text" name="adress">
-        <button type="button" onclick="getValue()">
-            검색
-        </button>
+	<label for="adress"></label>
+	<div class=searchbar>
+		<div class="container">
+			<div id="map" style="width: 550px; height: 400px;"></div>
+		</div>
+	</div>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=22e4124c161041fc832c09fac32fb1b1"></script>
+	<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 5 // 지도의 확대 레벨 
+    }; 
 
-        <div class="container">
-            <div id="map" style="width:500px;height:350px;"></div>       
-        </div>
-        <script>
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-        mapOption = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-            level: 3 // 지도의 확대 레벨
-        };  
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-    // 지도를 생성합니다    
-    var map = new kakao.maps.Map(mapContainer, mapOption); 
+//장소 검색 객체를 생성합니다
+var ps = new kakao.maps.services.Places(map); 
 
-    // 주소-좌표 변환 객체를 생성합니다
-    var geocoder = new kakao.maps.services.Geocoder();
+// 카테고리로 은행을 검색합니다
+ps.categorySearch('CT1', placesSearchCB, {useMapBounds:true}); 
 
-    var temp;
+// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+function placesSearchCB (data, status, pagination) {
+    if (status === kakao.maps.services.Status.OK) {
+        for (var i=0; i<data.length; i++) {
+            displayMarker(data[i]);    
+        }       
+    }
+}
 
-    function input(){
-        var input = document.getElementById("input").value;
-        temp = input;
-        }
-
-    // 주소로 좌표를 검색합니다
-    geocoder.addressSearch(function address(){
-        document.getElementById("address").value = temp;
-    }, function(result, status) {
-
-        // 정상적으로 검색이 완료됐으면 
-         if (status === kakao.maps.services.Status.OK) {
-
-            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-            // 결과값으로 받은 위치를 마커로 표시합니다
-            var marker = new kakao.maps.Marker({
-                map: map,
-                position: coords
-            });
-
-            // 인포윈도우로 장소에 대한 설명을 표시합니다
-            var infowindow = new kakao.maps.InfoWindow({
-                content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-            });
-            infowindow.open(map, marker);
-
-            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-            map.setCenter(coords);
-        } 
-    });    
+// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+if (navigator.geolocation) {
+    
+    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+    navigator.geolocation.getCurrentPosition(function(position) {
         
-        </script>
+        var lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+        
+        var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+            message = '<div style="padding:5px;">내 위치!</div>'; // 인포윈도우에 표시될 내용입니다
+        
+        // 마커와 인포윈도우를 표시합니다
+        displayMarker(locPosition, message);
+            
+      });
+    
+} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+    
+    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+        message = 'geolocation을 사용할수 없어요..'
+        
+    displayMarker(locPosition, message);
+}
 
-    </div>
+// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+function displayMarker(locPosition, message) {
+
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({  
+        map: map, 
+        position: locPosition,new kakao.maps.LatLng(place.y, place.x) 
+    }); 
+    
+    kakao.maps.event.addListener(marker, 'click', function() {
+        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+        infowindow.open(map, marker);
+    });
+    
+    var iwContent = message, // 인포윈도우에 표시할 내용
+        iwRemoveable = true;
+
+    // 인포윈도우를 생성합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        content : iwContent,
+        removable : iwRemoveable
+    });
+    
+    // 인포윈도우를 마커위에 표시합니다 
+    infowindow.open(map, marker);
+    
+    // 지도 중심좌표를 접속위치로 변경합니다
+    map.setCenter(locPosition);      
+}    
+
+</script>
 </body>
+
 </html>
