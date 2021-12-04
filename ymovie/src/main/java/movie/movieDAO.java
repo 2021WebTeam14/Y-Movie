@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import defaultConn.getConn;
 
@@ -576,14 +577,15 @@ public class movieDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		Collections.shuffle(dtos); 
 		return dtos;	
 	}
-public ArrayList<CodeNameYearDTO> getRecommandsByCate(String targetId) {
+public ArrayList<ArrayList<CodeNameYearDTO>> getRecommandsByCate(String targetId) {
 		
 		GenActDirDTO fav = getMemberFav(targetId);
 		
-		ArrayList<CodeNameYearDTO> dtos = new ArrayList<CodeNameYearDTO>();
-		CodeNameYearDTO dto;
+		ArrayList<ArrayList<CodeNameYearDTO>> dtos = new ArrayList<ArrayList<CodeNameYearDTO>>();
+		ArrayList<CodeNameYearDTO> dto = new ArrayList<CodeNameYearDTO>();
 		
 		Connection con = null;
 		Statement stmt = null;
@@ -601,7 +603,7 @@ public ArrayList<CodeNameYearDTO> getRecommandsByCate(String targetId) {
 			}
 			query.append("mov_genre=\"" + tmp.get(size)+ "\"");
 		}
-		query.append(" order by rand() limit 6");
+		query.append(" order by rand() limit 8");
 		//System.out.println(query.toString());
 		try {
 			getConn getCon = new getConn();
@@ -614,9 +616,9 @@ public ArrayList<CodeNameYearDTO> getRecommandsByCate(String targetId) {
 				String mov_code = rs.getString("mov_code");
 				String mov_year = rs.getString("mov_year");
 
-				dto = new CodeNameYearDTO(mov_code, mov_name, mov_year);
-				dtos.add(dto);
+				dto.add(new CodeNameYearDTO(mov_code, mov_name, mov_year));
 			}
+			dtos.add(dto);
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
@@ -633,7 +635,7 @@ public ArrayList<CodeNameYearDTO> getRecommandsByCate(String targetId) {
 			}
 			query.append("dir_director=\"" + tmp.get(size)+ "\"");
 		}
-		query.append(" order by rand() limit 6");
+		query.append(" order by rand() limit 8");
 		//System.out.println(query.toString());
 		try {
 			rs = stmt.executeQuery(query.toString());
@@ -652,9 +654,9 @@ public ArrayList<CodeNameYearDTO> getRecommandsByCate(String targetId) {
 			try {
 				rs = stmt.executeQuery(query.toString());
 				while(rs.next()) {
-					dto = new CodeNameYearDTO(tmpDirec.get(i), rs.getString("mov_name"), rs.getString("mov_year"));
-					dtos.add(dto);					
+					dto.add(new CodeNameYearDTO(tmpDirec.get(i), rs.getString("mov_name"), rs.getString("mov_year")));
 				}
+				dtos.add(dto);		
 			} 
 			catch (Exception e) {
 				e.printStackTrace();
@@ -672,7 +674,7 @@ public ArrayList<CodeNameYearDTO> getRecommandsByCate(String targetId) {
 			}
 			query.append("act_actor=\"" + tmp.get(size)+ "\"");
 		}
-		query.append(" order by rand() limit 6");
+		query.append(" order by rand() limit 8");
 		//System.out.println(query.toString());
 		try {
 			rs = stmt.executeQuery(query.toString());
@@ -691,26 +693,26 @@ public ArrayList<CodeNameYearDTO> getRecommandsByCate(String targetId) {
 			try {
 				rs = stmt.executeQuery(query.toString());
 				while(rs.next()) {
-					dto = new CodeNameYearDTO(tmpActor.get(i), rs.getString("mov_name"), rs.getString("mov_year"));
-					dtos.add(dto);				
+					dto.add(new CodeNameYearDTO(tmpActor.get(i), rs.getString("mov_name"), rs.getString("mov_year")));
 				}
+				dtos.add(dto);				
 			} 
 			catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		if (dtos.size() < 18) {
-			int lastLoad = 18 - dtos.size();
+		if (dtos.get(0).size() < 8 || dtos.get(1).size() < 8 || dtos.get(2).size() < 8) {
+			int lastLoad = 24 - dtos.get(0).size() - dtos.get(1).size() - dtos.get(2).size();
 			query = new StringBuilder("select mov_code, mov_name, mov_year from movie order by rand() limit ");
 			query.append(String.valueOf(lastLoad));
 			
 			try {
 				rs = stmt.executeQuery(query.toString());
 				while(rs.next()) {
-					dto = new CodeNameYearDTO(rs.getString("mov_code"), rs.getString("mov_name"), rs.getString("mov_year"));
-					dtos.add(dto);				
+					dto.add(new CodeNameYearDTO(rs.getString("mov_code"), rs.getString("mov_name"), rs.getString("mov_year")));
 				}
+				dtos.add(dto);				
 			} 
 			catch (Exception e) {
 				e.printStackTrace();
