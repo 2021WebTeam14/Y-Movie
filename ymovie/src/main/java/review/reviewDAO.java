@@ -25,8 +25,8 @@ public class reviewDAO {
 				int rev_star = rs.getInt("rev_star");
 				int rev_thumbs = rs.getInt("rev_thumbs");
 				String rev_context = rs.getString("rev_context");
-
-				dto = new reviewDTO(mov_code, mem_id , rev_star, rev_thumbs, rev_context);
+				int rev_num = rs.getInt("rev_num");
+				dto = new reviewDTO(mov_code, mem_id , rev_star, rev_thumbs, rev_context, rev_num);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
@@ -59,8 +59,9 @@ public class reviewDAO {
 				int rev_star = rs.getInt("rev_star");
 				int rev_thumbs = rs.getInt("rev_thumbs");
 				String rev_context = rs.getString("rev_context");
-
-				dto = new reviewDTO(mov_code, mem_id , rev_star, rev_thumbs, rev_context);
+				int rev_num = rs.getInt("rev_num");
+				
+				dto = new reviewDTO(mov_code, mem_id , rev_star, rev_thumbs, rev_context, rev_num);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
