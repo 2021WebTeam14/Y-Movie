@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
 		<meta charset="UTF-8">
 		<title>My page</title>
 		
@@ -11,7 +12,7 @@
 	
 	<body>
 		
-		<iframe src="header.html" style="width: 100%; border: none;"></iframe>
+		<iframe id="head" src="../header.jsp" style="width: 100%; border: none;"></iframe>
 		<h1>내 정보</h1>
 		<div class="container">
 		
@@ -38,6 +39,6 @@
 		</div>
 		
 		
-		<iframe src="footer.html" style="width: 100%; border: none"></iframe>
+		<iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 	</body>
 </html>

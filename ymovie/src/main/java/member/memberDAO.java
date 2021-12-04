@@ -38,6 +38,92 @@ public class memberDAO {
 		}
 		return result;
 	}
+	public int signUpCheck(String targetId, String targetNick)  {
+		int result = 1;
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		String query = "select * from member where mem_id =\"" + targetId + "\" or mem_nickname = \"" +  targetNick + "\"";
+		//System.out.println(query);
+		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+
+			if (rs.next()) {
+				result = 0;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	public int matchIdNick(String targetId, String targetNick)  {
+		int result = 1;
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		String query = "select * from member where mem_id =\"" + targetId + "\" and mem_nickname = \"" +  targetNick + "\"";
+		//System.out.println(query);
+		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+
+			if (rs.next()) {
+				result = 0;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	public void resetPW(String targetId, String targetPw)  {
+
+		Connection con = null;		
+		PreparedStatement pstmt = null;
+		String query = "update member set mem_pw = sha1(?) where mem_id = ?";
+		//System.out.println(query);
+		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, targetPw);
+			pstmt.setString(2, targetId);
+			pstmt.execute();
+			pstmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	public memberDTO selectMember(Connection con, String targetId, String targetPw)  {
 		memberDTO dto = new memberDTO("","","",0);
@@ -85,12 +171,15 @@ public class memberDAO {
 				e.printStackTrace();
 			}
 	}
-	public int insertMember(Connection con, memberDTO dto) {
+	public int insertMember(memberDTO dto) {
 		PreparedStatement pstmt = null;
 		String query = "insert into member values (?, sha1(?), ?, ?, ?, ?, ?, ?)";
 		int result = 0;
-	
 		try {
+
+			Connection con = null;		
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, dto.getMem_id());
 			pstmt.setString(2, dto.getMem_pw());

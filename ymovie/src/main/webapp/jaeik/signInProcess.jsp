@@ -1,10 +1,7 @@
 <%@page import="sessionServlet.storeSession"%>
-<%@page import="javax.tools.DocumentationTool.Location"%>
 <%@page import="sessionServlet.loginSession"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <%@ page import="member.memberDAO" %>
-<%@ page import="java.util.ArrayList" %>
 
 <html>
 <head>

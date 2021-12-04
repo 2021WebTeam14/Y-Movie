@@ -45,7 +45,7 @@
 		document.getElementById("poster").src = "";
 	}
 	function updateState() {
-	    fetch("./test.jsp")
+	    fetch("./progress.jsp")
 	    .then(
 	    		function(res){
 	        		return res.text();

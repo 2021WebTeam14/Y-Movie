@@ -64,6 +64,5 @@ public class loginSession extends HttpServlet{
 		resp.setContentType("text/html;charset=utf-8");
 		HttpSession session = req.getSession(false);
 		session.removeAttribute("ID");
-		session.invalidate();
 	}
 }
