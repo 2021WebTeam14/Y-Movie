@@ -24,7 +24,7 @@
 	    }
 	 </script>
 </head>
-<body >
+<body onload="getRecommand(index1)">
 <div class ="head_section">		
 		</div>		
 	<div class="box_boxoffice">

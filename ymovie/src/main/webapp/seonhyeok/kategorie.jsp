@@ -8,28 +8,30 @@
 <html>
 <head>
 <title>Y-Movie</title>
-<link href="kategorie.css" rel="stylesheet" type="text/css">
+<link href="css/kategorie.css" rel="stylesheet" type="text/css">
 <script>
 	 function getRecommand() {
-		<%movieDAO dao = new movieDAO();%>
-		<%posterAPI posterAPI = new posterAPI();%>
-        <%ArrayList<ArrayList<CodeNameYearDTO>> data = dao.getRecommandsByCate("qwer");%> 
-        <%for (int i = 0; i < 8; i++) {%>
-	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(0).get(i).getCode())%>';
-	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(0).get(i).getName()%>";
-	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(0).get(i).getYear()%>년";
-		<%}%>
-        <%for (int i = 0; i < 8; i++) {%>
-		     document.getElementById("img<%=i+8%>").src = '<%=posterAPI.getPoster(data.get(1).get(i).getCode())%>';
-		     document.getElementById("Name<%=i+8%>").innerText = "<%=data.get(1).get(i).getName()%>";
-		     document.getElementById("Year<%=i+8%>").innerText = "<%=data.get(1).get(i).getYear()%>년";
-		<%}%>
-        <%for (int i = 0; i < 8; i++) {%>
-			document.getElementById("img<%=i+16%>").src = '<%=posterAPI.getPoster(data.get(2).get(i).getCode())%>';
-			document.getElementById("Name<%=i+16%>").innerText = "<%=data.get(2).get(i).getName()%>";
-			document.getElementById("Year<%=i+16%>").innerText = "<%=data.get(2).get(i).getYear()%>년";
-		<%}%>
-		}
+		 <%movieDAO dao = new movieDAO();%>
+		 <%posterAPI posterAPI = new posterAPI();%>
+	        <%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%> 
+	        <%for (int i = 0; i < 8; i++) {%>
+	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
+	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
+	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";
+<%}%>
+	}
+	 <%for (int i = 8; i < 16; i++) {%>
+     document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
+     document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
+     document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";
+<%}%>
+}
+<%for (int i = 16; i < 24; i++) {%>
+document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
+document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
+document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";
+<%}%>
+}
 </script>
 </head>
 <body onload="getRecommand()">
@@ -320,10 +322,11 @@
 							<div class="thumb_item">
 								<div class="poster_movie">
 									<img id="img16" src="" class="img_thumb">
+
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name16"></strong> <span
+								<strong class="tit_item" id="Name8"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year16" class="txt_num"></span></span>
 								</span>
@@ -339,7 +342,7 @@
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name17"></strong> <span
+								<strong class="tit_item" id="Name9"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year17" class="txt_num"></span></span>
 								</span>
@@ -355,7 +358,7 @@
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name18"></strong> <span
+								<strong class="tit_item" id="Name10"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year18" class="txt_num"></span></span>
 								</span>
@@ -371,7 +374,7 @@
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name19"></strong> <span
+								<strong class="tit_item" id="Name11"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year19" class="txt_num"></span></span>
 								</span>
@@ -387,7 +390,7 @@
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name20"></strong> <span
+								<strong class="tit_item" id="Name12"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year20" class="txt_num"></span></span>
 								</span>
@@ -403,7 +406,7 @@
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name21"></strong> <span
+								<strong class="tit_item" id="Name13"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year21" class="txt_num"></span></span>
 								</span>
@@ -419,7 +422,7 @@
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name22"></strong> <span
+								<strong class="tit_item" id="Name14"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year22" class="txt_num"></span></span>
 								</span>
@@ -435,7 +438,7 @@
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name23"></strong> <span
+								<strong class="tit_item" id="Name15"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year23" class="txt_num"></span></span>
 								</span>

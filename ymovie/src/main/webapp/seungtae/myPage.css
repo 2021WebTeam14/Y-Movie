@@ -1,8 +1,28 @@
 @charset "UTF-8";
 
+body{margin: 10vh 15vw 10vh 15vw;}
+
 h1
 {
 	text-align: center;	
+}
+
+.container *
+{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#userID, #userNick
+{
+	margin-top: 10px;
+	text-align: center;
+}
+
+
+label
+{
+	text-align: center;
 }
 
 #userProfile
@@ -32,7 +52,6 @@ h1
 	display: flex;
 	flex-direction: column;
 	margin: auto;
-	border: 2px solid blue;
 }
 			
 button 
@@ -44,3 +63,11 @@ button
 	border: none;   
 	cursor: pointer;   
 }   
+
+#recentReview
+{
+	margin: 0px;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	border: 2px solid blue;
+}

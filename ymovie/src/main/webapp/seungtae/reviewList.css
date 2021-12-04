@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
+body{margin: 10vh 15vw 10vh 15vw;}
+
+table
+{
+	width: 100%;
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
 h1
 {
 	text-align: center;		
@@ -14,8 +24,8 @@ h1
 .review
 {
 	border: 2px solid blue;
-	margin-top: 30px;
-	margin-bottom: 30px;
+	margin-bottom: 100px;
+	padding: 5px;
 }
 
 .pageBox
@@ -24,18 +34,39 @@ h1
 	justify-content: center;
 }
 
-.pages
+ul
 {
-	display: inline-block;
+	height: 50px;
+	padding: 0px 5px;
+	width: auto;
+	float: right;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 
-.pages a
+ul li
 {
-	float: left;
-	color: black;
+	list-style: none; 
+	padding: 5px 10px;
+	font-weight: bold;
+	border: 1px solid black;	
+}
+
+label
+{
+	display: inline-block;
+	margin-right: 20px;
+}
+
+a
+{
 	text-decoration: none;
-	border: 1px solid grey;
-	padding: 8px 16px;
+}
+
+p
+{
+	overflow-wrap: break-word;
 }
 
 button
@@ -48,4 +79,110 @@ button
 	border: none;   
 	cursor: pointer;   
 }   
+
+button.edit
+{
+	float: right;
+	margin: auto;
+	margin-top: 20px;
+}
+
+.editing
+ {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 60px;
+}
+
+.contents 
+{
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; 
+  border: 1px solid #888;
+  width: 50%; 
+}
+
+.close 
+{
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus 
+{
+  color: red;
+  cursor: pointer;
+}
+
+.editingReview
+{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.editReviewBtn button
+{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.star-rating {
+  display: flex;
+  position: bottom;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+  flex-direction: row-reverse;
+  margin: auto;
+}
+ 
+.star-rating input {
+  display: none;
+}
+ 
+.star-rating label {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+ 
+.star-rating :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
+}
+
+.reviewStars
+{
+	-webkit-text-stroke-width: 1.5px;
+ 	-webkit-text-stroke-color: #2b2a29;
+	-webkit-text-fill-color: gold;
+}
+
+textarea
+{
+	resize: none;
+	margin: 20px;
+}
          

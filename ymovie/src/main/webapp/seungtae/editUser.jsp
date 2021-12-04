@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Edit user info</title>
-		<link rel="stylesheet" type="text/css" href="css/editUser.css">
+		<link rel="stylesheet" type="text/css" href="editUser.css">
 		<script type="text/javascript">
 			var profile = null;
 			
@@ -72,7 +72,7 @@
 		</script>
 	</head>
 	<body>
-		<iframe src="header.html" style="width: 100%; border: none;"></iframe>
+		<iframe src="../header.jsp" style="width: 100%; border: none;"></iframe>
 		<h1 style="text-align: center;">Change user info</h1>
 		<div class="buttons">
 			<button onclick="document.getElementById('chg_pwd').style.display='block'" class="btn">change password</button>
@@ -129,7 +129,7 @@
 			<div class="container">
 				<span onclick="resetImg()" class="close" title="창 닫기">&times;</span>
 					<label>현재 프로필 사진: </label>
-					<img  alt="current avatar" src="">
+					<img alt="current avatar" src="">
 					<label>바꾸고 싶은 프로필 사진: </label>
 					<ul id="avatarList" style="text-align: center;">
 						<li>
@@ -159,6 +159,6 @@
 			</div>
 			</form>
 		</div>
-		<iframe src="footer.html" style="width: 100%; border: none"></iframe>
+		<iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 	</body>
 </html>

@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+li{
+	list-style-type:none;
+	display: list-item;
+	width: 150px;
+    height: 20px;
+    margin-right: 32px;
+    float:left;
+    position: relative;
+    cursor:default
+}
+
+ul {
+	margin-bottom: 80px;
+}

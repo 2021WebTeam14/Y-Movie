@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+ body{margin: 10vh 15vw 10vh 15vw;}
+
 .top_container
  {
   display: none;
@@ -71,7 +73,7 @@
 
 input[type=password]
 {
-	width: 50%; 
+	width: 35%; 
 	padding: 12px 20px;   
 	display: inline-block;
 	border: 2px solid blue; 
@@ -81,7 +83,7 @@ input[type=password]
 
 input[type=text]
 {   
-	width: 50%;   
+	width: 20%;   
 	margin: 8px 0;  
 	padding: 12px 20px;   
 	display: inline-block;   
