@@ -8,7 +8,7 @@
 <html>
 <head>
 	<title>Y-Movie</title>
-	 <link href="css/re_in.css" rel="stylesheet" type="text/css">
+	 <link href="css/interest_movie.css" rel="stylesheet" type="text/css">
 	 <script>
 	 function getRecommand() {
 		 <%movieDAO dao = new movieDAO();%>
@@ -25,7 +25,7 @@
 <body onload="getRecommand()">
 
 <div class ="head_section">
-		<h1 class=tit_section>통합추천</h1>
+		<h1 class=tit_section>관심 영화 설정</h1>
 		</div>		
 	<div class="box_boxoffice">
 		<ol class="list_movieranking">
@@ -33,9 +33,11 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img0" src="" class="img_thumb">
+                              		  <input type ="checkbox" class="checkbox" id ="check0"/>
+                                      <label for="check0"><img id="img0" src="" class="img_thumb"></label>  
                                         
-                                </div>                             
+                                </div>
+                                                            
                             </div>
                             <div class="thumb_cont">
                                 <strong class="tit_item" id="Name0"></strong>
@@ -50,7 +52,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img1" src="" class="img_thumb">
+                                 		<input type ="checkbox" class="checkbox" id ="check1"/>
+                                        <label for="check1"><img id="img1" src="" class="img_thumb"></label>  
                                       
                                 </div>                             
                             </div>
@@ -66,7 +69,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img2" src="" class="img_thumb">
+                                		<input type ="checkbox" class="checkbox" id ="check2"/>
+                                        <label for="check2"><img id="img2" src="" class="img_thumb"></label>
                                      
                                 </div>                             
                             </div>
@@ -82,7 +86,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img3" src="" class="img_thumb">
+                            		    <input type ="checkbox" class="checkbox" id ="check3"/>
+                                        <label for="check3"> <img id="img3" src="" class="img_thumb"></label>
                                                              
                                 </div>                             
                             </div>
@@ -98,7 +103,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img4" src="" class="img_thumb">
+                                <input type ="checkbox" class="checkbox" id ="check4"/>
+                                       <label for="check4">  <img id="img4" src="" class="img_thumb"></label>
                                         
                                 </div>                             
                             </div>
@@ -114,7 +120,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img5" src="" class="img_thumb">
+                                <input type ="checkbox" class="checkbox" id ="check5"/>
+                                        <label for="check5"><img id="img5" src="" class="img_thumb"></label>
                                            
                                 </div>                             
                             </div>
@@ -130,7 +137,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img6" src="" class="img_thumb">
+                                <input type ="checkbox" class="checkbox" id ="check6"/>
+                                        <label for="check6"> <img id="img6" src="" class="img_thumb"></label>
                                        
                                 </div>                             
                             </div>
@@ -146,7 +154,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img7" src="" class="img_thumb">
+                                <input type ="checkbox" class="checkbox" id ="check7"/>
+                                        <label for="check7"><img id="img7" src="" class="img_thumb"></label>
                                        
                                 </div>                             
                             </div>
@@ -162,7 +171,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img8" src="" class="img_thumb">
+                                <input type ="checkbox" class="checkbox" id ="check8"/>
+                                        <label for="check8"><img id="img8" src="" class="img_thumb"></label>
                                         
                                 </div>                             
                             </div>
@@ -178,7 +188,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img9" src="" class="img_thumb">
+                                <input type ="checkbox" class="checkbox" id ="check9"/>
+                                       <label for="check9"> <img id="img9" src="" class="img_thumb"></label>
                                        
                                 </div>                             
                             </div>
@@ -194,7 +205,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img10" src="" class="img_thumb">
+                                <input type ="checkbox" class="checkbox" id ="check10"/>
+                                       <label for="check10"> <img id="img10" src="" class="img_thumb"></label>
                                       
                                 </div>                             
                             </div>
@@ -210,7 +222,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img11" src="" class="img_thumb">
+                                <input type ="checkbox" class="checkbox" id ="check11"/>
+                                        <label for="check11"><img id="img11" src="" class="img_thumb"></label>
                                        
                                 </div>                             
                             </div>
@@ -226,7 +239,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img12" src="" class="img_thumb">
+                                <input type ="checkbox" class="checkbox" id ="check12"/>
+                                      <label for="check12"><img id="img12" src="" class="img_thumb"></label>
                                        
                                 </div>                             
                             </div>
@@ -242,7 +256,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img13" src="" class="img_thumb">
+                                <input type ="checkbox" class="checkbox" id ="check13"/>
+                                        <label for="check13"><img id="img13" src="" class="img_thumb"></label>
                                      
                                 </div>                             
                             </div>
@@ -258,7 +273,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img14" src="" class="img_thumb">
+                                <input type ="checkbox" class="checkbox" id ="check14"/>
+                                       <label for="check14">  <img id="img14" src="" class="img_thumb"></label>
                                       
                                 </div>                             
                             </div>
@@ -274,7 +290,8 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img15" src="" class="img_thumb">
+                                <input type ="checkbox" class="checkbox" id ="check15"/>
+                                        <label for="check15"> <img id="img15" src="" class="img_thumb"></label>
                                         
                                 </div>                             
                             </div>
@@ -288,6 +305,7 @@
                     </li>	
                      							
 		</ol>
+		<input type="submit"/>
 	</div>
 	
 </body>
