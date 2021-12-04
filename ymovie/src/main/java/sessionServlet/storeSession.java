@@ -4,14 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import defaultConn.getConn;
 
 public class storeSession {
-	public boolean insertSession(String sessionID, String targetID) {
+	public boolean insertSession(HttpSession ses, String targetID) {
 		String query = "insert into session values (?, ?)";
 	
 		try {
@@ -20,7 +18,7 @@ public class storeSession {
 			con = getCon.getConnection();
 			PreparedStatement pstmt = null;
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, sessionID);
+			pstmt.setString(1, ses.getId());
 			pstmt.setString(2, targetID);
 			pstmt.execute();
 			pstmt.close();
@@ -30,40 +28,41 @@ public class storeSession {
 			}
 		return true;
 	}
-	public String isSessionExist(HttpServletRequest req) {
-		String result = null;
-		String currID = "";
-	
-		Cookie[] cookies = req.getCookies(); // 모든 쿠키 가져오기
-	    if(cookies!=null){
-	        for (Cookie c : cookies) {
-	            String name = c.getName(); // 쿠키 이름 가져오기
-	            String value = c.getValue(); // 쿠키 값 가져오기
-	            if (name.equals("currID")) {
-	            	currID = value;
-	            	break;
-	            }
-	        }
-	    }
+	public String getSession(HttpSession ses) {
+		String result = "";
+		String query = "select mem_id from session where ses_id = \"" + ses.getId() + "\"";
 
-		String query = "select * from session where ses_id=" + "\"" + currID + "\"";
+		Statement stmt = null;
+		ResultSet rs = null;
 		try {
 			Connection con = null;
-			ResultSet rs = null;
 			getConn getCon = new getConn();
 			con = getCon.getConnection();
-			Statement stmt = null;
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
-			while(rs.next()) {
+			while (rs.next()) {
 				result = rs.getString("mem_id");
 			}
-			
-			stmt.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+			return result;
+		}
+		return result;
+	}
+	public void deleteSession(HttpSession ses) {
+		String query = "delete from session where ses_id = ? ";
+	
+		try {
+			Connection con = null;
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			PreparedStatement pstmt = null;
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, ses.getId());
+			pstmt.execute();
+			pstmt.close();
 			} catch(Exception e) {
 				e.printStackTrace();
-				return result;
 			}
-		return result;
 	}
 }

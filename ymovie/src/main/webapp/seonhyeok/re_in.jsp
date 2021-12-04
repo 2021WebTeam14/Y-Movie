@@ -1,3 +1,4 @@
+<%@page import="sessionServlet.storeSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="movie.*"%>
@@ -11,15 +12,23 @@
 <link href="re_in.css" rel="stylesheet" type="text/css">
 <script>
 	 function getRecommand() {
-		 <%movieDAO dao = new movieDAO();%>
-		 <%posterAPI posterAPI = new posterAPI();%>
-		 <%apiDAO asdf = new apiDAO();%>
-		 <%asdf.getAPIBoxOfficeWeekly();%>
-	        <%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%> 
-	        <%for (int i = 0; i < 16; i++) {%>
-	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
-	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
-	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>";
+		 <%
+		 storeSession sessionDAO = new storeSession();
+		 if (sessionDAO.getSession(session) == ""){
+			response.sendRedirect("../initPage.jsp");
+		 }
+		 %>
+		 <%
+		 movieDAO dao = new movieDAO();
+		 posterAPI posterAPI = new posterAPI();
+		 apiDAO asdf = new apiDAO();
+		 asdf.getAPIBoxOfficeWeekly();
+	     ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands(sessionDAO.getSession(session));
+		 %>
+        <%for (int i = 0; i < 16; i++) {%>
+        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
+        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
+        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>";
 <%}%>
 	}
 </script>

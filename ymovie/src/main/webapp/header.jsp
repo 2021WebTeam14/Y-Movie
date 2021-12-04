@@ -1,6 +1,5 @@
 <%@page import="sessionServlet.storeSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="sessionServlet.loginSession"%>
 
 <!DOCTYPE html>
 <html>
@@ -17,9 +16,8 @@
 		<div class = "signNav">
 		    <div class="sign">
 			<%
-				loginSession sessionHandler = new loginSession();
-				storeSession dao = new storeSession();
-				if(dao.isSessionExist(request) != null) {
+				storeSession sessionDAO = new storeSession();
+				if (sessionDAO.getSession(session) != ""){
 					out.print("<input class = \"signOut\" type=\"button\" value=\"SignOut\" onclick=\"window.top.location.replace('./jaeik/signOut.jsp');\"/>");
 				}
 				else {
