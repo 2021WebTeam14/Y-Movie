@@ -20,14 +20,13 @@ public class reviewDAO {
 			rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
-				int rev_num = rs.getInt("rev_num"); 
 				String mov_code = rs.getString("mov_code");
 				String mem_id = rs.getString("mem_id");
 				int rev_star = rs.getInt("rev_star");
 				int rev_thumbs = rs.getInt("rev_thumbs");
 				String rev_context = rs.getString("rev_context");
 
-				dto = new reviewDTO(rev_num, mov_code, mem_id , rev_star, rev_thumbs, rev_context);
+				dto = new reviewDTO(mov_code, mem_id , rev_star, rev_thumbs, rev_context);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
@@ -55,14 +54,13 @@ public class reviewDAO {
 			rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
-				int rev_num = rs.getInt("rev_num");
 				String mov_code = rs.getString("mov_code");
 				String mem_id = rs.getString("mem_id");
 				int rev_star = rs.getInt("rev_star");
 				int rev_thumbs = rs.getInt("rev_thumbs");
 				String rev_context = rs.getString("rev_context");
 
-				dto = new reviewDTO(rev_num, mov_code, mem_id , rev_star, rev_thumbs, rev_context);
+				dto = new reviewDTO(mov_code, mem_id , rev_star, rev_thumbs, rev_context);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {

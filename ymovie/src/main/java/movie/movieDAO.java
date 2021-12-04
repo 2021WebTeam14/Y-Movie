@@ -152,9 +152,10 @@ public class movieDAO {
 				int mov_year = rs.getInt("mov_year");
 				String mov_state = rs.getString("mov_state");
 				String mov_genre = rs.getString("mov_genre");
-				int starSum = rs.getInt("mov_genre");
+				int starSum = rs.getInt("starSum");
+				int starCount = rs.getInt("starCount");
 
-				dto = new movieDTO(mov_name, mov_code , mov_year, mov_state, mov_genre, starSum);
+				dto = new movieDTO(mov_name, mov_code , mov_year, mov_state, mov_genre, starSum, starCount);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
@@ -187,9 +188,11 @@ public class movieDAO {
 				int mov_year = rs.getInt("mov_year");
 				String mov_state = rs.getString("mov_state");
 				String mov_genre = rs.getString("mov_genre");
-				int starSum = rs.getInt("mov_genre");
+				int starSum = rs.getInt("starSum");
+				int starCount = rs.getInt("starCount");
 
-				dto = new movieDTO(mov_name, mov_code , mov_year, mov_state, mov_genre, starSum);
+
+				dto = new movieDTO(mov_name, mov_code , mov_year, mov_state, mov_genre, starSum, starCount);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
@@ -205,7 +208,7 @@ public class movieDAO {
 		return dtos;
 	}
 	public void addStar(Connection con, String targetCode, int star)  {
-		String query = "update movie set starSum = starSum + ? where mov_code= ?";
+		String query = "update movie set starSum = starSum + ?, starCount = starCount + 1 where mov_code= ?";
 		try {
 			PreparedStatement pstmt = null;
 			pstmt = con.prepareStatement(query);
@@ -316,8 +319,9 @@ public class movieDAO {
 				String mov_state = rs.getString("mov_state");
 				String mov_genre = rs.getString("mov_genre");
 				int starSum = rs.getInt("mov_genre");
+				int starCount = rs.getInt("mov_genre");
 
-				dto = new movieDTO(mov_name, mov_code , mov_year, mov_state, mov_genre, starSum);
+				dto = new movieDTO(mov_name, mov_code , mov_year, mov_state, mov_genre, starSum, starCount);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {

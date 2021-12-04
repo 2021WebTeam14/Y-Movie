@@ -1,7 +1,10 @@
 package api_DB;
 
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
@@ -192,5 +195,37 @@ public class apiDAO {
 	        }
 	    }
 		return actors;
+	}
+	
+	public ArrayList<CodeNameYearDTO> getAPIBoxOfficeDaily() throws Exception {
+		ArrayList<CodeNameYearDTO> dtos = new ArrayList<CodeNameYearDTO>();
+		
+		DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
+	    DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
+	    
+	    SimpleDateFormat dtf = new SimpleDateFormat("yyyyMMdd");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -1);
+        Date dateObj = calendar.getTime();
+        String formattedDate = dtf.format(dateObj);
+	    StringBuilder url = new StringBuilder("https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=");
+	    url.append(configLoad.readByLine().get(3));
+	    url.append("&targetDt=");
+        url.append(formattedDate);
+
+	    Document doc = dBuilder.parse(url.toString());
+	    doc.getDocumentElement().normalize();
+	    NodeList nList = doc.getChildNodes().item(0).getChildNodes().item(2).getChildNodes();
+	    Node nNode;
+	    Element eElement;	    
+	    for(int temp = 0; temp < 10; temp++){
+			nNode = nList.item(temp);
+			if(nNode.getNodeType() == Node.ELEMENT_NODE){
+				eElement = (Element) nNode;
+					dtos.add(new CodeNameYearDTO(getTagValue("movieCd", eElement), getTagValue("movieNm", eElement), getTagValue("openDt", eElement)));
+			}
+		}
+	    		
+		return dtos;
 	}
 }

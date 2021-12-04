@@ -7,8 +7,9 @@ public class movieDTO {
 	private String mov_state;
 	private String mov_genre;
 	private int starSum;
+	private int starCount;
 	
-	public movieDTO(String mov_name, String mov_code, int mov_year, String mov_state, String mov_genre, int starSum) {
+	public movieDTO(String mov_name, String mov_code, int mov_year, String mov_state, String mov_genre, int starSum, int starCount) {
 		super();
 		this.mov_name = mov_name;
 		this.mov_code = mov_code;
@@ -16,6 +17,7 @@ public class movieDTO {
 		this.mov_state = mov_state;
 		this.mov_genre = mov_genre;
 		this.starSum = starSum;
+		this.starCount = starCount;
 	}
 	public movieDTO(String mov_name, String mov_code, int mov_year, String mov_state, String mov_genre) {
 		super();
@@ -25,6 +27,7 @@ public class movieDTO {
 		this.mov_state = mov_state;
 		this.mov_genre = mov_genre;
 		this.starSum = 0;
+		this.starCount = 0;
 	}
 	public movieDTO(String mov_name, String mov_code, String mov_genre) {
 		super();
@@ -52,5 +55,8 @@ public class movieDTO {
 	}
 	public int getStarSum() {
 		return starSum;
+	}
+	public int getStarCount() {
+		return starCount;
 	}
 }

@@ -83,7 +83,7 @@
 				<ul id="avatarList" style="text-align: center;">
 					<li>
 						<img alt="avatar1" id="avatar1" class="normal" src="img/triangle.png">
-						<input type="radio" name="avatar" value="1">
+						<input type="radio" name="avatar" value="1" checked> 
 					</li>
 					<li>
 						<img alt="avatar2" id="avatar2" class="normal" src="img/circle.png">
