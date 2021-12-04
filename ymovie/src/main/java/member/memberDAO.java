@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import defaultConn.getConn;
+import movie.CodeNameYearDTO;
 
 public class memberDAO {
 	public int signInCheck(String targetId, String targetPw)  {
@@ -196,6 +198,35 @@ public class memberDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public ArrayList<memberDTO> memReviewRank()  {
+	    ArrayList<memberDTO> results = new ArrayList<memberDTO>();
+	    
+	    Connection con = null;
+	    Statement stmt = null;
+	    ResultSet rs = null;
+	    String query = "select mem_nickname, mem_reviewCount, mem_favGenre, mem_favDirector from member order by mem_reviewCount limit 20";
+	    //System.out.println(query);
+	    try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+	        stmt = con.createStatement();
+	        rs = stmt.executeQuery(query);
+	        while (rs.next()) {
+	            results.add(new memberDTO(rs.getString("mem_nickname"), rs.getInt("mem_reviewCount"), rs.getString("mem_favGenre"), rs.getString("mem_favDirector")));
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if(rs != null) rs.close();
+	            if(stmt != null) stmt.close();
+	        } catch(Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return results;
 	}
 	
 	public int deleteMember(Connection con, String targetId, String targerPw) {

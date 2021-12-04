@@ -26,12 +26,32 @@ public class memberDTO {
 		this.mem_pw = mem_pw;
 		this.mem_nickname = mem_nickname;
 		this.mem_icon = mem_icon;
+		this.mem_reviewCount = 0;
+		this.mem_favGenre = "";
+		this.mem_favActor = "";
+		this.mem_favDirector = "";
 	}
 	public memberDTO(String mem_id, String mem_pw, String mem_nickname) {
 		super();
 		this.mem_id = mem_id;
 		this.mem_pw = mem_pw;
 		this.mem_nickname = mem_nickname;
+		this.mem_icon = 1;
+		this.mem_reviewCount = 0;
+		this.mem_favGenre = "";
+		this.mem_favActor = "";
+		this.mem_favDirector = "";
+	}
+	public memberDTO(String mem_nickname, int mem_reviewCount, String mem_favGenre, String mem_favDirector) {
+		super();
+		this.mem_id = "";
+		this.mem_pw = "";
+		this.mem_nickname = mem_nickname;
+		this.mem_icon = 1;
+		this.mem_reviewCount = mem_reviewCount;
+		this.mem_favGenre = mem_favGenre;
+		this.mem_favActor = "";
+		this.mem_favDirector = mem_favDirector;
 	}
 	public String getMem_id() {
 		return mem_id;
