@@ -39,123 +39,74 @@
     		</tr>
     		<tr>
     			<td><b>1</b></td>
-    			<td><b id="Name0"></b><td>
-    			<td><b id="rev_cnt0"></b></td>
-    			<td><b id="avg_star0"></b></td>
+    			<td><b id="nick0"></b><td>
+    			<td><b id="count0"></b></td>
+    			<td><b id="genre0"></b></td>
+    			<td><b id="director0"></b></td>
     		</tr>
     		<tr>
     			<td><b>2</b></td>
-    			<td><b id="Name1"></b><td>
-    			<td><b id="rev_cnt1"></b></td>
-    			<td><b id="avg_star1"></b></td>
+    			<td><b id="nick1"></b><td>
+    			<td><b id="count1"></b></td>
+    			<td><b id="genre1"></b></td>
+    			<td><b id="director1"></b></td>
     		</tr>
     		<tr>
     			<td><b>3</b></td>
-    			<td><b id="Name2"></b><td>
-    			<td><b id="rev_cnt2"></b></td>
-    			<td><b id="avg_star2"></b></td>
+    			<td><b id="nick2"></b><td>
+    			<td><b id="count2"></b></td>
+    			<td><b id="genre2"></b></td>
+    			<td><b id="director2"></b></td>
     		</tr>
     		<tr>
     			<td><b>4</b></td>
-    			<td><b id="Name3"></b><td>
-    			<td><b id="rev_cnt3"></b></td>
-    			<td><b id="avg_star3"></b></td>
+    			<td><b id="nick3"></b><td>
+    			<td><b id="count3"></b></td>
+    			<td><b id="genre3"></b></td>
+    			<td><b id="director3"></b></td>
     		</tr>
     		<tr>
     			<td><b>5</b></td>
-    			<td><b id="Name4"></b><td>
-    			<td><b id="rev_cnt4"></b></td>
-    			<td><b id="avg_star4"></b></td>
+    			<td><b id="nick4"></b><td>
+    			<td><b id="count4"></b></td>
+    			<td><b id="genre4"></b></td>
+    			<td><b id="director4"></b></td>
     		</tr>
     		<tr>
     			<td><b>6</b></td>
-    			<td><b id="Name5"></b><td>
-    			<td><b id="rev_cnt5"></b></td>
-    			<td><b id="avg_star5"></b></td>
+    			<td><b id="nick5"></b><td>
+    			<td><b id="count5"></b></td>
+    			<td><b id="genre5"></b></td>
+    			<td><b id="director5"></b></td>
     		</tr>
     		<tr>
     			<td><b>7</b></td>
-    			<td><b id="Name6"></b><td>
-    			<td><b id="rev_cnt6"></b></td>
-    			<td><b id="avg_star6"></b></td>
+    			<td><b id="nick6"></b><td>
+    			<td><b id="count6"></b></td>
+    			<td><b id="genre6"></b></td>
+    			<td><b id="director6"></b></td>
+    			
     		</tr>
     		<tr>
     			<td><b>8</b></td>
-    			<td><b id="Name7"></b><td>
-    			<td><b id="rev_cnt7"></b></td>
-    			<td><b id="avg_star7"></b></td>
+    			<td><b id="nick7"></b><td>
+    			<td><b id="count7"></b></td>
+    			<td><b id="genre7"></b></td>
+    			<td><b id="director7"></b></td>
     		</tr>
     		<tr>
     			<td><b>9</b></td>
-    			<td><b id="Name8"></b><td>
-    			<td><b id="rev_cnt8"></b></td>
-    			<td><b id="avg_star8"></b></td>
+    			<td><b id="nick8"></b><td>
+    			<td><b id="count8"></b></td>
+    			<td><b id="genre8"></b></td>
+    			<td><b id="director8"></b></td>
     		</tr>
     		<tr>
     			<td><b>10</b></td>
-    			<td><b id="Name9"></b><td>
-    			<td><b id="rev_cnt9"></b></td>
-    			<td><b id="avg_star9"></b></td>
-    		</tr>
-    		<tr>
-    			<td><b>11</b></td>
-    			<td><b id="Name10"></b><td>
-    			<td><b id="rev_cnt10"></b></td>
-    			<td><b id="avg_star10"></b></td>
-    		</tr>
-    		<tr>
-    			<td><b>12</b></td>
-    			<td><b id="Name11"></b><td>
-    			<td><b id="rev_cnt11"></b></td>
-    			<td><b id="avg_star11"></b></td>
-    		</tr>
-    		<tr>
-    			<td><b>13</b></td>
-    			<td><b id="Name12"></b><td>
-    			<td><b id="rev_cnt12"></b></td>
-    			<td><b id="avg_star12"></b></td>
-    		</tr>
-    		<tr>
-    			<td><b>14</b></td>
-    			<td><b id="Name13"></b><td>
-    			<td><b id="rev_cnt13"></b></td>
-    			<td><b id="avg_star13"></b></td>
-    		</tr>
-    		<tr>
-    			<td><b>15</b></td>
-    			<td><b id="Name14"></b><td>
-    			<td><b id="rev_cnt14"></b></td>
-    			<td><b id="avg_star14"></b></td>
-    		</tr>
-    		<tr>
-    			<td><b>16</b></td>
-    			<td><b id="Name15"></b><td>
-    			<td><b id="rev_cnt15"></b></td>
-    			<td><b id="avg_star15"></b></td>
-    		</tr>
-    		<tr>
-    			<td><b>17</b></td>
-    			<td><b id="Name16"></b><td>
-    			<td><b id="rev_cnt16"></b></td>
-    			<td><b id="avg_star16"></b></td>
-    		</tr>
-    		<tr>
-    			<td><b>18</b></td>
-    			<td><b id="Name17"></b><td>
-    			<td><b id="rev_cnt17"></b></td>
-    			<td><b id="avg_star17"></b></td>
-    		</tr>
-    		<tr>
-    			<td><b>19</b></td>
-    			<td><b id="Name18"></b><td>
-    			<td><b id="rev_cnt18"></b></td>
-    			<td><b id="avg_star18"></b></td>
-    		</tr>
-    		<tr>
-    			<td><b>20</b></td>
-    			<td><b id="Name19"></b><td>
-    			<td><b id="rev_cnt19"></b></td>
-    			<td><b id="avg_star19"></b></td>
+    			<td><b id="nick9"></b><td>
+    			<td><b id="count9"></b></td>
+    			<td><b id="genre9"></b></td>
+    			<td><b id="director9"></b></td>
     		</tr>
     		
     </table>
