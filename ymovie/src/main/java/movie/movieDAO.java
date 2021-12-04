@@ -108,6 +108,35 @@ public class movieDAO {
 	    return codes;
 	}	
 	
+	public ArrayList<CodeNameYearDTO> movStarRank()  {
+	    ArrayList<CodeNameYearDTO> results = new ArrayList<CodeNameYearDTO>();
+	    
+	    Connection con = null;
+	    Statement stmt = null;
+	    ResultSet rs = null;
+	    String query = "select mov_code, mov_name, mov_year from movie order by starSum limit 10";
+	    //System.out.println(query);
+	    try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+	        stmt = con.createStatement();
+	        rs = stmt.executeQuery(query);
+	        while (rs.next()) {
+	            results.add(new CodeNameYearDTO(rs.getString("mov_code"), rs.getString("mov_name"), rs.getString("mov_year")) );
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if(rs != null) rs.close();
+	            if(stmt != null) stmt.close();
+	        } catch(Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return results;
+	}	
+	
 	public ArrayList<String> selectAllCode(Connection con)  {
 	    ArrayList<String> codes = new ArrayList<String>();
 	    
