@@ -228,4 +228,39 @@ public class apiDAO {
 	    		
 		return dtos;
 	}
+	public ArrayList<CodeNameYearDTO> getAPIBoxOfficeWeekly() throws Exception {
+		ArrayList<CodeNameYearDTO> dtos = new ArrayList<CodeNameYearDTO>();
+		
+		DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
+	    DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
+	    
+	    SimpleDateFormat dtf = new SimpleDateFormat("yyyyMMdd");
+        Calendar cal = Calendar.getInstance();
+
+        cal.add(Calendar.DATE, -1);
+        cal.set(Calendar.DAY_OF_WEEK,Calendar.SUNDAY);
+        
+        Date dateObj = cal.getTime();
+        String formattedDate = dtf.format(dateObj);
+	    StringBuilder url = new StringBuilder("https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.xml?key=");
+	    url.append(configLoad.readByLine().get(3));
+	    url.append("&weekGb=0&targetDt=");
+        url.append(formattedDate);
+
+	    Document doc = dBuilder.parse(url.toString());
+	    doc.getDocumentElement().normalize();
+	    NodeList nList = doc.getChildNodes().item(0).getChildNodes().item(3).getChildNodes();
+	    Node nNode;
+	    Element eElement;	    
+	    for(int temp = 0; temp < 10; temp++){
+			nNode = nList.item(temp);
+			if(nNode.getNodeType() == Node.ELEMENT_NODE){
+				eElement = (Element) nNode;
+					dtos.add(new CodeNameYearDTO(getTagValue("movieCd", eElement), getTagValue("movieNm", eElement), getTagValue("openDt", eElement)));
+			}
+		}
+	    		
+		return dtos;
+	}
+	
 }

@@ -13,12 +13,13 @@
 	 function getRecommand() {
 		 <%movieDAO dao = new movieDAO();%>
 		 <%posterAPI posterAPI = new posterAPI();%>
+		 <%apiDAO asdf = new apiDAO();%>
+		 <%asdf.getAPIBoxOfficeWeekly();%>
 	        <%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%> 
 	        <%for (int i = 0; i < 16; i++) {%>
 	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
 	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
-	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>
-	년";
+	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>";
 <%}%>
 	}
 </script>
