@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>영화 리뷰 작성</title>
-<link href="css/writingreview2.css" rel="stylesheet" />
+<link href="writingreview2.css" rel="stylesheet" type="text/css">
 <style>    body{margin: 10vh 15vw 10vh 15vw;}</style>
+
 </head>
 <body>
 <h2>리뷰작성</h2>
@@ -23,8 +24,6 @@
             <li>감독: /불러오기/</li>
             <li>배우: /불러오기/</li>
             <li>장르: /불러오기/</li>
-            <li>누적 관객수: /불러오기/명</li>
-            <li>누적 매출액: /불러오기/원</li>
             <li>평균 별점: /불러오기/</li>
             </ul>
         </div>
@@ -42,6 +41,7 @@
             <input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
             <label for="1-star" class="star">★</label>
         </div>
+	
     </div>
     <div class="writing-review">
     <form action="" method="">

@@ -1,25 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="movie.*" %>
+<%@ page import="api_DB.*" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰작성</title>
-<link href="../writingreview.css" rel="stylesheet" type="text/css">
+<title>Y-Movie</title>
+<link href="daily_rank.css" rel="stylesheet" type="text/css">
 
 <style>	body{margin: 10vh 15vw 10vh 15vw;}</style>
+<script>
+	 function getRecommand() {
+		 <%movieDAO dao = new movieDAO();%>
+		 <%posterAPI posterAPI = new posterAPI();%>
+		 <%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%> 
+	        <%for(int i=0;i<16;i++){%>
+	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
+	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
+	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";	       
+	        <%}%>
+	    }
+	 </script>
 </head>
-<body>
+<body onload="getRecommand()">
     <iframe src="../header.html" style="width: 69vw; border: none;"></iframe>
-
 <div class="head">
-    <h2 class="title">리뷰작성</h2>
-</div>
-<div class="search">
-	<form>
-		<input type="text" name="moviename" class="text-field" placeholder="영화제목">
-		<input type="submit" value="검색" class="submit-btn">
-	</form>
+   <h2 class="title">일간순위</h2>
 </div>
     
 <div class="box_boxoffice">

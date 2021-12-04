@@ -1,0 +1,36 @@
+@charset "UTF-8";
+table {
+	width: 80%;
+	margin-left:auto; 
+    margin-right:auto;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }
+  
+.rank {
+	width:10%;
+}
+
+.nick {
+	width:30%;
+}
+
+.count {
+	width:20%;
+}
+
+.genre {
+	width:20%;
+}
+
+.director {
+	width:20%;
+}
+
+favGenre
+favDirector
