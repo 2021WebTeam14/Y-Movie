@@ -54,6 +54,10 @@
     %>
     setCookie("currID", "<%loginSession sessionHandler = new loginSession();%><%=sessionHandler.setSession(request, response, request.getParameter("username"))%>", 1);
 	location.href="<%=msg%>";
+	<%
+	request.removeAttribute("username");
+	request.removeAttribute("password");
+	%>
 	}
 </script>
 

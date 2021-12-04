@@ -1,3 +1,4 @@
+<%@page import="sessionServlet.storeSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="sessionServlet.loginSession"%>
 
@@ -17,15 +18,14 @@
 		    <div class="sign">
 			<%
 				loginSession sessionHandler = new loginSession();
-				if(sessionHandler.getSession(request, response) != null) {
+				storeSession dao = new storeSession();
+				if(dao.isSessionExist(request) != null) {
 					out.print("<input class = \"signOut\" type=\"button\" value=\"SignOut\" onclick=\"window.top.location.replace('./jaeik/signOut.jsp');\"/>");
 				}
 				else {
 					out.print("<input class = \"signIn\" type=\"button\" value=\"Sign in\" onclick=\"window.top.location.replace('./seungtae/signIn.jsp');\"/>");
 					out.print("<input class = \"signUP\" type=\"button\" value=\"Sign up\" onclick=\"window.top.location.replace('./seungtae/signUp.jsp');\"/>");
 				}
-				
-				
 			%>	    
 		    </div>
 			<nav class="nav">

@@ -42,8 +42,11 @@ public class loginSession extends HttpServlet{
 
 		HttpSession session = req.getSession(true);
 
-		if(session !=null) session.setAttribute("ID", ID);		
-
+		if(session !=null) {
+			session.setAttribute("ID", ID);		
+		}
+		
+		
 		return session.getId();
 	}
 	public String getSession(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -52,7 +55,7 @@ public class loginSession extends HttpServlet{
 		HttpSession session = req.getSession(false);
 		
 		if(session != null && session.getAttribute("ID") != null) {
-			return session.getAttribute("ID").toString();
+			return session.getId();
 		}
 
 		return null;

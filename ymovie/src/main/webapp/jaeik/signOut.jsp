@@ -16,6 +16,7 @@
 	%>
 	<script type="text/javascript">
 	function onstart() {
+	    var date = new Date();
 		alert("로그아웃 되었습니다.");
 		window.top.location.replace("../initPage.jsp");
 	}

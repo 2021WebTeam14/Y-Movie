@@ -84,7 +84,7 @@
 	
 </head>
 <body>
-	<iframe src="header.html" style="width: 100%; border: none;"></iframe>
+	<iframe src="../header.jsp" style="width: 100%; border: none;"></iframe>
 	<h1 style="text-align: center"> Sign up for Y-Movie </h1> 
 	<form onsubmit="return checkForm()">
 	<div>
@@ -137,6 +137,6 @@
 	</div>
 	</form>
 	
-	<iframe src="footer.html" style="width: 100%; border: none"></iframe>
+	<iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>
 </html>

@@ -17,7 +17,7 @@
 	<iframe id="head" src="../header.jsp" style="width: 100%; border: none;"></iframe>
 	   <h1 style="text-align: center"> Login </h1> 
 	   
-	    <form style="padding-top: 50px; padding-bottom: 50px;" method="POST" action="signInProcess.jsp">
+	    <form style="padding-top: 50px; padding-bottom: 50px;" method="POST" action="../jaeik/signInProcess.jsp">
 	        <div class="container"> 
 		        <div class="inner1">
 			        <div class="inner2">	
