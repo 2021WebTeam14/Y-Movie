@@ -11,30 +11,25 @@
 <link href="css/kategorie.css" rel="stylesheet" type="text/css">
 <script>
 	 function getRecommand() {
-		 <%movieDAO dao = new movieDAO();%>
-		 <%posterAPI posterAPI = new posterAPI();%>
-	        <%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%> 
-	        <%for (int i = 0; i < 8; i++) {%>
+		<%movieDAO dao = new movieDAO();%>
+		<%posterAPI posterAPI = new posterAPI();%>
+        <%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("qwer");%> 
+        <%for (int i = 0; i < 8; i++) {%>
 	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
 	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
-	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>
-	년";
-<%}%>
-	}
-	 <%for (int i = 8; i < 16; i++) {%>
-     document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
-     document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
-     document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>
-년";
-<%}%>
-}
-<%for (int i = 16; i < 24; i++) {%>
-document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
-document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
-document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>
-년";
-<%}%>
-}
+	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";
+		<%}%>
+		 <%for (int i = 8; i < 16; i++) {%>
+		     document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
+		     document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
+		     document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";
+		<%}%>
+		<%for (int i = 16; i < 24; i++) {%>
+			document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
+			document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
+			document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";
+		<%}%>
+		}
 </script>
 </head>
 <body onload="getRecommand()">

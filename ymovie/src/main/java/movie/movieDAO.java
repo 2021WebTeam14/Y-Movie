@@ -578,4 +578,150 @@ public class movieDAO {
 		}
 		return dtos;	
 	}
+public ArrayList<CodeNameYearDTO> getRecommandsByCate(String targetId) {
+		
+		GenActDirDTO fav = getMemberFav(targetId);
+		
+		ArrayList<CodeNameYearDTO> dtos = new ArrayList<CodeNameYearDTO>();
+		CodeNameYearDTO dto;
+		
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		ArrayList<String> tmp;
+		int size = 0;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		tmp = fav.getGenre();
+		size = tmp.size();
+		StringBuilder query = new StringBuilder("select mov_name, mov_code, mov_year from movie");
+		if (size != 0) {
+			query.append(" where ");
+			for (int i = 0; i < size - 1; i++) {
+				query.append("mov_genre=\"" + tmp.get(i) + "\" or ");
+			}
+			query.append("mov_genre=\"" + tmp.get(size)+ "\"");
+		}
+		query.append(" order by rand() limit 6");
+		//System.out.println(query.toString());
+		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query.toString());
+
+			while (rs.next()) {
+				String mov_name = rs.getString("mov_name");
+				String mov_code = rs.getString("mov_code");
+				String mov_year = rs.getString("mov_year");
+
+				dto = new CodeNameYearDTO(mov_code, mov_name, mov_year);
+				dtos.add(dto);
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		tmp = fav.getDirector();
+		size = tmp.size();
+		ArrayList<String> tmpDirec = new ArrayList<String>();
+		query = new StringBuilder("select mov_code from director");
+		if (size != 0) {
+			query.append(" where ");
+			for (int i = 0; i < size - 1; i++) {
+				query.append("dir_director=\"" + tmp.get(i) + "\" or ");
+			}
+			query.append("dir_director=\"" + tmp.get(size)+ "\"");
+		}
+		query.append(" order by rand() limit 6");
+		//System.out.println(query.toString());
+		try {
+			rs = stmt.executeQuery(query.toString());
+
+			while (rs.next()) {
+				tmpDirec.add(rs.getString("mov_code"));
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		for (int i = 0; i < tmpDirec.size(); i++) {
+			query = new StringBuilder("select mov_name, mov_year from movie where mov_code=\"" + tmpDirec.get(i) + "\"");
+			
+			try {
+				rs = stmt.executeQuery(query.toString());
+				while(rs.next()) {
+					dto = new CodeNameYearDTO(tmpDirec.get(i), rs.getString("mov_name"), rs.getString("mov_year"));
+					dtos.add(dto);					
+				}
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		tmp = fav.getActor();
+		size = tmp.size();
+		ArrayList<String> tmpActor = new ArrayList<String>();
+		query = new StringBuilder("select mov_code from actor");
+		if (size != 0) {
+			query.append(" where ");
+			for (int i = 0; i < size - 1; i++) {
+				query.append("act_actor=\"" + tmp.get(i) + "\" or ");
+			}
+			query.append("act_actor=\"" + tmp.get(size)+ "\"");
+		}
+		query.append(" order by rand() limit 6");
+		//System.out.println(query.toString());
+		try {
+			rs = stmt.executeQuery(query.toString());
+
+			while (rs.next()) {
+				tmpActor.add(rs.getString("mov_code"));
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		for (int i = 0; i < tmpActor.size(); i++) {
+			query = new StringBuilder("select mov_name, mov_year from movie where mov_code=\"" + tmpActor.get(i) + "\"");
+			
+			try {
+				rs = stmt.executeQuery(query.toString());
+				while(rs.next()) {
+					dto = new CodeNameYearDTO(tmpActor.get(i), rs.getString("mov_name"), rs.getString("mov_year"));
+					dtos.add(dto);				
+				}
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		if (dtos.size() < 18) {
+			int lastLoad = 18 - dtos.size();
+			query = new StringBuilder("select mov_code, mov_name, mov_year from movie order by rand() limit ");
+			query.append(String.valueOf(lastLoad));
+			
+			try {
+				rs = stmt.executeQuery(query.toString());
+				while(rs.next()) {
+					dto = new CodeNameYearDTO(rs.getString("mov_code"), rs.getString("mov_name"), rs.getString("mov_year"));
+					dtos.add(dto);				
+				}
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		try {
+			if(rs != null) rs.close();
+			if(stmt != null) stmt.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return dtos;	
+	}
 }
