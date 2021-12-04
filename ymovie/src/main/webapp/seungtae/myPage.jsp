@@ -3,29 +3,30 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
 		<meta charset="UTF-8">
 		<title>My page</title>
 		
-		<link rel="stylesheet" type="text/css" href="css/myPage.css">
+		<link rel="stylesheet" type="text/css" href="myPage.css">
 	</head>
 	
 	<body>
 		
-		<iframe id="head" src="../header.jsp" style="width: 100%; border: none;"></iframe>
+		<iframe src="../header.jsp" style="width: 100%; border: none;"></iframe>
 		<h1>내 정보</h1>
 		<div class="container">
 		
 			<img id="userProfile" alt="avatar of this user" src="">
 			<div id="userInfo">
+				<label>아이디: </label>
 				<p id="userID">This user's ID</p>
+				<label>닉네임: </label>
 				<p id="userNick">This user's Nickname</p>
 			</div>
 			<button onclick="window.top.location.href='editUser.jsp';" style="height: 50px; cursor: pointer;">회원정보 수정</button>
 		</div>
 		
 		<div class="review">
-			<label>최근 작성한 리뷰</label>
+			<label style="text-align: left;">최근 작성한 리뷰</label>
 			<p id="recentReview" style="overflow-wrap: break-word;">
 				Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
 				Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
