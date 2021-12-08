@@ -2,6 +2,7 @@
 <%@ page import="movie.*" %>
 <%@ page import="api_DB.*" %>
 <%@ page import="java.util.ArrayList" %>
+<%@page import="sessionServlet.storeSession"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,12 +10,28 @@
 <meta charset="UTF-8">
 <title>Y-Movie</title>
 <style>	body{margin: 10vh 15vw 10vh 15vw;}</style>
+<script type="text/javascript">
+	function getData() {
+	<%
+	 	storeSession sessionDAO = new storeSession();
+		movieDAO dao = new movieDAO();
+		posterAPI posterAPI = new posterAPI();
+		apiDAO api = new apiDAO();
+	%>
+	<%
+		ArrayList<CodeNameYearDTO> dataWeek = api.getAPIBoxOfficeWeekly();
+		ArrayList<CodeNameYearDTO> dataDay = api.getAPIBoxOfficeDaily();
+		ArrayList<movieDTO> dataStar = dao.getStarRank(3);
+	%>
+		
+	}
+</script>
 </head>
 <body onload="getData()">
     <iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
     
     <div class="outer border centered">
-    	<div class="centered noMP"><h1 id="heading">일간(주간) 박스오피스 순위 / 사이트 별점 순위</h1></div>
+    	<div class="centered noMP"><h1 id="heading"></h1></div>
 	    <div class="centered flex">
 	    	<a onclick="chg_page(0)">&lt;</a>
 	    	
@@ -24,24 +41,24 @@
 				    		<td>
 					    		<div class="rank">    	
 									<div class="rankNum">1</div>
-									<img id="dailyImg0" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" class="rankImg noMP">
-									<h1 id="dailyName0">Daily Rank 1</h1>
+									<img id="dailyImg0" src="" class="rankImg noMP">
+									<h3 id="dailyName0"></h3>
 						    	</div>	
 				    		</td>
 				    		
 					    	<td>
 					    		<div class="rank">    	
 									<div class="rankNum">2</div>
-									<img id="dailyImg1" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" class="rankImg noMP">
-									<h1 id="dailyName1">Daily Rank 2</h1>
+									<img id="dailyImg1" src="" class="rankImg noMP">
+									<h3 id="dailyName1"></h3>
 						    	</div>	
 					    	</td>
 					    		
 					    	<td>
 					    		<div class="rank">    	
 									<div class="rankNum">3</div>
-									<img id="dailyImg2" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" class="rankImg noMP">
-									<h1 id="dailyName2">Daily Rank 3</h1>
+									<img id="dailyImg2" src="" class="rankImg noMP">
+									<h3 id="dailyName2"></h3>
 						    	</div>
 					    	</td>
 				    	</tr>
@@ -50,24 +67,24 @@
 				    		<td>
 					    		<div class="rank">    	
 									<div class="rankNum">1</div>
-									<img id="weeklyImg0" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" class="rankImg noMP">
-									<h1 id="weeklyName0">Weekly Rank 1</h1>
+									<img id="weeklyImg0" src="" class="rankImg noMP">
+									<h3 id="weeklyName0"></h3>
 						    	</div>	
 				    		</td>
 				    		
 					    	<td>
 					    		<div class="rank">    	
 									<div class="rankNum">2</div>
-									<img id="weeklyImg1" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" class="rankImg noMP">
-									<h1 id="weeklyName1">Weekly Rank 2</h1>
+									<img id="weeklyImg1" src="" class="rankImg noMP">
+									<h3 id="weeklyName1"></h3>
 						    	</div>	
 					    	</td>
 					    		
 					    	<td>
 					    		<div class="rank">    	
 									<div class="rankNum">3</div>
-									<img id="weeklyImg2" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" class="rankImg noMP">
-									<h1 id="weeklyName2">Weekly Rank 3</h1>
+									<img id="weeklyImg2" src="" class="rankImg noMP">
+									<h3 id="weeklyName2"></h3>
 						    	</div>
 					    	</td>
 				    	</tr>
@@ -76,24 +93,24 @@
 				    		<td>
 					    		<div class="rank">    	
 									<div class="rankNum">1</div>
-									<img id="starImg0" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" class="rankImg noMP">
-									<h1 id="starName0">Star Rank 1</h1>
+									<img id="starImg0" src="" class="rankImg noMP">
+									<h3 id="starName0"></h3>
 						    	</div>	
 				    		</td>
 				    		
 					    	<td>
 					    		<div class="rank">    	
 									<div class="rankNum">2</div>
-									<img id="starImg1" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" class="rankImg noMP">
-									<h1 id="starName1">Star Rank 2</h1>
+									<img id="starImg1" src="" class="rankImg noMP">
+									<h3 id="starName1"></h3>
 						    	</div>	
 					    	</td>
 					    		
 					    	<td>
 					    		<div class="rank">    	
 									<div class="rankNum">3</div>
-									<img id="starImg2" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" class="rankImg noMP">
-									<h1 id="starName2">Star Rank 3</h1>
+									<img id="starImg2" src="" class="rankImg noMP">
+									<h3 id="starName2"></h3>
 						    	</div>
 					    	</td>
 				    	</tr>
@@ -212,22 +229,39 @@
 		{
 		  tbd.innerHTML='';
 		  tbd.appendChild(arrayTr[page]); 
+
 		  	switch (page) 
 		  	{
 				case 0:
-					pageHeading.innerHTML = "일간 박스오피스 순위";
+					pageHeading.innerHTML = "일간 박스오피스 순위";	
+			    	<%for (int i = 0; i < 3; i++) {%>
+						document.getElementById("dailyImg<%=i%>").src = '<%=posterAPI.getPoster(dataDay.get(i).getCode())%>';
+						document.getElementById("dailyName<%=i%>").innerText = "<%=dataDay.get(i).getName()%>";
+					<%}%>
 				break;
 				
 				case 1:
 					pageHeading.innerHTML = "주간 박스오피스 순위";
+					<%for (int i = 0; i < 3; i++) {%>
+						document.getElementById("weeklyImg<%=i%>").src = '<%=posterAPI.getPoster(dataWeek.get(i).getCode())%>';
+						document.getElementById("weeklyName<%=i%>").innerText = "<%=dataWeek.get(i).getName()%>";
+					<%}%>
 				break;
 					
 				case 2:
 					pageHeading.innerHTML = "사이트 별점 순위";
+					<%for (int i = 0; i < 3; i++) {%>
+						document.getElementById("starImg<%=i%>").src = '<%=posterAPI.getPoster(dataStar.get(i).getMov_code())%>';
+						document.getElementById("starName<%=i%>").innerText = "<%=dataStar.get(i).getMov_name()%>";
+					<%}%>
 				break;
 	
 			    default:
-			    	pageHeading.innerHTML = "일간 박스오피스 순위";
+			    	pageHeading.innerHTML = "일간 박스오피스 순위";		
+			    	<%for (int i = 0; i < 3; i++) {%>
+						document.getElementById("dailyImg<%=i%>").src = '<%=posterAPI.getPoster(dataDay.get(i).getCode())%>';
+						document.getElementById("dailyName<%=i%>").innerText = "<%=dataDay.get(i).getName()%>";
+					<%}%>
 			    	curr = 0;
 			    	chg_page(0);
 				break;

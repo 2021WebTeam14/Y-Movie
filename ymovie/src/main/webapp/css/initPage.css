@@ -63,6 +63,11 @@
 	width: 200px;
 	height: 290px;
 }
+.rankName{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
 img[id="poster"]{
 	width: 250px; height: 364px; 
 	margin: 25px; padding: 0;
@@ -106,4 +111,20 @@ a {
 	margin: 0;
 	padding: 0;
 	cursor: pointer;
+}
+td {
+	width: 30%;
+	margin: auto;
+}
+tr {
+	text-align: center;
+	align-content: center;
+	align-items: center;
+}
+h3 {
+    width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: auto;
 }

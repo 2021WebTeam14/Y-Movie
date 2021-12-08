@@ -348,8 +348,8 @@ public class movieDAO {
 				int mov_year = rs.getInt("mov_year");
 				String mov_state = rs.getString("mov_state");
 				String mov_genre = rs.getString("mov_genre");
-				int starSum = rs.getInt("mov_genre");
-				int starCount = rs.getInt("mov_genre");
+				int starSum = rs.getInt("starSum");
+				int starCount = rs.getInt("starCount");
 
 				dto = new movieDTO(mov_name, mov_code , mov_year, mov_state, mov_genre, starSum, starCount);
 				dtos.add(dto);
