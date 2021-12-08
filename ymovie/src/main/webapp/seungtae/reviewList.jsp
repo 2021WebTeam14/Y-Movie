@@ -1,3 +1,10 @@
+<%@page import="movie.movieDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="review.*"%>
+<%@page import="sessionServlet.*"%>
+<%@ page import="java.io.PrintWriter"%>
+<%@ page import="defaultConn.getConn" %>
+<%@ page import="java.sql.Connection" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,226 +13,15 @@
 		<meta charset="UTF-8">
 		<title>나의 리뷰</title>
 		<link rel="stylesheet" type="text/css" href="reviewList.css">
-		
-		
 	</head>
 	
-	<body>
+	<body onload="start()">
 	<iframe src="../header.jsp" style="width: 100%; border: none"></iframe>
 	<h1>나의 리뷰</h1>
 		<table>	
 			<tbody>
-				<tr>
-					<td> 
-						<div class="review">
-							<label>Movie name 1</label>
-							<p id="recentReview" style="overflow-wrap: break-word;">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-								when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-							<button class="edit">리뷰 수정</button>
-						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td> 
-						<div class="review">
-							<label>Sample movie name</label>
-							<label id="userUp">&#128077;</label>
-							<label>★★★</label>
-							<p id="recentReview" style="overflow-wrap: break-word;">
-								Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, 
-								there live the blind texts. Separated they live in Bookmarksgrove right at the coast of 
-								the Semantics, a large language ocean.
-							</p>
-							<button class="edit">리뷰 수정</button>
-						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td> 
-						<div class="review">
-							<label>Movie name 3</label>
-							<p id="recentReview" style="overflow-wrap: break-word;">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-								when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-							<button class="edit">리뷰 수정</button>
-						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td> 
-						<div class="review">
-							<label>Movie name 4</label>
-							<p id="recentReview" style="overflow-wrap: break-word;">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-								when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-							<button class="edit">리뷰 수정</button>
-						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td> 
-						<div class="review">
-							<label>Movie name 5</label>
-							<p id="recentReview" style="overflow-wrap: break-word;">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-								when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-							<button class="edit">리뷰 수정</button>
-						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td> 
-						<div class="review">
-							<label>Movie name 6</label>
-							<p id="recentReview" style="overflow-wrap: break-word;">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-								when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-							<button class="edit">리뷰 수정</button>
-						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td> 
-						<div class="review">
-							<label>Movie name 7</label>
-							<p id="recentReview" style="overflow-wrap: break-word;">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-								when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-							<button class="edit">리뷰 수정</button>
-						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td> 
-						<div class="review">
-							<label>Movie name 8</label>
-							<p id="recentReview" style="overflow-wrap: break-word;">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-								when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-							<button class="edit">리뷰 수정</button>
-						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td> 
-						<div class="review">
-							<label>Movie name 9</label>
-							<p id="recentReview" style="overflow-wrap: break-word;">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-								when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-							<button class="edit">리뷰 수정</button>
-						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td> 
-						<div class="review">
-							<label>Movie name 10</label>
-							<p id="recentReview" style="overflow-wrap: break-word;">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-								when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-							<button class="edit">리뷰 수정</button>
-						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td> 
-						<div class="review">
-							<label>Movie name 11</label>
-							<p id="recentReview" style="overflow-wrap: break-word;">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-								when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-							<button class="edit">리뷰 수정</button>
-						</div>
-					</td>
-				</tr>
 			</tbody>
 		</table>
-		
-<!--  		<div class="reviewList">
-			<div class="reviewItems">
-				<div class="review">
-					<label>Movie name 1</label>
-					<p id="recentReview" style="overflow-wrap: break-word;">
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-						Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-						when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-					</p>
-					<button class="edit">리뷰 수정</button>
-				</div>
-				
-				
-				<div class="review">
-					<label>Movie name 2</label>
-					<p id="recentReview" style="overflow-wrap: break-word;">
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-						Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-						when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-					</p>
-					<button class="edit">리뷰 수정</button>
-				</div>
-				
-				
-				<div class="review">
-					<label>Movie name 3</label>
-					<p id="recentReview" style="overflow-wrap: break-word;">
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-						Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-						when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-					</p>
-					<button class="edit">리뷰 수정</button>
-				</div>
-				
-			</div>
-		</div>		
-			
-		<div id="dummy" class="review">
-			<label id="movieTitle">Movie name 3</label>
-			<p id="movieReview">
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-				Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-				when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-			</p>
-			<button id="editReview" class="edit">리뷰 수정</button>
-		</div>	
-			
-		-->
-		
-		<button type="button" onclick="document.getElementById('editReview').style.display='block'">수정 창 열기</button>
-		<button type="button" onclick="putReview(createMovieDiv('title', 'reviewText', 1, 4))">샘플 넣어보기</button>		
-		<button type="button" onclick="extract(1)">2번째 영화 수정 해보기</button>
-		<p id="ext">sample text</p>
 		
 		<div id="editReview" class="editing">
 			<form class="contents" onsubmit="return confirm('정말 리뷰를 수정하시겠습니까?');">		
@@ -279,22 +75,49 @@
 	<script type="text/javascript">
 		//DB에서 리뷰 로딩하기
 		//putMovie와  createMovieDiv 이용 putMovie(createMovieDiv(title, reviewText, thumbs, starRating, reviewNum));
-	
 		let tbd = document.querySelector('tbody');
 		let tr = tbd.getElementsByTagName('tr');
 		let select = document.querySelector('select');
-		let ul = document.querySelector('.pagination');
-
-		
-		
+		let ul = document.querySelector('.pagination');		
 		
 		let arrayTr=[];
 		
-		for (let i = 0; i < tr.length; i++) 
-		{
-		  arrayTr.push(tr[i]);
-		}
-
+		function start() {
+			<%
+			storeSession sessionDAO = new storeSession();
+			if (sessionDAO.getSession(session) == ""){
+			 response.setContentType("text/html; charset=UTF-8");
+			 PrintWriter outA = response.getWriter();
+			 outA.println("<script>alert('로그인이 필요합니다.'); location.href='../initPage.jsp';</script>");
+			 outA.flush();
+			}
+			%>
+			<%
+			movieDAO movDao = new movieDAO();
+			Connection con = null;
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			reviewDAO dao = new reviewDAO();
+			ArrayList<reviewDTO> data = dao.selectById(sessionDAO.getSession(session));
+			
+			if (data.size() == 0){
+				%>
+				putReview(createMovieDiv("", "내가 작성한 리뷰가 없습니다...", 0, 1, 0));
+				<%
+			}
+			else {
+				for (int i = 0; i < data.size(); i++){
+				%>
+				putReview(createMovieDiv("<%=movDao.selectByCode(con, data.get(i).getMov_code()).get(0).getMov_name()%>", "<%=data.get(i).getRev_context()%>", <%=data.get(i).getRev_thumbs()%>, <%=data.get(i).getRev_star()%>, <%=i%>));
+				<%
+				}
+			}%>	
+			for(let i = 0; i < tr.length; i++)
+			{
+				arrayTr.push(tr[i]);		
+			}
+		}		
+		
 		select.onchange=rowCount;
 		
 		function rowCount(e) 
@@ -387,70 +210,16 @@
 
 		}
 		
-		function putReview(movie)
-		{
-			var row = document.createElement("tr");
-			var cell = document.createElement("td");
-			cell.appendChild(movie);
-			row.appendChild(cell);
-			tbd.appendChild(row);
-		}
-		
-		function createMovieDiv(title, reviewText, thumbs, starRating, reviewNum) 
-		{
-			var review = document.createElement("div");
-			var userThumb = document.createElement("label");
-			var userStar = document.createElement("label");
-			var movieTitle = document.createElement("label");
-			var paragraph = document.createElement("p");
-			var btn = document.createElement("button");			
-			const star = "★";
-			
-			var newTitle = document.createTextNode(title);
-			var newText = document.createTextNode(reviewText);
-			var newStar = document.createTextNode(star.repeat(starRating));
-			userStar.className = "reviewStars";
-			userStar.setAttribute('id', 'getStar')
-			
-			if(thumbs)
-			{
-				userThumb.innerHTML = "&#128077;";
-				userStar.setAttribute('id', 'userUp');
-			}
-			else
-			{
-				userThumb.innerHTML = "&#128078;";
-				userStar.setAttribute('id', 'userDown');
-			}
-						
-			review.className = "review";			
-			
-			btn.innerHTML = "리뷰 수정";
-			btn.className = "edit";
-			btn.addEventListener("click", function() {extract(reviewNum)});
-						
-			movieTitle.appendChild(newTitle);
-			paragraph.appendChild(newText);
-			userStar.appendChild(newStar);
-						
-			review.appendChild(movieTitle);
-			review.appendChild(userThumb);
-			review.appendChild(userStar);
-			review.appendChild(paragraph);
-			review.appendChild(btn);
-			
-			return review;
-		}
-		
 		function extract(index) 
 		{
-			var targetReviewCell = arrayTr[index].querySelector('td');
-			var cellChild = targetReviewCell.childNodes;
-			var targetReview = cellChild[1];
+			var targetReviewRow = tbd.childNodes[index];
+			var targetReviewCell = targetReviewRow.firstChild;
+			var targetReview = targetReviewCell.firstChild;
 			
-			document.getElementById("editReviewTitle").innerHTML = targetReview.childNodes[1].innerHTML; //제목
-			setThumbs(targetReview.childNodes[3].id); //따봉
-			var starNumber = targetReview.childNodes[5].innerHTML; 
+			
+			document.getElementById("editReviewTitle").innerHTML = targetReview.childNodes[0].innerHTML; //제목
+			setThumbs(targetReview.childNodes[1].id); //따봉
+			var starNumber = targetReview.childNodes[2].innerHTML; 
 			setStar(starNumber.length)//별점
 			document.getElementById("reviewArea").innerText = ""; //평가
 			//targetReview.childNodes[9].innerHTML; //버튼
@@ -475,10 +244,65 @@
 		function setStar(stars) 
 		{
 			var radio = document.getElementsByName('rating');
-			radio[stars - 1].checked = true;
+			radio[5 - stars].checked = true;
 		}
 		
+		function putReview(movie)
+		{
+			var row = document.createElement("tr");
+			var cell = document.createElement("td");
+			cell.appendChild(movie);
+			row.appendChild(cell);
+			tbd.appendChild(row);
+		}
 		
+		function createMovieDiv(title, reviewText, thumbs, starRating, reviewNum) 
+		{
+			var review = document.createElement("div");
+			var userThumb = document.createElement("label");
+			var userStar = document.createElement("label");
+			var movieTitle = document.createElement("label");
+			var paragraph = document.createElement("p");
+			var btn = document.createElement("button");			
+			const star = "★";
+			
+			var newTitle = document.createTextNode(title);
+			var newText = document.createTextNode(reviewText);
+			var newStar = document.createTextNode(star.repeat(starRating));
+			userStar.className = "reviewStars";
+			userStar.setAttribute('id', 'getStar');
+			
+			if(thumbs)
+			{
+				userThumb.innerHTML = "&#128077;";
+				userStar.setAttribute('id', 'userUp');
+			}
+			else
+			{
+				userThumb.innerHTML = "&#128078;";
+				userStar.setAttribute('id', 'userDown');
+			}
+						
+			review.className = "review";			
+			
+			btn.innerHTML = "리뷰 수정";
+			btn.className = "edit";
+			if (title != "") {
+				btn.addEventListener("click", function() {extract(reviewNum)});				
+			}
+						
+			movieTitle.appendChild(newTitle);
+			paragraph.appendChild(newText);
+			userStar.appendChild(newStar);
+						
+			review.appendChild(movieTitle);
+			review.appendChild(userThumb);
+			review.appendChild(userStar);
+			review.appendChild(paragraph);
+			review.appendChild(btn);
+			
+			return review;
+		}
 		
 		function resetEdit() 
 		{

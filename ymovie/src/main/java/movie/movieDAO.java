@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import defaultConn.getConn;
+import sessionServlet.storeSession;
 
 public class movieDAO {
 	public ArrayList<Integer> getAmount(Connection con) {
@@ -336,7 +337,6 @@ public class movieDAO {
 		ResultSet rs = null;
 		String query = "select * from movie order by starSum limit " + size;
 		try {
-			
 			getConn getCon = new getConn();
 			con = getCon.getConnection();
 			stmt = con.createStatement();

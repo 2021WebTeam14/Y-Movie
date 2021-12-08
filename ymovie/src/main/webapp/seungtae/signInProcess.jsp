@@ -15,16 +15,15 @@
         request.setCharacterEncoding("UTF-8"); 
         String targetId= request.getParameter("username");
         String targetPw = request.getParameter("password");
-        System.out.println(targetId);
-        System.out.println(targetPw);
         request.removeAttribute("username");
         request.removeAttribute("password");
         memberDAO dao = new memberDAO();
         int check = dao.signInCheck(targetId, targetPw);
-
         String msg = "";
         
         if(check == 0) {
+    		storeSession sesDao = new storeSession();
+    		sesDao.insertSession(session, request.getParameter("username"));
             msg = "../initPage.jsp";
         }
         else
