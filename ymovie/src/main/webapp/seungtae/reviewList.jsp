@@ -24,7 +24,7 @@
 		</table>
 		
 		<div id="editReview" class="editing">
-			<form class="contents" onsubmit="return confirm('정말 리뷰를 수정하시겠습니까?');">		
+			<form class="contents" onsubmit="return confirm('정말 리뷰를 수정하시겠습니까?');" method="post" action="../jaeik/reviewEditProcess.jsp">
 			<h2 style="text-align: center;">리뷰 수정</h2>
 			<div class="editingReview">
 				<span onclick="resetEdit()" class="close" title="창 닫기">&times;</span>
@@ -275,12 +275,12 @@
 			if(thumbs)
 			{
 				userThumb.innerHTML = "&#128077;";
-				userStar.setAttribute('id', 'userUp');
+				userThumb.setAttribute('id', 'userUp');
 			}
 			else
 			{
 				userThumb.innerHTML = "&#128078;";
-				userStar.setAttribute('id', 'userDown');
+				userThumb.setAttribute('id', 'userDown');
 			}
 						
 			review.className = "review";			
