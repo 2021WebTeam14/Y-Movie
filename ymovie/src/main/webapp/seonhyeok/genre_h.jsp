@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>genre</title>
-<link href="css/genre_h.css" rel="stylesheet" type="text/css">
+<link href="genre_h.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function getgenre(index) {
 		var genre = window.parent.document.getElementById("asdf");
@@ -16,6 +16,8 @@
 </script>
 </head>
 <body>
+<iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
+
 	<div>
 		<ul class="genre_list">
 			<li><a class="drama" onclick="getgenre('drama')">드라마</a></li>
@@ -41,10 +43,9 @@
 
 	</div>
 
-<iframe src="genre.jsp" id="asdf">
+<iframe src="genre.jsp" style="width:100%; border:none; height: 50vw" id="asdf"></iframe>
 	
-</iframe>
-
+<iframe src="footer.html" style="width: 69vw; border: none"></iframe>
 
 </body>
 </html>

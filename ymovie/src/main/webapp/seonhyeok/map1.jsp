@@ -9,6 +9,9 @@
 
 </head>
 <body>
+
+	<iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
+	
 	<label for="adress"></label>
 	<div class=searchbar>
 		<div class="container">
@@ -128,6 +131,8 @@
 		
 	
 	</script>
+	
+	<iframe src="footer.html" style="width: 69vw; border: none"></iframe>
 </body>
 
 </html>
