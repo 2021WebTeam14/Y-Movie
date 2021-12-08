@@ -5,9 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import defaultConn.getConn;
-import movie.CodeNameYearDTO;
 
 public class memberDAO {
 	public int signInCheck(String targetId, String targetPw)  {
@@ -126,7 +124,43 @@ public class memberDAO {
 			}
 		}
 	}
-	
+	public memberDTO selectMemberById(String targetId)  {
+		memberDTO dto = new memberDTO("","","",0);
+		
+		Connection con  = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String query = "select * from member where mem_id =\"" + targetId + "\"";
+		//System.out.println(query);
+		try {		
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+
+			if (rs.next()) {
+				String mem_id = rs.getString("mem_id");
+				String mem_nickname = rs.getString("mem_nickname");
+				int mem_icon = rs.getInt("mem_icon");
+				int mem_reviewCount = rs.getInt("mem_reviewCount");
+				String mem_favGenre = rs.getString("mem_favGenre");
+				String mem_favActor = rs.getString("mem_favActor");
+				String mem_favDirector = rs.getString("mem_favDirector");
+
+				dto = new memberDTO(mem_id, "", mem_nickname, mem_icon, mem_reviewCount, mem_favGenre, mem_favActor, mem_favDirector);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	}
 	public memberDTO selectMember(Connection con, String targetId, String targetPw)  {
 		memberDTO dto = new memberDTO("","","",0);
 		
