@@ -228,7 +228,7 @@
 		<p id="ext">sample text</p>
 		
 		<div id="editReview" class="editing">
-			<form class="contents" onsubmit="return confirm('Do you really want to submit the form?');">		
+			<form class="contents" onsubmit="return confirm('정말 리뷰를 수정하시겠습니까?');">		
 			<h2 style="text-align: center;">리뷰 수정</h2>
 			<div class="editingReview">
 				<span onclick="resetEdit()" class="close" title="창 닫기">&times;</span>
@@ -277,6 +277,9 @@
 	</body>
 	
 	<script type="text/javascript">
+		//DB에서 리뷰 로딩하기
+		//putMovie와  createMovieDiv 이용 putMovie(createMovieDiv(title, reviewText, thumbs, starRating, reviewNum));
+	
 		let tbd = document.querySelector('tbody');
 		let tr = tbd.getElementsByTagName('tr');
 		let select = document.querySelector('select');
@@ -393,7 +396,7 @@
 			tbd.appendChild(row);
 		}
 		
-		function createMovieDiv(title, reviewText, thumbs, starRating) 
+		function createMovieDiv(title, reviewText, thumbs, starRating, reviewNum) 
 		{
 			var review = document.createElement("div");
 			var userThumb = document.createElement("label");
@@ -424,6 +427,7 @@
 			
 			btn.innerHTML = "리뷰 수정";
 			btn.className = "edit";
+			btn.addEventListener("click", function() {extract(reviewNum)});
 						
 			movieTitle.appendChild(newTitle);
 			paragraph.appendChild(newText);
