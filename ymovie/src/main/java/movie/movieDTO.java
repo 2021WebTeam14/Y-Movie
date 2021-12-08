@@ -59,4 +59,7 @@ public class movieDTO {
 	public int getStarCount() {
 		return starCount;
 	}
+	public int getStarAvg() {
+		return starSum/starCount;
+	}
 }

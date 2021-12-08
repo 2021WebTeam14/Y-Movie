@@ -8,7 +8,7 @@
 <html>
 <head>
 	<title>Y-Movie</title>
-	 <link href="css/interest_movie.css" rel="stylesheet" type="text/css">
+	 <link href="interest_movie.css" rel="stylesheet" type="text/css">
 	 <script>
 	 function getRecommand() {
 		 <%movieDAO dao = new movieDAO();%>
@@ -305,7 +305,7 @@
                     </li>	
                      							
 		</ol>
-		<input type="submit"/>
+		<input type="submit" />
 	</div>
 	
 </body>

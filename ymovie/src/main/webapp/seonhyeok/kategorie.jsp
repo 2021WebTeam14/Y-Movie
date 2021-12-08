@@ -36,6 +36,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 </head>
 <body onload="getRecommand()">
 
+<iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
 
 	<div class="section_ranking">
 		<div class="box_ranking" data-tiara-layer="list">
@@ -450,6 +451,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 			</div>
 		</div>
 	</div>
+<iframe src="footer.html" style="width: 69vw; border: none"></iframe>
 
 </body>
 </html>

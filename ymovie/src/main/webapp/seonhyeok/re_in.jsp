@@ -38,7 +38,9 @@
 </script>
 </head>
 <body onload="getRecommand()">
-
+	
+	<iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
+	
 	<div class="head_section">
 		<h1 class=tit_section>통합추천</h1>
 	</div>
@@ -304,6 +306,7 @@
 
 		</ol>
 	</div>
-
+ 
+ 		<iframe src="footer.html" style="width: 69vw; border: none"></iframe>
 </body>
 </html>

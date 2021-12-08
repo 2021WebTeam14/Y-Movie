@@ -9,8 +9,22 @@ li{
     float:left;
     position: relative;
     cursor:default
+    
+}
+
+a{
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
+body{
+    font-size: 20px;
+    line-height: 1.5;
+    font-family: 'SF Pro Display','AppleSDGothicNeo','Malgun Gothic','\B9D1\C740 \ACE0\B515','\B3CB\C6C0',dotum,sans-serif;
+    color: #000;
 }
 
 ul {
+	border: 2px solid black;
 	margin-bottom: 80px;
 }
