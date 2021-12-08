@@ -30,8 +30,8 @@
 				<span onclick="resetEdit()" class="close" title="창 닫기">&times;</span>
 				<div>
 					<label id="editReviewTitle">lorem ipsum</label>
-					<input type="radio" name="thumbs" id="thumbsUp" value="up"> &#128077;
-					<input type="radio" name="thumbs" id="thumbsDown" value="down"> &#128078;
+					<input type="radio" name="thumbs" id="thumbsUp" value="1"> &#128077;
+					<input type="radio" name="thumbs" id="thumbsDown" value="0"> &#128078;
 						 <div class="star-rating">			            
 				            <input type="radio" id="5-stars" name="rating" value="5" />
 				            <label for="5-stars" class="star pr-4">★</label>

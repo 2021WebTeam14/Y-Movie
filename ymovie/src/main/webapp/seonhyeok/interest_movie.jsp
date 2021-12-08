@@ -13,12 +13,12 @@
 	 function getRecommand() {
 		 <%movieDAO dao = new movieDAO();%>
 		 <%posterAPI posterAPI = new posterAPI();%>
-	        <%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%> 
-	        <%for(int i=0;i<16;i++){%>
+	     <%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%> 
+	     <%for(int i=0;i<16;i++){%>
 	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
 	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
 	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";	       
-	        <%}%>
+	     <%}%>
 	    }
 	 </script>
 </head>
@@ -34,8 +34,7 @@
                             <div class="thumb_item">
                                 <div class="poster_movie">
                               		  <input type ="checkbox" class="checkbox" id ="check0"/>
-                                      <label for="check0"><img id="img0" src="" class="img_thumb"></label>  
-                                        
+                                      <label for="check0"><img id="img0" src="" class="img_thumb"></label>
                                 </div>
                                                             
                             </div>

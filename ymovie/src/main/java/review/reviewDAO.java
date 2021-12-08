@@ -5,11 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
-import javax.servlet.http.HttpSession;
-
 import defaultConn.getConn;
-import sessionServlet.storeSession;
 
 public class reviewDAO {
 	public ArrayList<reviewDTO> selectByMovie(Connection con, String targetMovie)  {
@@ -86,7 +82,7 @@ public class reviewDAO {
 	
 	public int insertReview(Connection con, reviewDTO dto) {
 		PreparedStatement pstmt = null;
-		String query = "insert into review values (?, ?, ?, ?, ?)";
+		String query = "insert into review(mov_code, mem_id, rev_star, rev_thumbs, rev_context) values (?, ?, ?, ?, ?)";
 		int result = 0;
 	
 		try {
@@ -102,6 +98,36 @@ public class reviewDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		return result;
+	}
+	
+	public int updateReview(reviewDTO dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "update customer_info set rev_star = ?, rev_thumbs = ?, rev_context = ? where mov_code = ? and mem_id = ?";
+		int result = 0;
+		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, dto.getRev_star());
+			pstmt.setInt(2, dto.getRev_thumbs());
+			pstmt.setString(3, dto.getRev_context());
+			pstmt.setString(4, dto.getMov_code());
+			pstmt.setString(5, dto.getMem_id());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(con != null) con.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		return result;
 	}
 }

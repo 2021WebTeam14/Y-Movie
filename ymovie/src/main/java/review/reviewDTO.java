@@ -16,6 +16,14 @@ public class reviewDTO {
 		this.rev_context = rev_context;
 		this.rev_num = rev_num;
 	}
+	public reviewDTO(String mov_code, String mem_id, int rev_star, int rev_thumbs, String rev_context) {
+		super();
+		this.mov_code = mov_code;
+		this.mem_id = mem_id;
+		this.rev_star = rev_star;
+		this.rev_thumbs = rev_thumbs;
+		this.rev_context = rev_context;
+	}
 	public String getMov_code() {
 		return mov_code;
 	}

@@ -22,7 +22,7 @@
 				}
 				else {
 					out.print("<input class = \"signIn\" type=\"button\" value=\"Sign in\" onclick=\"window.top.location.replace('/ymovie/seungtae/signIn.jsp');\"/>");
-					out.print("<input class = \"signUP\" type=\"button\" value=\"Sign up\" onclick=\"window.top.location.replace('./ymovie/seungtae/signUp.jsp');\"/>");
+					out.print("<input class = \"signUP\" type=\"button\" value=\"Sign up\" onclick=\"window.top.location.replace('/ymovie/seungtae/signUp.jsp');\"/>");
 				}
 			%>	    
 		    </div>
