@@ -33,8 +33,8 @@
 	    </div>
     </div>
 	<div id="ad" class="outer border centered">
-		<div id="adSizeName">(대충 회원가입하고 싶은 문구)</div>
-		<input type="button" value="(대충 센스있는 버튼 내용)" onclick="location.href='seungtae/signUp.jsp'">
+		<div id="adSizeName">Y-Movie</div>
+		<input type="button" value="가입하기" onclick="location.href='seungtae/signUp.jsp'">
     </div>
     <div class="outer border flex">
 	    <img id="poster" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" alt="poster">

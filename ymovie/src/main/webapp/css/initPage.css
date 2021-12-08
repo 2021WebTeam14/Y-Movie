@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
 
 .outer{
-	margin: 100px; padding: 10px; border-radius: 10px;
+	margin: 50px 100px 100px 100px; padding: 10px; border-radius: 10px;
 }
 .border{
 	border: 2px solid black;
@@ -88,7 +88,7 @@ input[onclick="location.href='seungtae/signUp.jsp'"]{
 	background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/wallpaper.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
-	background-position: 50% 15%;
+	background-position: 50% 20%;
 	height: 300px;
 }
 #adSizeName{

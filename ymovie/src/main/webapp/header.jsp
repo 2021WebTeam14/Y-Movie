@@ -18,11 +18,11 @@
 			<%
 				storeSession sessionDAO = new storeSession();
 				if (sessionDAO.getSession(session) != ""){
-					out.print("<input class = \"signOut\" type=\"button\" value=\"SignOut\" onclick=\"window.top.location.replace('./jaeik/signOut.jsp');\"/>");
+					out.print("<input class = \"signOut\" type=\"button\" value=\"SignOut\" onclick=\"window.top.location.replace('/ymovie//jaeik/signOut.jsp');\"/>");
 				}
 				else {
-					out.print("<input class = \"signIn\" type=\"button\" value=\"Sign in\" onclick=\"window.top.location.replace('./seungtae/signIn.jsp');\"/>");
-					out.print("<input class = \"signUP\" type=\"button\" value=\"Sign up\" onclick=\"window.top.location.replace('./seungtae/signUp.jsp');\"/>");
+					out.print("<input class = \"signIn\" type=\"button\" value=\"Sign in\" onclick=\"window.top.location.replace('/ymovie/seungtae/signIn.jsp');\"/>");
+					out.print("<input class = \"signUP\" type=\"button\" value=\"Sign up\" onclick=\"window.top.location.replace('./ymovie/seungtae/signUp.jsp');\"/>");
 				}
 			%>	    
 		    </div>

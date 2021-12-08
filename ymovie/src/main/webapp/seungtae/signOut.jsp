@@ -1,5 +1,6 @@
 <%@page import="member.memberDAO"%>
-<%@page import="sessionServlet.loginSession"%>
+<%@page import="sessionServlet.*"%>
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,8 +12,8 @@
 </head>
 <body onload="onstart()">  
 	<%
-		loginSession sessionHandler = new loginSession();
-		sessionHandler.rmSession(request, response);
+        storeSession sessionDAO = new storeSession();
+		sessionDAO.deleteSession(session);
 	%>
 	<script type="text/javascript">
 	function onstart() {
