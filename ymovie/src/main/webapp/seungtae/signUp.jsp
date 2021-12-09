@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="signUp.css">
     <script type="text/javascript">
         var profile = null;
-        var radio = document.getElementsByName("avatar");
+        var radio = document.getElementsByName("avvatar");
         function checkForm() 
         {
             var userID = document.getElementById("account").value;
@@ -80,7 +80,7 @@
     
 </head>
 <body>
-    <iframe src="../header.jsp" style="width: 100%; border: none;"></iframe>
+    <iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
     <h1 style="text-align: center"> Sign up for Y-Movie </h1> 
     <form onsubmit="return checkForm()" action="../jaeik/signUpProcess.jsp" method="post">
     <div>

@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
 <title>영화 리뷰 작성</title>
 <link href="writingreview.css" rel="stylesheet" type="text/css">
-<style>    body{margin: 10vh 15vw 10vh 15vw;}</style>
+<style>body {margin: 10vh 15vw 10vh 15vw;}</style>
 <script>
 function getAPIAboutMovie() {
 	<%
@@ -48,6 +48,7 @@ function getAPIAboutMovie() {
 
 </head>
 <body onload="getAPIAboutMovie()">
+	<iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
 <h2>리뷰작성</h2>
 <div class="movie-info">
   	<div class="info-star">
@@ -87,5 +88,6 @@ function getAPIAboutMovie() {
         <input id="submit" type="submit" value="저장"/>
     </form>
 </div>
+	<iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
 </body>
 </html>

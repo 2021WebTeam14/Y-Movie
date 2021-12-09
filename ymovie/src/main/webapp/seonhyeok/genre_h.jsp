@@ -16,7 +16,7 @@
 </head>
 
 <header>
-<iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
+<iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
 </header>
 <body>
 	<div>
@@ -47,7 +47,7 @@
 <iframe src="genre.jsp?genre=드라마" width="1800px" height="1800px" style="border: none; float:left; margin-left:-250px" id="asdf"></iframe>
 
 
-<iframe src="footer.html" style="width: 69vw; border: none"></iframe>
+<iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
 
 </body>
 </html>

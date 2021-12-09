@@ -9,13 +9,7 @@
 <meta charset="UTF-8">
 <title>Y-Movie</title>
 <link href="weekly_rank.css" rel="stylesheet" type="text/css">
-
-<style>
-body {
-	margin: 10vh 15vw 10vh 15vw;
-}
-</style>
-
+<style>body {margin: 10vh 15vw 10vh 15vw;}</style>
 <script>
 	 function getRecommand() {
 		 <%apiDAO dao = new apiDAO();%>
@@ -31,7 +25,7 @@ body {
 </script>
 </head>
 <body onload="getRecommand()">
-	<iframe src="../header.jsp" style="width: 69vw; border: none;"></iframe>
+	<iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
 	<div class="head">
 		<h2 class="title">주간순위</h2>
 	</div>

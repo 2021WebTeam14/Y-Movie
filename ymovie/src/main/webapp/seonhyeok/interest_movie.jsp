@@ -19,6 +19,7 @@
 <head>
 <title>Y-Movie</title>
 <link href="interest_movie.css" rel="stylesheet" type="text/css">
+<style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
 <script>
 	 function getRecommand() {
 		<%movieDAO dao = new movieDAO();%>
@@ -310,6 +311,7 @@ if (tmpActor.size() != 0)
 </script>
 </head>
 <body onload="getRecommand()">
+    <iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
 
 	<div class="head_section">
 		<h1 class=tit_section>관심 영화 설정</h1>
@@ -718,5 +720,6 @@ if (tmpActor.size() != 0)
 			<button type="submit" class="submit">관심 영화 설정</button>
 		</div>
 	</form>
+	    <iframe src="../footer.html" style="width: 100%; border: none;"></iframe>
 </body>
 </html>

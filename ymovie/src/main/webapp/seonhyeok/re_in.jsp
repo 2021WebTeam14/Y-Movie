@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
 <title>Y-Movie</title>
 <link href="re_in.css" rel="stylesheet" type="text/css">
 <script>
@@ -36,8 +37,8 @@ if (sessionDAO.getSession(session) == "") {
 </head>
 <body onload="getRecommand()">
 
-	<iframe src="header.jsp"
-		style="width: 100%; border: none; height: 10vw"></iframe>
+	<iframe src="../header.jsp"
+		style="width: 100%; border: none; height: 15vw"></iframe>
 
 	<div class="head_section">
 		<h1 class=tit_section>통합추천</h1>
@@ -305,6 +306,6 @@ if (sessionDAO.getSession(session) == "") {
 		</ol>
 	</div>
 
-	<iframe src="footer.html" style="width: 69vw; border: none"></iframe>
+	<iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
 </body>
 </html>

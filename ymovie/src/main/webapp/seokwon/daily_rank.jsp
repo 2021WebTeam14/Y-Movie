@@ -31,7 +31,7 @@ body {
 </script>
 </head>
 <body onload="getRecommand()">
-	<iframe src="../header.jsp" style="width: 69vw; border: none;"></iframe>
+	<iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
 	<div class="head">
 		<h2 class="title">일간순위</h2>
 	</div>

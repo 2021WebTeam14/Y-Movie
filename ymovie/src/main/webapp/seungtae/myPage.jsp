@@ -135,12 +135,12 @@
 	           			int size = reviews.size();
 	           			ArrayList<movieDTO> name = mov.selectByCode(con, reviews.get(size - 1).getMov_code());
 	           		%>
-	           		var nameContent = <%=name.get(0).getMov_name()%>;
+	           		var nameContent = "<%=name.get(0).getMov_name()%>";
 	           		
 	           		document.getElementById("recentReviewTitle").innerText = nameContent;
-	           		document.getElementById("recentReviewThumbs").innerText = <%=reviews.get(size - 1).getRev_thumbs()%> ? "&#128077;" : "&#128078;";
-	           		document.getElementById("recentReviewStars").innerText = star.repeat(<%=reviews.get(size - 1).getRev_star()%>);
-	           		document.getElementById("recentReview").innerText = <%=reviews.get(size - 1).getRev_context()%>;
+	           		document.getElementById("recentReviewThumbs").innerText = "<%=reviews.get(size - 1).getRev_thumbs()%>" ? "&#128077;" : "&#128078;";
+	           		document.getElementById("recentReviewStars").innerText = star.repeat("<%=reviews.get(size - 1).getRev_star()%>");
+	           		document.getElementById("recentReview").innerText = "<%=reviews.get(size - 1).getRev_context()%>";
 	           		
 	         <%}%>
 		}

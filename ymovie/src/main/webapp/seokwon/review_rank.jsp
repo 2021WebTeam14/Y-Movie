@@ -28,7 +28,7 @@
 	 </script>
 </head>
 <body onload="getRank()">
-    <iframe src="../header.jsp" style="width: 69vw; border: none;"></iframe>
+    <iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
 <div class="head">
     <h2>리뷰어 랭킹 TOP20</h2>
 </div>

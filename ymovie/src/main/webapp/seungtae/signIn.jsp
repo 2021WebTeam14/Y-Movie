@@ -14,7 +14,7 @@
         storeSession sessionDAO = new storeSession();
 		sessionDAO.deleteSession(session);
 	%>
-	<iframe id="head" src="../header.jsp" style="width: 100%; border: none;"></iframe>
+	<iframe id="head" src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
 	   <h1 style="text-align: center"> Login </h1> 
 	   
 	    <form style="padding-top: 50px; padding-bottom: 50px;" method="POST" action="signInProcess.jsp">
@@ -36,7 +36,7 @@
 			        		</div>
 			        	</div>
 			        	<div class="innerBoxes">    							        	
-				            <button type="button" onclick="document.location='findPassword.jsp'" style="width: auto;"> 비밀번호 찾기 </button> 
+				            <button type="button" onclick="document.location='../jaeik/findPassword.jsp'" style="width: auto;"> 비밀번호 찾기 </button> 
 		        		</div>
 		        	</div>				        			           
 		        </div>	        	

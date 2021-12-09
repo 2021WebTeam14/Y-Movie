@@ -3,14 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
 <meta charset="UTF-8">
 <title>Y-Movie</title>
-<link href="css/map1.css" rel="stylesheet" />
+<link href="map1.css" rel="stylesheet" />
 
 </head>
 <body>
 
-	<iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
+	<iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
 	
 	<label for="adress"></label>
 	<div class=searchbar>
@@ -132,7 +133,7 @@
 	
 	</script>
 	
-	<iframe src="footer.html" style="width: 69vw; border: none"></iframe>
+	<iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
 </body>
 
 </html>

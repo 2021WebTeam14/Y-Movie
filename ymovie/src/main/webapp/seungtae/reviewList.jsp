@@ -16,7 +16,7 @@
 	</head>
 	
 	<body onload="start()">
-	<iframe src="../header.jsp" style="width: 100%; border: none"></iframe>
+	<iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
 	<h1>나의 리뷰</h1>
 		<table>	
 			<tbody>

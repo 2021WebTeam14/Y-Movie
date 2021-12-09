@@ -117,7 +117,7 @@ margin-bottom: 20px;
 </style>
 </head>
 <body onload="getStart()">
-    <iframe src="../header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
+    <iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
     <div class="sTitle">
     <h1>관리자 전용 페이지</h1>
     <hr>

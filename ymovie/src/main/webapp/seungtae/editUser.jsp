@@ -21,7 +21,7 @@
 		
 	</head>
 	<body onload="init()">
-		<iframe src="../header.jsp" style="width: 100%; border: none;"></iframe>
+		<iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
 		<h1>Change user info</h1>
 		<div class="buttons">
 			<button onclick="document.getElementById('chg_pwd').style.display='block'" class="btn">비밀번호 변경</button>
@@ -149,7 +149,7 @@
 				memberDAO dao = new memberDAO();
 				%>
 				document.getElementById("curr_nick").innerText = "<%= dao.selectMemberById(currentMemID).getMem_nickname()%>";
-				document.getElementById("curr_avatar").src = imgArray[<%= dao.selectMemberById(currentMemID).getMem_icon() - 1%>].src;
+				document.getElementById("curr_avatar").src = imgArray[<%=dao.selectMemberById(currentMemID).getMem_icon() - 1%>].src;
 			}
 			
 			function chg_img(index) 

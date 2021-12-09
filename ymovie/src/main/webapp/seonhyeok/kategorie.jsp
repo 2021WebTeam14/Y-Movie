@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
 <title>Y-Movie</title>
 <link href="kategorie.css" rel="stylesheet" type="text/css">
 <script>
@@ -55,7 +56,7 @@
 </head>
 <body onload="getRecommand()">
 
-<iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
+<iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
 
 	<div class="section_ranking">
 		<div class="box_ranking" data-tiara-layer="list">
@@ -470,7 +471,7 @@
 			</div>
 		</div>
 	</div>
-<iframe src="footer.html" style="width: 69vw; border: none"></iframe>
+<iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
 
 </body>
 </html>
