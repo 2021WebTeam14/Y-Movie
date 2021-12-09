@@ -30,13 +30,16 @@ function getAPIAboutMovie() {
  	<%directorDAO dao2 = new directorDAO();%>
  	<%posterAPI posterAPI = new posterAPI();%>
  	<%ArrayList<movieDTO> data = dao.selectByCode(movcode);%> 
+ 	<%ArrayList<actorDTO> data1 = dao1.selectByMovie(con, movcode);%>
 
    		document.getElementById("img").src = '<%=posterAPI.getPoster(movcode)%>';
    		document.getElementById("movie_name").innerText = '<%=data.get(0).getMov_name()%>';
    		document.getElementById("playdate").innerText = '<%=data.get(0).getMov_year()%>';
    		document.getElementById("director").innerText = '<%=dao2.selectByMovie(con, movcode).get(0).getDir_director()%>';
-   		<%for(int i=0;i<data.size();i++){%>
-   		document.getElementById("actor<%=i%>").innerText = '<%=dao1.selectByMovie(con, movcode).get(i).getAct_actor()%>';
+   		<%System.out.println(data1.size());
+   		%>
+   		<%for(int i=0; i<data1.size(); i++){%>
+   		document.getElementById("actor<%=i%>").innerText = '<%=data1.get(i).getAct_actor()%>';
    		<%}%>
    		document.getElementById("genre").innerText = '<%=data.get(0).getMov_genre()%>';
    		document.getElementById("avg_star").innerText = '<%=data.get(0).getStarAvg()%>';

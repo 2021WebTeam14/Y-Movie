@@ -16,7 +16,7 @@
 <link href="movieinfo.css" rel="stylesheet" />
 
 <style>	body{margin: 10vh 15vw 10vh 15vw;}</style>
-<script><%-- 영화 정보 받아오는 함수 입력 --%>
+<script>
 	function getAPIAboutMovie() {
 		<%
 		Connection con = null;
@@ -31,7 +31,7 @@
 	 	<%directorDAO dao2 = new directorDAO();%>
 	 	<%posterAPI posterAPI = new posterAPI();%>
 	 	<%ArrayList<movieDTO> data = dao.selectByCode(movcode);%> 
-	 	<%ArrayList<actorDTO> data1 = dao1.selectByCode(con, movcode);%>
+	 	<%ArrayList<actorDTO> data1 = dao1.selectByMovie(con, movcode);%>
 
        		document.getElementById("img").src = '<%=posterAPI.getPoster(movcode)%>';
        		document.getElementById("movie_name").innerText = '<%=data.get(0).getMov_name()%>';
