@@ -20,7 +20,7 @@
 	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
 	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
 	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>";	    
-	        document.getElementById("img<%=i%>").setAttribute('onClick', movInfo.jsp?movcode=<%=data.get(i).getCode()%>);
+	        document.getElementById("img<%=i%>").setAttribute('onClick', "location.href='movieinfo.jsp?movcode=<%=data.get(i).getCode()%>'");
 	        <%}%>
 	    }
 	 </script>
