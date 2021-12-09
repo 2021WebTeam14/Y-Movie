@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import defaultConn.getConn;
-import sessionServlet.storeSession;
 
 public class movieDAO {
 	public ArrayList<Integer> getAmount(Connection con) {
@@ -252,6 +250,8 @@ public class movieDAO {
 		String query = "select * from movie where mov_genre =\"" + targetGenre + "\" limit 16" ;
 		//System.out.println(query);
 		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 
