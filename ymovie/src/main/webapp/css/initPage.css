@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
 
 .outer{
-	margin: 100px; padding: 10px; border-radius: 10px;
+	margin: 0 100px 100px 100px; padding: 10px; border-radius: 10px;
 }
 .border{
 	border: 2px solid black;
@@ -127,4 +127,7 @@ h3 {
     text-overflow: ellipsis;
     white-space: nowrap;
     margin: auto;
+}
+#nav li:hover iframe{
+	height: 20vw;
 }

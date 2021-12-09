@@ -102,13 +102,6 @@ public class reviewDAO {
 	}
 	
 	public int updateReview(reviewDTO dto) {
-		System.out.println("asdf");
-		System.out.println(dto.getMem_id());
-		System.out.println(dto.getMov_code());
-		System.out.println(dto.getRev_context());
-		System.out.println(dto.getRev_num());
-		System.out.println(dto.getRev_star());
-		System.out.println(dto.getRev_thumbs());
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

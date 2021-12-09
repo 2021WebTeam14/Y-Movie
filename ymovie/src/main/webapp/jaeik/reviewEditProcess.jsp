@@ -23,10 +23,10 @@
 		}
 		request.setCharacterEncoding("UTF-8");
 		reviewDAO dao = new reviewDAO();
-		reviewDTO dto = new reviewDTO(request.getParameter("editReviewTitle"), id, Integer.parseInt(request.getParameter("rating")), Integer.parseInt(request.getParameter("thumbs")), request.getParameter("editedReview"));
+		reviewDTO dto = new reviewDTO(request.getParameter("movieCode"), id, Integer.parseInt(request.getParameter("rating")), Integer.parseInt(request.getParameter("thumbs")), request.getParameter("editedReview"));
 		dao.updateReview(dto);
     %>
-	history.back();
+    location.href="/ymovie/seungtae/reviewList.jsp";
 	}
 </script>
 

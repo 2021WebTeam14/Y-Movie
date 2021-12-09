@@ -1,5 +1,5 @@
 <%@page import="sessionServlet.storeSession"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -26,13 +26,44 @@
 				}
 			%>	    
 		    </div>
-			<nav class="nav">
-			    <a href="/html/intro">영화 추천 | </a>
-			    <a href="/css/intro">영화 리뷰 | </a>
-			    <a href="/javascript/intro">박스오피스 순위 | </a>
-			    <a href="/javascript/intro">영화관 찾기 | </a>
-			    <a href="/javascript/intro">마이페이지</a>
-			</nav>
+		    <ul id="nav">
+		    	<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천&nbsp;</a>
+			    	<ul>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    	</ul>
+		    	</li>
+		    	<li><a href="/ymovie/seokwon/writingreview.jsp">&nbsp;영화 리뷰&nbsp;</a>
+			    	<ul>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    	</ul>
+		    	</li>
+		    	<li><a href="/ymovie/seokwon/daily_rank.jsp">&nbsp;박스오피스&nbsp;</a>
+			    	<ul>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    	</ul>
+		    	</li>
+		    	<li><a href="/ymovie/seonhyeok/map1.jsp">&nbsp;영화관 찾기&nbsp;</a>
+			    	<ul>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    	</ul>
+		    	</li>
+		    	<li><a href="/ymovie/seungtae/myPage.jsp">&nbsp;마이페이지</a>
+			    	<ul>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp">영화 추천</a></li>
+			    	</ul>
+		    	</li>
+		    
+		    </ul>
    		</div>
 	</div>
 </body>

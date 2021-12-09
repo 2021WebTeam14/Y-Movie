@@ -109,7 +109,7 @@
 			else {
 				for (int i = 0; i < data.size(); i++){
 				%>
-				putReview(createMovieDiv("<%=movDao.selectByCode(con, data.get(i).getMov_code()).get(0).getMov_name()%>", "<%=data.get(i).getRev_context()%>", <%=data.get(i).getRev_thumbs()%>, <%=data.get(i).getRev_star()%>, <%=i%>));
+				putReview(createMovieDiv("<%=movDao.selectByCode(con, data.get(i).getMov_code()).get(0).getMov_name()%>", <%=data.get(i).getMov_code()%>,  "<%=data.get(i).getRev_context()%>", <%=data.get(i).getRev_thumbs()%>, <%=data.get(i).getRev_star()%>, <%=i%>));
 				<%
 				}
 			}%>	

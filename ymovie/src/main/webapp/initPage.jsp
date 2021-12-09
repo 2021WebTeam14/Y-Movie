@@ -28,7 +28,7 @@
 </script>
 </head>
 <body onload="getData()">
-    <iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
+    <iframe name="title" src="header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
     
     <div class="outer border centered">
     	<div class="centered noMP"><h1 id="heading"></h1></div>

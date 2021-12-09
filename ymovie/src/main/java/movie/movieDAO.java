@@ -199,18 +199,15 @@ public class movieDAO {
 		}
 		return dtos;
 	}
-	public ArrayList<movieDTO> selectByCode(String targetCode)  {
+	public ArrayList<movieDTO> selectByCode(Connection con, String targetCode)  {
 		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
 		movieDTO dto;
 
-		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		String query = "select * from movie where mov_code =\"" + targetCode + "\"";
 		//System.out.println(query);
 		try {
-			getConn getCon = new getConn();
-			con = getCon.getConnection();
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 
@@ -247,7 +244,7 @@ public class movieDAO {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query = "select * from movie where mov_genre =\"" + targetGenre + "\" limit 16" ;
+		String query = "select * from movie where mov_genre =\"" + targetGenre + "\" order by rand() limit 16" ;
 		//System.out.println(query);
 		try {
 			getConn getCon = new getConn();
