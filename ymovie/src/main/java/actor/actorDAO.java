@@ -16,7 +16,7 @@ public class actorDAO {
 		Statement stmt = null;
 		ResultSet rs = null;
 		String query = "select * from actor";
-		//System.out.println(query);
+		System.out.println(query);
 		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);

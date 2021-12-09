@@ -8,7 +8,7 @@
 	<title>Y-Movie</title>
     <link href="css/header.css" rel="stylesheet" />
 </head>
-<body>
+<body onload="init()">
 	<div class="header">
 		<div class="imgWrapper">
 		<img src="img/logo.png" alt="Y-Movie" width="100%" height="100%" onclick="window.top.location.replace('/ymovie/initPage.jsp')"/>
@@ -18,6 +18,7 @@
 			<%
 				storeSession sessionDAO = new storeSession();
 				if (sessionDAO.getSession(session) != ""){
+                    out.print("<input type=\"button\" id=\"loggedInUser\" disabled= \"disabled\" value=\"\"/>");
 					out.print("<input class = \"signOut\" type=\"button\" value=\"SignOut\" onclick=\"window.top.location.replace('/ymovie//jaeik/signOut.jsp');\"/>");
 				}
 				else {
@@ -66,4 +67,15 @@
 		    </ul>
    		</div>
 	</div>
+	<script type="text/javascript">
+        function init() 
+        {        
+            <%if (sessionDAO.getSession(session) != "")
+            {%>
+                document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+            <%}%>
+            
+            document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
+        }
+    </script>
 </body>

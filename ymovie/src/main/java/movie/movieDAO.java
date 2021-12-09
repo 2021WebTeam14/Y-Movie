@@ -236,7 +236,46 @@ public class movieDAO {
 		}
 		return dtos;
 	}
-	
+	public ArrayList<movieDTO> selectByCode(String targetCode)  {
+		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
+		movieDTO dto;
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String query = "select * from movie where mov_code =\"" + targetCode + "\"";
+		//System.out.println(query);
+		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				String mov_name = rs.getString("mov_name");
+				String mov_code = rs.getString("mov_code");
+				int mov_year = rs.getInt("mov_year");
+				String mov_state = rs.getString("mov_state");
+				String mov_genre = rs.getString("mov_genre");
+				int starSum = rs.getInt("starSum");
+				int starCount = rs.getInt("starCount");
+
+
+				dto = new movieDTO(mov_name, mov_code , mov_year, mov_state, mov_genre, starSum, starCount);
+				dtos.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dtos;
+	}
 	public ArrayList<movieDTO> selectByGenre(String targetGenre)  {
 		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
 		movieDTO dto;
@@ -244,11 +283,47 @@ public class movieDAO {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query = "select * from movie where mov_genre =\"" + targetGenre + "\" order by rand() limit 16" ;
+		String query = "select * from movie where mov_genre like \"%" + targetGenre + "%\" order by rand() limit 16" ;
 		//System.out.println(query);
 		try {
 			getConn getCon = new getConn();
 			con = getCon.getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				String mov_name = rs.getString("mov_name");
+				String mov_code = rs.getString("mov_code");
+				int mov_year = rs.getInt("mov_year");
+				String mov_state = rs.getString("mov_state");
+				String mov_genre = rs.getString("mov_genre");
+				int starSum = rs.getInt("starSum");
+				int starCount = rs.getInt("starCount");
+
+				dto = new movieDTO(mov_name, mov_code , mov_year, mov_state, mov_genre, starSum, starCount);
+				dtos.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dtos;
+	}
+
+	public ArrayList<movieDTO> selectByGenre(Connection con, String targetGenre)  {
+		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
+		movieDTO dto;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String query = "select * from movie where mov_genre like \"%" + targetGenre + "%\" order by rand() limit 16" ;
+		//System.out.println(query);
+		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 
@@ -739,29 +814,6 @@ public ArrayList<ArrayList<CodeNameYearDTO>> getRecommandsByCate(String targetId
 			catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		if (dtos.get(0).size() < 8 || dtos.get(1).size() < 8 || dtos.get(2).size() < 8) {
-			int lastLoad = 24 - dtos.get(0).size() - dtos.get(1).size() - dtos.get(2).size();
-			query = new StringBuilder("select mov_code, mov_name, mov_year from movie order by rand() limit ");
-			query.append(String.valueOf(lastLoad));
-			
-			try {
-				rs = stmt.executeQuery(query.toString());
-				while(rs.next()) {
-					dto.add(new CodeNameYearDTO(rs.getString("mov_code"), rs.getString("mov_name"), rs.getString("mov_year")));
-				}
-				dtos.add(dto);				
-			} 
-			catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		try {
-			if(rs != null) rs.close();
-			if(stmt != null) stmt.close();
-		} catch(Exception e) {
-			e.printStackTrace();
 		}
 		return dtos;	
 	}
