@@ -1,5 +1,5 @@
+<%@page import="sessionServlet.storeSession"%>
 <%@page import="member.memberDAO"%>
-<%@page import="sessionServlet.loginSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,9 +11,8 @@
 </head>
 <body>  
 	<%
-		loginSession sessionHandler = new loginSession();
-		sessionHandler.rmSession(request, response);
-        request.setCharacterEncoding("UTF-8");
+	    storeSession sessionDAO = new storeSession();
+		sessionDAO.deleteSession(session);
 	%>
 	<iframe id="head" src="../header.jsp" style="width: 100%; border: none;"></iframe>
 	   <h1 style="text-align: center"> 비밀번호 찾기 </h1> 
