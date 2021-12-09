@@ -22,17 +22,17 @@
 	</head>
 	<body onload="init()">
 		<iframe src="../header.jsp" style="width: 100%; border: none;"></iframe>
-		<h1 style="text-align: center;">Change user info</h1>
+		<h1>Change user info</h1>
 		<div class="buttons">
-			<button onclick="document.getElementById('chg_pwd').style.display='block'" class="btn">change password</button>
-			<button onclick="document.getElementById('chg_nick').style.display='block'" class="btn">change nickname</button>
-			<button onclick="document.getElementById('chg_profile').style.display='block'" class="btn">change profile</button>
+			<button onclick="document.getElementById('chg_pwd').style.display='block'" class="btn">비밀번호 변경</button>
+			<button onclick="document.getElementById('chg_nick').style.display='block'" class="btn">닉네임 변경</button>
+			<button onclick="document.getElementById('chg_profile').style.display='block'" class="btn">프로필 사진 변경</button>
 		</div>
 		
 		
 		<div id="chg_pwd" class="top_container">	
 			<form class="contents" onsubmit="return checkPW()" method="post" action="editPwProcess.jsp">		
-			<h2 style="text-align: center;">비밀번호 변경</h2>
+			<h2>비밀번호 변경</h2>
 			<div class="container">			
 				<span onclick="document.getElementById('chg_pwd').style.display='none'" class="close" title="창 닫기">&times;</span>
 					
@@ -55,7 +55,7 @@
 		
 		<div id="chg_nick" class="top_container">
 			<form class="contents" method="post" action="editNickProcess.jsp">		
-			<h2 style="text-align: center;">닉네임 변경</h2>
+			<h2>닉네임 변경</h2>
 			<div class="container">
 				<span onclick="document.getElementById('chg_nick').style.display='none'" class="close" title="창 닫기">&times;</span>
 					<label>현재 닉네임: </label>
@@ -73,7 +73,7 @@
 			
 		<div id="chg_profile" class="top_container">	
 			<form class="contents" onsubmit="return checkProfile()" method="post" action="editProfileProcess.jsp">		
-			<h2 style="text-align: center;">프로필 사진 변경</h2>
+			<h2>프로필 사진 변경</h2>
 			<div class="container">
 				<span onclick="resetImg()" class="close" title="창 닫기">&times;</span>
 					<label>현재 프로필 사진: </label>
@@ -105,7 +105,7 @@
 							<input type="radio" name="avatar" value="6"> 
 						</li>
 					</ul>	
-					<input type="text" id="selProfile" name="selectedProfile" value="" style="display: none;">
+					
 			</div>			
 			
 			<div class="container_button" style="text-align: center;">
@@ -114,6 +114,7 @@
 			</div>
 			</form>
 		</div>
+		
 		<iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 	</body>
 	
@@ -165,9 +166,7 @@
 	
 				document.getElementById("avatar" + index).className = "highlighted";
 				radio[index - 1].checked = true;
-				profile = document.getElementById("avatar" + index);
-				selProfile = index;
-				document.getElementById("selProfile").value = selProfile;			
+				profile = document.getElementById("avatar" + index);			
 			}
 			
 			function resetImg() 
@@ -216,5 +215,6 @@
 				
 				return true;
 			}
+			
 		</script>
 </html>

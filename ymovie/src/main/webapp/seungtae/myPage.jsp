@@ -28,13 +28,27 @@
 		<div class="container">
 		
 			<img id="userProfile" alt="avatar of this user" src="">
-			<div id="userInfo">
+			<div class="userInfo">
 				<label>아이디: </label>
 				<p id="userID">This user's ID</p>
 				<label>닉네임: </label>
 				<p id="userNick">This user's Nickname</p>
 			</div>
-			<button onclick="window.top.location.href='editUser.jsp';" style="height: 50px; cursor: pointer;">회원정보 수정</button>
+			
+			<div class="userInfo">
+				<label>선호 장르: </label>
+				<p id="userGenre">This user's favGenre</p>
+				<label>선호 감독: </label>
+				<p id="userDirector">This user's favDirector</p>
+				<label>선호 배우: </label>
+				<p id="userActor">This user's favActor</p>
+			</div>
+			
+			<div class="container" style="flex-direction: column;">
+				<button onclick="window.top.location.href='editUser.jsp';" style="height: 50px; cursor: pointer;">회원정보 수정</button>
+				<button onclick="window.top.location.href='editUser.jsp';" style="height: 50px; cursor: pointer;">선호 설정 변경</button>
+			</div>
+			
 		</div>
 		
 		<label style="display: inherit; margin-bottom: 5px;">최근 작성한 리뷰</label>
@@ -99,14 +113,21 @@
 	         var id = document.getElementById("userID");
 	         var nick = document.getElementById("userNick");
 	         var profile = document.getElementById("userProfile");
+	         var genre = document.getElementById("userGenre");
+	         var director = document.getElementById("userDirector");
+	         var actor = document.getElementById("userActor");
 	         
 	         id.innerText = "<%= current.getMem_id()%>";
-	         nick.innerText = "<%= current.getMem_nickname()%>";
+	         nick.innerText = "<%= current.getMem_nickname()%>";	         
 	         profile.src = imgArray[<%= current.getMem_icon() - 1%>].src;
+	         genre.innerText = "<%= current.getMem_favGenre()%>";
+	         director.innerText = "<%= current.getMem_favDirector()%>";
+	         actor.innerText = "<%= current.getMem_favActor()%>";
 	         
 	         <%if(reviews.isEmpty())
 	         	{%>
 	         		document.getElementById("recentReview").innerText = "작성하신 리뷰가 없습니다.";
+	         		document.getElementById("recentReview").style.textAlign = "center";
 	         <%}
 	         else
 	           {%>   
