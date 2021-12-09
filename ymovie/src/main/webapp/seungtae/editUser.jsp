@@ -164,7 +164,7 @@
 				}
 	
 				document.getElementById("avatar" + index).className = "highlighted";
-				radio[index].checked = true;
+				radio[index - 1].checked = true;
 				profile = document.getElementById("avatar" + index);
 				selProfile = index;
 				document.getElementById("selProfile").value = selProfile;			
