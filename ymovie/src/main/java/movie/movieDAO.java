@@ -201,15 +201,18 @@ public class movieDAO {
 		}
 		return dtos;
 	}
-	public ArrayList<movieDTO> selectByCode(Connection con, String targetCode)  {
+	public ArrayList<movieDTO> selectByCode(String targetCode)  {
 		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
 		movieDTO dto;
-		
+
+		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		String query = "select * from movie where mov_code =\"" + targetCode + "\"";
 		//System.out.println(query);
 		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 
@@ -238,6 +241,45 @@ public class movieDAO {
 		}
 		return dtos;
 	}
+	
+	public ArrayList<movieDTO> selectByGenre(String targetGenre)  {
+		ArrayList<movieDTO> dtos = new ArrayList<movieDTO>();
+		movieDTO dto;
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String query = "select * from movie where mov_genre =\"" + targetGenre + "\" limit 16" ;
+		//System.out.println(query);
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				String mov_name = rs.getString("mov_name");
+				String mov_code = rs.getString("mov_code");
+				int mov_year = rs.getInt("mov_year");
+				String mov_state = rs.getString("mov_state");
+				String mov_genre = rs.getString("mov_genre");
+				int starSum = rs.getInt("starSum");
+				int starCount = rs.getInt("starCount");
+
+				dto = new movieDTO(mov_name, mov_code , mov_year, mov_state, mov_genre, starSum, starCount);
+				dtos.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dtos;
+	}
+	
 	public void addStar(Connection con, String targetCode, int star)  {
 		String query = "update movie set starSum = starSum + ?, starCount = starCount + 1 where mov_code= ?";
 		try {
