@@ -6,7 +6,8 @@
 	height:400px;
 }
 .list_movieranking{
-	padding: 0 200px;
+	margin: 0;
+	padding: 0;
 
 }
 .list_movieranking li{
@@ -130,28 +131,21 @@ body{
 .item_poster .thumb_cont .txt_num {
   padding-left: 5px;
   }
-  .poster_movie{
-    position: relative;
-    background-image: url(https://jaguar.ssl.cdn.sdlmedia.com/636353687510047376OV.jpg?v=24);                                                               
-    height: 100vh;
-    background-size: cover;
-  }
-
-  .poster_movie-cover{
-     position: absolute;
-     height: 100%;
-     width: 100%;
-     background-color: rgba(0, 0, 0, 0.7);                                                                 
-     z-index:1;
-  }
-
-  .poster_movie .ranking{
-     position: absolute;
-     top:50%;
-     left:50%;
-     transform: translate(-50%, -50%);                                                                   
-     font-size:5rem;
-     color: white;
-     z-index: 2;
-     text-align: center;
+ 
+ .item_poster .rank_num {
+     margin-left: -10px;
+  position: absolute;
+  z-index: 1;
+  top: 7px;
+  left: 0px;
+  font-family: 'SF-UI-Display-Thin', sans-serif;
+  font-style: italic;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.2); 
+  background-color: #ff4e00;
+  text_align: center;
+  padding: 0px 9px 0px 5px;
+  
   }
