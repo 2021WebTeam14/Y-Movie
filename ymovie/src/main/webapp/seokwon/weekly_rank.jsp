@@ -11,6 +11,7 @@
 <link href="weekly_rank.css" rel="stylesheet" type="text/css">
 
 <style>	body{margin: 10vh 15vw 10vh 15vw;}</style>
+
 <script>
 	 function getRecommand() {
 		 <%apiDAO dao = new apiDAO();%>
@@ -18,9 +19,9 @@
 		 <%ArrayList<CodeNameYearDTO> data = dao.getAPIBoxOfficeWeekly();%> 
 	        <%for(int i=0;i<10;i++){%>
 	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
-	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
-	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>";
-	        document.getElementById("img<%=i%>").setAttribute("onClick", movInfo.jsp?movcode=<%=data.get(i).getCode()%>);
+	        document.getElementById("Name<%=i%>").innerText = '<%=data.get(i).getName()%>';
+	        document.getElementById("Year<%=i%>").innerText = '<%=data.get(i).getYear()%>';
+	        document.getElementById("img<%=i%>").setAttribute('onClick', "location.href='movieinfo.jsp?movcode=<%=data.get(i).getCode()%>'");
 	        <%}%>
 	    }
 	 </script>
@@ -37,7 +38,7 @@
             <div class="item_poster" >
                <div class="thumb_item">
                   <div class="poster_movie">
-                     <img id="img0" src="" class="img_thumb" onclick=""><%--movieInfo.jsp?movcode= --%>
+                     <img id="img0" src="" class="img_thumb" onclick="">
                                         
                   </div>                             
                </div>
@@ -54,7 +55,7 @@
             <div class="item_poster" >
                <div class="thumb_item">
                   <div class="poster_movie">
-                     <img id="img1" src="" class="img_thumb">
+                     <img id="img1" src="" class="img_thumb" onclick="">
                                         
                   </div>                             
                </div>
@@ -70,7 +71,7 @@
             <div class="item_poster" >
                <div class="thumb_item">
                   <div class="poster_movie">
-                     <img id="img2" src="" class="img_thumb">
+                     <img id="img2" src="" class="img_thumb" onclick="">
                                         
                   </div>                             
                </div>
@@ -86,7 +87,7 @@
             <div class="item_poster" >
                <div class="thumb_item">
                   <div class="poster_movie">
-                     <img id="img3" src="" class="img_thumb">
+                     <img id="img3" src="" class="img_thumb" onclick="">
                                         
                   </div>                             
                </div>
@@ -102,7 +103,7 @@
             <div class="item_poster" >
                <div class="thumb_item">
                   <div class="poster_movie">
-                     <img id="img4" src="" class="img_thumb">
+                     <img id="img4" src="" class="img_thumb" onclick="">
                                         
                   </div>                             
                </div>
@@ -118,7 +119,7 @@
             <div class="item_poster" >
                <div class="thumb_item">
                   <div class="poster_movie">
-                     <img id="img5" src="" class="img_thumb">
+                     <img id="img5" src="" class="img_thumb" onclick="">
                                         
                   </div>                             
                </div>
@@ -134,7 +135,7 @@
             <div class="item_poster" >
                <div class="thumb_item">
                   <div class="poster_movie">
-                     <img id="img6" src="" class="img_thumb">
+                     <img id="img6" src="" class="img_thumb" onclick="">
                                         
                   </div>                             
                </div>
@@ -150,7 +151,7 @@
             <div class="item_poster" >
                <div class="thumb_item">
                   <div class="poster_movie">
-                     <img id="img7" src="" class="img_thumb">
+                     <img id="img7" src="" class="img_thumb" onclick="">
                                         
                   </div>                             
                </div>
@@ -166,7 +167,7 @@
             <div class="item_poster" >
                <div class="thumb_item">
                   <div class="poster_movie">
-                     <img id="img8" src="" class="img_thumb">
+                     <img id="img8" src="" class="img_thumb" onclick="">
                                         
                   </div>                             
                </div>
@@ -182,7 +183,7 @@
             <div class="item_poster" >
                <div class="thumb_item">
                   <div class="poster_movie">
-                     <img id="img9" src="" class="img_thumb">
+                     <img id="img9" src="" class="img_thumb" onclick="">
                                         
                   </div>                             
                </div>
