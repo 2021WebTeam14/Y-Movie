@@ -14,7 +14,7 @@
 	 <link href="re_in.css" rel="stylesheet" type="text/css">
 	 <script>
 	 function getRecommand() {
-		<%-- <%
+		 <%
 		 storeSession sessionDAO = new storeSession();
 		 if (sessionDAO.getSession(session) == ""){
 			 response.setContentType("text/html; charset=UTF-8");
@@ -22,7 +22,7 @@
 			 outA.println("<script>alert('로그인이 필요합니다.'); location.href='../initPage.jsp';</script>");
 			 outA.flush();
 		 }
-		 %> --%>
+		 %> 
 		 <% 
          request.setCharacterEncoding("UTF-8");
          String genre=request.getParameter("genre");
@@ -37,7 +37,8 @@
 	        <%for(int i=0;i<16;i++){%>
 	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getMov_code())%>';
 	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getMov_name()%>";
-	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getMov_year()%>년";	       
+	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getMov_year()%>년";
+	        document.getElementById("img<%=i%>").setAttribute('onClick', "location.href='movieinfo_1.jsp?movcode=<%=data.get(i).getMov_code()%>'");
 	        <%}}%> 
 	    } 
 	 </script>
@@ -51,7 +52,7 @@
                         <div class="item_poster" >
                             <div class="thumb_item">
                                 <div class="poster_movie">
-                                        <img id="img0" src="" class="img_thumb">
+                                        <img id="img0" src="" class="img_thumb" onclick="">
                                         
                                 </div>                             
                             </div>

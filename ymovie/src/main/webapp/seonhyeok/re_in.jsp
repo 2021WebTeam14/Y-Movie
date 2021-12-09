@@ -13,34 +13,32 @@
 <link href="re_in.css" rel="stylesheet" type="text/css">
 <script>
 	 function getRecommand() {
-		 <%
-		 storeSession sessionDAO = new storeSession();
-		 if (sessionDAO.getSession(session) == ""){
-			 response.setContentType("text/html; charset=UTF-8");
-			 PrintWriter outA = response.getWriter();
-			 outA.println("<script>alert('로그인이 필요합니다.'); location.href='../initPage.jsp';</script>");
-			 outA.flush();
-		 }
-		 %>
-		 <%
-		 movieDAO dao = new movieDAO();
-		 posterAPI posterAPI = new posterAPI();
-		 apiDAO asdf = new apiDAO();
-		 asdf.getAPIBoxOfficeWeekly();
-	     ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands(sessionDAO.getSession(session));
-		 %>
+		 <%storeSession sessionDAO = new storeSession();
+if (sessionDAO.getSession(session) == "") {
+	response.setContentType("text/html; charset=UTF-8");
+	PrintWriter outA = response.getWriter();
+	outA.println("<script>alert('로그인이 필요합니다.'); location.href='../initPage.jsp';</script>");
+	outA.flush();
+}%>
+		 <%movieDAO dao = new movieDAO();
+			posterAPI posterAPI = new posterAPI();
+			apiDAO asdf = new apiDAO();
+			asdf.getAPIBoxOfficeWeekly();
+			ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands(sessionDAO.getSession(session));%>
         <%for (int i = 0; i < 16; i++) {%>
         document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
         document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
         document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>";
+        document.getElementById("img<%=i%>").setAttribute('onClick', "location.href='movieinfo.jsp?movcode=<%=data.get(i).getCode()%>'");
 <%}%>
 	}
 </script>
 </head>
 <body onload="getRecommand()">
-	
-	<iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
-	
+
+	<iframe src="header.jsp"
+		style="width: 100%; border: none; height: 10vw"></iframe>
+
 	<div class="head_section">
 		<h1 class=tit_section>통합추천</h1>
 	</div>
@@ -50,7 +48,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img0" src="" class="img_thumb">
+							<img id="img0" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -67,7 +65,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img1" src="" class="img_thumb">
+							<img id="img1" src="" class="img_thumb"onclick="">
 
 						</div>
 					</div>
@@ -83,7 +81,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img2" src="" class="img_thumb">
+							<img id="img2" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -99,7 +97,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img3" src="" class="img_thumb">
+							<img id="img3" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -115,7 +113,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img4" src="" class="img_thumb">
+							<img id="img4" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -131,7 +129,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img5" src="" class="img_thumb">
+							<img id="img5" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -147,7 +145,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img6" src="" class="img_thumb">
+							<img id="img6" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -163,7 +161,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img7" src="" class="img_thumb">
+							<img id="img7" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -179,7 +177,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img8" src="" class="img_thumb">
+							<img id="img8" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -195,7 +193,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img9" src="" class="img_thumb">
+							<img id="img9" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -211,7 +209,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img10" src="" class="img_thumb">
+							<img id="img10" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -227,7 +225,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img11" src="" class="img_thumb">
+							<img id="img11" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -243,7 +241,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img12" src="" class="img_thumb">
+							<img id="img12" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -259,7 +257,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img13" src="" class="img_thumb">
+							<img id="img13" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -275,7 +273,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img14" src="" class="img_thumb">
+							<img id="img14" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -291,7 +289,7 @@
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img15" src="" class="img_thumb">
+							<img id="img15" src="" class="img_thumb" onclick="">
 
 						</div>
 					</div>
@@ -306,7 +304,7 @@
 
 		</ol>
 	</div>
- 
- 		<iframe src="footer.html" style="width: 69vw; border: none"></iframe>
+
+	<iframe src="footer.html" style="width: 69vw; border: none"></iframe>
 </body>
 </html>

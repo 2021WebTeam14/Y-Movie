@@ -11,6 +11,7 @@ a{
     color: #111;
     font-family: Roboto,NotosansKR,"Helvetica Neue",Helvetica,Arial,"Apple SD Gothic Neo",-apple-system,BlinkMacSystemFont,"Malgun Gothic",Dotum,sans-serif;
 	text-align: center;
+	cursor:pointer;
 }
 
 li{
