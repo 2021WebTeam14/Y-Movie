@@ -47,6 +47,7 @@ public class storeSession {
 			e.printStackTrace();
 			return result;
 		}
+		System.out.println("ses : " + result);
 		return result;
 	}
 	public void deleteSession(HttpSession ses) {
