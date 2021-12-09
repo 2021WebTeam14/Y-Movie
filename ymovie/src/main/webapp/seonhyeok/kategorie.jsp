@@ -11,14 +11,27 @@
 <link href="css/kategorie.css" rel="stylesheet" type="text/css">
 <script>
 	 function getRecommand() {
-		 <%movieDAO dao = new movieDAO();%>
+		 <%--
+		 <%
+		 storeSession sessionDAO = new storeSession();
+		 if (sessionDAO.getSession(session) == ""){
+			 response.setContentType("text/html; charset=UTF-8");
+			 PrintWriter outA = response.getWriter();
+			 outA.println("<script>alert('로그인이 필요합니다.'); location.href='../initPage.jsp';</script>");
+			 outA.flush();
+		 }
+		 %>
+		 --%>
+	       <%movieDAO dao = new movieDAO();%>
 		 <%posterAPI posterAPI = new posterAPI();%>
-	        <%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%> 
-	        <%for (int i = 0; i < 8; i++) {%>
-	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
-	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
-	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";
-<%}%>
+	        <%ArrayList<mem_favGenre> favgenre = dao.getMemberFav;%> 
+	        
+	        <%for(int i=0;i<8;i++){%>
+	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getMov_code())%>';
+	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getMov_name()%>";
+	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getMov_year()%>년";	       
+	        <%}}%> 
+	    } 
 	}
 	 <%for (int i = 8; i < 16; i++) {%>
      document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';

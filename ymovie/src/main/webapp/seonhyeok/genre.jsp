@@ -1,30 +1,48 @@
+<%@page import="sessionServlet.storeSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="movie.*" %>
-<%@ page import="api_DB.*" %>
+<%@ page import="movie.*"%>
+<%@ page import="api_DB.*"%>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.io.PrintWriter"%>
+
 	
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Y-Movie</title>
-	 <link href="css/re_in.css" rel="stylesheet" type="text/css">
+	 <link href="re_in.css" rel="stylesheet" type="text/css">
 	 <script>
-	 function getRecommand(index1) {
-		 alert(index1);
-		 <%-- <% String genre = request.getParameter("genre"); %>
+	 function getRecommand() {
+		<%-- <%
+		 storeSession sessionDAO = new storeSession();
+		 if (sessionDAO.getSession(session) == ""){
+			 response.setContentType("text/html; charset=UTF-8");
+			 PrintWriter outA = response.getWriter();
+			 outA.println("<script>alert('로그인이 필요합니다.'); location.href='../initPage.jsp';</script>");
+			 outA.flush();
+		 }
+		 %> --%>
+		 <% 
+         request.setCharacterEncoding("UTF-8");
+         String genre=request.getParameter("genre");
+
+         if(genre!=null) 
+         {         
+     %>
+		
 		 <%movieDAO dao = new movieDAO();%>
 		 <%posterAPI posterAPI = new posterAPI();%>
-	        <%ArrayList<CodeNameYearDTO> data = dao.getPersonalRecommands("asdf");%> 
+	        <%ArrayList<movieDTO> data = dao.selectByGenre(genre);%> 
 	        <%for(int i=0;i<16;i++){%>
-	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
-	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
-	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";	       
-	        <%}%> --%>
-	    }
+	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getMov_code())%>';
+	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getMov_name()%>";
+	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getMov_year()%>년";	       
+	        <%}}%> 
+	    } 
 	 </script>
 </head>
-<body onload="getRecommand(index1)">
+<body onload="getRecommand()">
 <div class ="head_section">		
 		</div>		
 	<div class="box_boxoffice">
