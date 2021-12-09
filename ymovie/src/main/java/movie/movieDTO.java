@@ -60,6 +60,8 @@ public class movieDTO {
 		return starCount;
 	}
 	public float getStarAvg() {
+		if(starCount == 0)
+			return 0;
 		return starSum/starCount;
 	}
 }
