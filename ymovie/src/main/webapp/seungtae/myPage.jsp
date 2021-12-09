@@ -1,3 +1,15 @@
+<%@page import="movie.movieDTO"%>
+<%@page import="org.eclipse.jdt.internal.compiler.ast.IfStatement"%>
+<%@page import="org.apache.el.util.ConcurrentCache"%>
+<%@page import="member.memberDTO"%>
+<%@page import="member.memberDAO"%>
+<%@page import="movie.movieDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="review.*"%>
+<%@page import="sessionServlet.*"%>
+<%@ page import="java.io.PrintWriter"%>
+<%@ page import="defaultConn.getConn" %>
+<%@ page import="java.sql.Connection" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,7 +21,7 @@
 		<link rel="stylesheet" type="text/css" href="myPage.css">
 	</head>
 	
-	<body>
+	<body onload="start()">
 		
 		<iframe src="../header.jsp" style="width: 100%; border: none;"></iframe>
 		<h1>내 정보</h1>
@@ -25,21 +37,91 @@
 			<button onclick="window.top.location.href='editUser.jsp';" style="height: 50px; cursor: pointer;">회원정보 수정</button>
 		</div>
 		
-		<div class="review">
-			<label style="text-align: left;">최근 작성한 리뷰</label>
-			<p id="recentReview" style="overflow-wrap: break-word;">
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-				Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-				when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-			</p>
+		<label style="display: inherit; margin-bottom: 5px;">최근 작성한 리뷰</label>
+		<div style="display: flex;justify-content: center;align-items: center;">
+			<div>
+				<label id="recentReviewTitle" style="text-align: left;"></label>
+				<label id="recentReviewThumbs"></label>
+				<label id="recentReviewStars"></label>
+			</div>
 			
+			<p id="recentReview" style="overflow-wrap: break-word; width: 75%;">
+				Error!
+			</p>
 		</div>
 		<div style="text-align: right; margin: auto; width: 75%;">
-			<button>리뷰 수정</button><br><br>
+			<br><br>
 			<button style="width: 100%;" onclick="document.location='reviewList.jsp';">내 리뷰 보기</button>
 		</div>
 		
 		
 		<iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 	</body>
+	
+	<script type="text/javascript">
+		function start() 
+		{
+			var title = document.getElementById("recentReviewTitle");
+			var thumb = document.getElementById("recentReviewThumbs");
+			var stars = document.getElementById("recentReviewStars");
+			const star = "★";
+			var imgArray = new Array();
+			var sources = ["img/triangle.png", "img/circle.png", "img/moon.jpg", "img/fire.jpg", "img/watch.jpg", "img/water.jpg"];
+			for(let i = 0; i < 6; i++)
+			{
+				imgArray[i] = new Image();
+				imgArray[i].src = sources[i];
+			}
+			
+			<%
+				storeSession sessionDAO = new storeSession();
+				if (sessionDAO.getSession(session) == "")
+				{
+				 response.setContentType("text/html; charset=UTF-8");
+				 PrintWriter outA = response.getWriter();
+				 outA.println("<script>alert('로그인이 필요합니다.'); location.href='../initPage.jsp';</script>");
+				 outA.flush();
+				}
+			%>
+	         
+	         <%
+	         	memberDAO dao = new memberDAO();
+	         	reviewDAO rev = new reviewDAO();
+	         	movieDAO mov = new movieDAO();
+	         	Connection con = null;
+				getConn getCon = new getConn();
+				con = getCon.getConnection();
+	         	ArrayList<reviewDTO> reviews = rev.selectById(sessionDAO.getSession(session));
+	         	memberDTO current = dao.selectMemberById(sessionDAO.getSession(session));
+	         	
+	         %>
+	         
+	         var id = document.getElementById("userID");
+	         var nick = document.getElementById("userNick");
+	         var profile = document.getElementById("userProfile");
+	         
+	         id.innerText = "<%= current.getMem_id()%>";
+	         nick.innerText = "<%= current.getMem_nickname()%>";
+	         profile.src = imgArray[<%= current.getMem_icon() - 1%>].src;
+	         
+	         <%if(reviews.isEmpty())
+	         	{%>
+	         		document.getElementById("recentReview").innerText = "작성하신 리뷰가 없습니다.";
+	         <%}
+	         else
+	           {%>   
+	           		<%
+	           			int size = reviews.size();
+	           			ArrayList<movieDTO> name = mov.selectByCode(con, reviews.get(size - 1).getMov_code());
+	           		%>
+	           		var nameContent = <%=name.get(0).getMov_name()%>;
+	           		
+	           		document.getElementById("recentReviewTitle").innerText = nameContent;
+	           		document.getElementById("recentReviewThumbs").innerText = <%=reviews.get(size - 1).getRev_thumbs()%> ? "&#128077;" : "&#128078;";
+	           		document.getElementById("recentReviewStars").innerText = star.repeat(<%=reviews.get(size - 1).getRev_star()%>);
+	           		document.getElementById("recentReview").innerText = <%=reviews.get(size - 1).getRev_context()%>;
+	           		
+	         <%}%>
+		}
+	</script>
 </html>
