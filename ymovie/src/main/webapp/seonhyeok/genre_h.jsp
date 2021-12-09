@@ -10,41 +10,43 @@
 <link href="genre_h.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function getgenre(index) {
-		var genre = window.parent.document.getElementById("asdf");
-		genre.contentWindow.getRecommand(index);
+		window.parent.document.getElementById("asdf").src = "genre.jsp?genre=" + index;		
 	}
 </script>
 </head>
-<body>
-<iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
 
+<header>
+<iframe src="header.jsp" style="width: 100%; border: none; height: 10vw"></iframe>
+</header>
+<body>
 	<div>
 		<ul class="genre_list">
-			<li><a class="drama" onclick="getgenre('drama')">드라마</a></li>
-			<li><a class="war" onclick="getgenre('war')">전쟁</a></li>
-			<li><a class="western" onclick="getgenre('western')">서부극(웨스턴)</a></li>
-			<li><a class="comedy" onclick="getgenre('comedy')">코미디</a></li>
-			<li><a class="horror" onclick="getgenre('horror')">공포(호러)</a></li>
-			<li><a class="dacu" onclick="getgenre('dacu')">다큐멘터리</a></li>
-			<li><a class="historical_drama" onclick="getgenre('historical_drama')">사극</a></li>
-			<li><a class="action" onclick="getgenre('action')">액션</a></li>
-			<li><a class="fantasy" onclick="getgenre('fantasy')">판타지</a></li>
-			<li><a class="romance" onclick="getgenre('romance')">멜로/로맨스</a></li>
-			<li><a class="ani" onclick="getgenre('ani')">애니메이션</a></li>
-			<li><a class="adventure" onclick="getgenre('adventure')">어드벤처</a></li>
-			<li><a class="crime" onclick="getgenre('crime')">범죄</a></li>
-			<li><a class="sf" onclick="getgenre('sf')">SF</a></li>
-			<li><a class="mistery" onclick="getgenre('mistery')">미스터리</a></li>
-			<li><a class="family" onclick="getgenre('family')">가족</a></li>
-			<li><a class="musical" onclick="getgenre('musical')">뮤지컬</a></li>
-			<li><a class="performance" onclick="getgenre('performance')">공연</a></li>
-			<li><a class="etc" onclick="getgenre('etc')">기타</a></li>
+			<li><a class="drama" onclick="getgenre('드라마')">드라마</a></li>
+			<li><a class="war" onclick="getgenre('전쟁')">전쟁</a></li>
+			<li><a class="western" onclick="getgenre('서부극(웨스턴)')">서부극(웨스턴)</a></li>
+			<li><a class="comedy" onclick="getgenre('코미디')">코미디</a></li>
+			<li><a class="horror" onclick="getgenre('공포(호러)')">공포(호러)</a></li>
+			<li><a class="dacu" onclick="getgenre('다큐멘터리')">다큐멘터리</a></li>
+			<li><a class="historical_drama" onclick="getgenre('사극')">사극</a></li>
+			<li><a class="action" onclick="getgenre('액션')">액션</a></li>
+			<li><a class="fantasy" onclick="getgenre('판타지')">판타지</a></li>
+			<li><a class="romance" onclick="getgenre('멜로')">멜로/로맨스</a></li>
+			<li><a class="ani" onclick="getgenre('애니메이션')">애니메이션</a></li>
+			<li><a class="adventure" onclick="getgenre('어드벤처')">어드벤처</a></li>
+			<li><a class="crime" onclick="getgenre('범죄')">범죄</a></li>
+			<li><a class="sf" onclick="getgenre('SF')">SF</a></li>
+			<li><a class="mistery" onclick="getgenre('미스터리')">미스터리</a></li>
+			<li><a class="family" onclick="getgenre('가족')">가족</a></li>
+			<li><a class="musical" onclick="getgenre('뮤지컬')">뮤지컬</a></li>
+			<li><a class="performance" onclick="getgenre('공연')">공연</a></li>
+			<li><a class="etc" onclick="getgenre('기타')">기타</a></li>
 		</ul>
 
 	</div>
 
-<iframe src="genre.jsp" style="width:100%; border:none; height: 50vw" id="asdf"></iframe>
-	
+<iframe src="genre.jsp?genre=드라마" width="1800px" height="1800px" style="border: none; float:left; margin-left:-250px" id="asdf"></iframe>
+
+
 <iframe src="footer.html" style="width: 69vw; border: none"></iframe>
 
 </body>

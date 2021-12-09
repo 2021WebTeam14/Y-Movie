@@ -146,3 +146,29 @@ body{
 
 .item_poster .thumb_cont .txt_num {
   padding-left: 5px; }
+
+.submit{
+  	height:100px;
+  	width: 500px;
+  	margin-left: 380px;
+  	margin-bottom:100px;
+}
+  
+.thumb_item input{
+	display: inline-block;
+	width: 20px;
+	height: 15px;
+	border: 2px solid #bcbcbc;
+	cursor: pointer;
+	margin-left : -10px;
+}
+
+.list_movieranking .submit{
+	width: 400px;
+	border-radius:100px;
+	font-size:40px;
+    font: 'SF Pro Display','AppleSDGothicNeo','Malgun Gothic','\B9D1\C740 \ACE0\B515','\B3CB\C6C0',dotum,sans-serif;
+	margin-left:500px;
+
+    
+}
