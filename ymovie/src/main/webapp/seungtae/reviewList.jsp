@@ -46,6 +46,7 @@
        					</div>
 				</div>	
 				<textarea rows="5" cols="60" id="reviewArea" name="editedReview" required>lorem ipsum is longer in textarea</textarea>		
+				<input type="text" id="movieCode_hidden" name="movieCode" value="" style="display: none;">
 			</div>
 			
 			<div class="editReviewBtn" style="text-align: center;">
@@ -127,7 +128,6 @@
 		  let limit= parseInt(e.target.value);
 		  displayPage(limit);
 		}
-
 		function displayPage(limit) 
 		{
 		  tbd.innerHTML='';
@@ -139,7 +139,6 @@
 		}
 		
 		displayPage(3);
-
 		function buttonGenerator(limit) 
 		{
 		  const nofTr=arrayTr.length;
@@ -172,7 +171,6 @@
 		        let start = limit * x;
 		        let end = start+limit;
 			    let page = arrayTr.slice(start,end);
-
 		        for (let i = 0; i < page.length; i++) 
 		        {
 		          let item= page[i];
@@ -181,22 +179,17 @@
 		      }
 		    }
 		  }
-
 		  let z = 0;
-
 		  function nextElement() 
 		  {
-
 		    if (this.id=='next') 
 		    {
 		      z == arrayTr.length - limit ? (z=0) : (z+=limit);
 		    }
-
 		    if (this.id=='prev') 
 		    {
 		      z == arrayTr.length <!-- or 0 --> ? arrayTr.length - limit : (z-=limit);
 		    }
-
 		    tbd.innerHTML='';
 		    
 		    for (let c = z; c < z + limit; c++) 
@@ -204,14 +197,13 @@
 		      tbd.appendChild(arrayTr[c]);
 		    }
 		  }
-
 		  document.getElementById('prev').onclick=nextElement;
 		  document.getElementById('next').onclick=nextElement;
-
 		}
 		
 		function extract(index) 
 		{
+			var hiddenCode = document.getElementById("movieCode_hidden");
 			var targetReviewRow = tbd.childNodes[index];
 			var targetReviewCell = targetReviewRow.firstChild;
 			var targetReview = targetReviewCell.firstChild;
@@ -222,7 +214,7 @@
 			var starNumber = targetReview.childNodes[2].innerHTML; 
 			setStar(starNumber.length)//별점
 			document.getElementById("reviewArea").innerText = ""; //평가
-			//targetReview.childNodes[9].innerHTML; //버튼
+			hiddenCode.value = targetReview.childNodes[3].value; //코드
 			
 			document.getElementById('editReview').style.display="block";
 		}
@@ -256,8 +248,11 @@
 			tbd.appendChild(row);
 		}
 		
-		function createMovieDiv(title, reviewText, thumbs, starRating, reviewNum) 
+		function createMovieDiv(title, code, reviewText, thumbs, starRating, reviewNum) 
 		{
+			var hiddenCode = document.createElement("input");
+			hiddenCode.type = "text";
+			hiddenCode.style.display = "none";
 			var review = document.createElement("div");
 			var userThumb = document.createElement("label");
 			var userStar = document.createElement("label");
@@ -269,6 +264,9 @@
 			var newTitle = document.createTextNode(title);
 			var newText = document.createTextNode(reviewText);
 			var newStar = document.createTextNode(star.repeat(starRating));
+			
+			hiddenCode.value = code;
+			
 			userStar.className = "reviewStars";
 			userStar.setAttribute('id', 'getStar');
 			
@@ -298,6 +296,7 @@
 			review.appendChild(movieTitle);
 			review.appendChild(userThumb);
 			review.appendChild(userStar);
+			review.appendChild(hiddenCode);
 			review.appendChild(paragraph);
 			review.appendChild(btn);
 			
