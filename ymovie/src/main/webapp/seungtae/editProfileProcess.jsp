@@ -31,7 +31,7 @@
 			getCon.getConnection();
 			con = getCon.getConnection();
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, prof_int - 1);
+			pstmt.setInt(1, prof_int);
 			pstmt.setString(2, sessionDAO.getSession(session));
 			pstmt.execute();
 			pstmt.close();

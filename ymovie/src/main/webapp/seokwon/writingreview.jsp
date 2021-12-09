@@ -1,211 +1,88 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="movie.*" %>
+<%@ page import="member.*" %>
+<%@ page import="actor.*" %>
+<%@ page import="director.*" %>
 <%@ page import="api_DB.*" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="defaultConn.getConn" %>
+<%@ page import="java.sql.Connection" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Y-Movie</title>
+<title>영화 리뷰 작성</title>
 <link href="writingreview.css" rel="stylesheet" type="text/css">
-
-<style>	body{margin: 10vh 15vw 10vh 15vw;}</style>
+<style>    body{margin: 10vh 15vw 10vh 15vw;}</style>
 <script>
-function getRecommand() {
-	 <%apiDAO dao = new apiDAO();%>
-	 <%posterAPI posterAPI = new posterAPI();%>
-	 <%ArrayList<CodeNameYearDTO> data = dao.getAPIBoxOfficeWeekly();%> 
-       <%for(int i=0;i<10;i++){%>
-       document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
-       document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
-       document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";	       
-       <%}%>
-   }
-	 </script>
-</head>
-<body onload="getRecommand()">
-    <iframe src="../header.jsp" style="width: 69vw; border: none;"></iframe>
-
-<div class="head">
-    <h2 class="title">리뷰작성</h2>
-</div>
-<%-- <div class="search">
-	<form>
-		<input type="text" name="moviename" class="text-field" placeholder="영화제목">
-		<input type="submit" value="검색" class="submit-btn">
-	</form>
-</div> --%>
-    
-<div class="box_boxoffice">
-	<ol class="list_movieranking">
-		<li>
-            <div class="item_poster" >
-               <div class="thumb_item">
-                  <div class="poster_movie">
-                     <img id="img0" src="" class="img_thumb">
-                                        
-                  </div>                             
-               </div>
-            <div class="thumb_cont">
-               <strong class="tit_item" id="Name0"></strong>
-               <span class="txt_info">
-                  <span class="info_txt">개봉<span id="Year0" class="txt_num"></span></span>                                   
-               </span>
-            </div>
-            </div>
-         </li>
-			
-	     <li>
-            <div class="item_poster" >
-               <div class="thumb_item">
-                  <div class="poster_movie">
-                     <img id="img1" src="" class="img_thumb">
-                                        
-                  </div>                             
-               </div>
-            <div class="thumb_cont">
-               <strong class="tit_item" id="Name1"></strong>
-               <span class="txt_info">
-                  <span class="info_txt">개봉<span id="Year1" class="txt_num"></span></span>                                   
-               </span>
-            </div>
-            </div>
-         </li>
-	     <li>
-            <div class="item_poster" >
-               <div class="thumb_item">
-                  <div class="poster_movie">
-                     <img id="img2" src="" class="img_thumb">
-                                        
-                  </div>                             
-               </div>
-            <div class="thumb_cont">
-               <strong class="tit_item" id="Name2"></strong>
-               <span class="txt_info">
-                  <span class="info_txt">개봉<span id="Year2" class="txt_num"></span></span>                                   
-               </span>
-            </div>
-            </div>
-         </li>
-         <li>
-            <div class="item_poster" >
-               <div class="thumb_item">
-                  <div class="poster_movie">
-                     <img id="img3" src="" class="img_thumb">
-                                        
-                  </div>                             
-               </div>
-            <div class="thumb_cont">
-               <strong class="tit_item" id="Name3"></strong>
-               <span class="txt_info">
-                  <span class="info_txt">개봉<span id="Year3" class="txt_num"></span></span>                                   
-               </span>
-            </div>
-            </div>
-         </li>
-         <li>
-            <div class="item_poster" >
-               <div class="thumb_item">
-                  <div class="poster_movie">
-                     <img id="img4" src="" class="img_thumb">
-                                        
-                  </div>                             
-               </div>
-            <div class="thumb_cont">
-               <strong class="tit_item" id="Name4"></strong>
-               <span class="txt_info">
-                  <span class="info_txt">개봉<span id="Year4" class="txt_num"></span></span>                                   
-               </span>
-            </div>
-            </div>
-         </li>
-         <li>
-            <div class="item_poster" >
-               <div class="thumb_item">
-                  <div class="poster_movie">
-                     <img id="img5" src="" class="img_thumb">
-                                        
-                  </div>                             
-               </div>
-            <div class="thumb_cont">
-               <strong class="tit_item" id="Name5"></strong>
-               <span class="txt_info">
-                  <span class="info_txt">개봉<span id="Year5" class="txt_num"></span></span>                                   
-               </span>
-            </div>
-            </div>
-         </li>
-         <li>
-            <div class="item_poster" >
-               <div class="thumb_item">
-                  <div class="poster_movie">
-                     <img id="img6" src="" class="img_thumb">
-                                        
-                  </div>                             
-               </div>
-            <div class="thumb_cont">
-               <strong class="tit_item" id="Name6"></strong>
-               <span class="txt_info">
-                  <span class="info_txt">개봉<span id="Year6" class="txt_num"></span></span>                                   
-               </span>
-            </div>
-            </div>
-         </li>
-         <li>
-            <div class="item_poster" >
-               <div class="thumb_item">
-                  <div class="poster_movie">
-                     <img id="img7" src="" class="img_thumb">
-                                        
-                  </div>                             
-               </div>
-            <div class="thumb_cont">
-               <strong class="tit_item" id="Name7"></strong>
-               <span class="txt_info">
-                  <span class="info_txt">개봉<span id="Year7" class="txt_num"></span></span>                                   
-               </span>
-            </div>
-            </div>
-         </li>
-         <li>
-            <div class="item_poster" >
-               <div class="thumb_item">
-                  <div class="poster_movie">
-                     <img id="img8" src="" class="img_thumb">
-                                        
-                  </div>                             
-               </div>
-            <div class="thumb_cont">
-               <strong class="tit_item" id="Name8"></strong>
-               <span class="txt_info">
-                  <span class="info_txt">개봉<span id="Year8" class="txt_num"></span></span>                                   
-               </span>
-            </div>
-            </div>
-         </li>
-         <li>
-            <div class="item_poster" >
-               <div class="thumb_item">
-                  <div class="poster_movie">
-                     <img id="img9" src="" class="img_thumb">
-                                        
-                  </div>                             
-               </div>
-            <div class="thumb_cont">
-               <strong class="tit_item" id="Name9"></strong>
-               <span class="txt_info">
-                  <span class="info_txt">개봉<span id="Year9" class="txt_num"></span></span>                                   
-               </span>
-            </div>
-            </div>
-         </li>
-         	
-                     							
-		</ol>
-	</div>
-
+function getAPIAboutMovie() {
+	<%
+	Connection con = null;
+    getConn getCon = new getConn();
+    con = getCon.getConnection();
+	request.setCharacterEncoding("UTF-8");
+    String movcode=request.getParameter("movcode");
+	%>
 	
-    <iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
+ 	<%movieDAO dao = new movieDAO();%>
+ 	<%actorDAO dao1 = new actorDAO();%>
+ 	<%directorDAO dao2 = new directorDAO();%>
+ 	<%posterAPI posterAPI = new posterAPI();%>
+ 	<%ArrayList<movieDTO> data = dao.selectByCode(movcode);%> 
+
+   		document.getElementById("img").src = '<%=posterAPI.getPoster(movcode)%>';
+   		document.getElementById("movie_name").innerText = '<%=data.get(0).getMov_name()%>';
+   		document.getElementById("playdate").innerText = '<%=data.get(0).getMov_year()%>';
+   		document.getElementById("director").innerText = '<%=dao2.selectByMovie(con, movcode).get(0).getDir_director()%>';
+   		<%for(int i=0;i<data.size();i++){%>
+   		document.getElementById("actor<%=i%>").innerText = '<%=dao1.selectByMovie(con, movcode).get(i).getAct_actor()%>';
+   		<%}%>
+   		document.getElementById("genre").innerText = '<%=data.get(0).getMov_genre()%>';
+   		document.getElementById("avg_star").innerText = '<%=data.get(0).getStarAvg()%>';
+}
+</script>
+
+</head>
+<body onload="getAPIAboutMovie()">
+<h2>리뷰작성</h2>
+<div class="movie-info">
+  	<div class="info-star">
+    <div class="poster-box">
+        <img class="poster-thumbnail" id="img" src="" width="197px" height="273"><!-- src="DB 이미지 주소" -->
+    </div>
+  
+        <div class="info-box">
+            <ul>
+            <li>제목: <span id="movie_name" class="txt_num"></span></li>
+			<li>개봉: <span id="playdate" class="txt_num"></span>년</li>
+			<li>감독: <span id="director" class="txt_num"></span></li>
+			<li>배우: <span id="actor0" class="txt_num"></span>, <span id="actor1" class="txt_num"></span>, <span id="actor2" class="txt_num"></span>, <span id="actor3" class="txt_num"></span>, <span id="actor4" class="txt_num"></span>, <span id="actor5" class="txt_num"></span>, <span id="actor6" class="txt_num"></span>, <span id="actor7" class="txt_num"></span>, <span id="actor8" class="txt_num"></span>, <span id="actor9" class="txt_num"></span>, </li>
+			<li>장르: <span id="genre" class="txt_num"></span></li>
+			<li>평균 별점: <span id="avg_star" class="txt_num"></span></li>
+            </ul>
+        </div>
+        </div>
+
+        <div class="star-rating space-x-4 mx-auto">
+            <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+            <label for="5-stars" class="star pr-4">★</label>
+            <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+            <label for="4-stars" class="star">★</label>
+            <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+            <label for="3-stars" class="star">★</label>
+            <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+            <label for="2-stars" class="star">★</label>
+            <input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
+            <label for="1-star" class="star">★</label>
+        </div>
+	
+    </div>
+    <div class="writing-review">
+    <form action="" method="">
+        <input id="review" type="text" placeholder="리뷰를 작성해 주세요." />
+        <input id="submit" type="submit" value="저장"/>
+    </form>
+</div>
 </body>
 </html>
