@@ -19,7 +19,8 @@
 	        <%for(int i=0;i<10;i++){%>
 	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
 	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
-	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";	       
+	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>";
+	        document.getElementById("img<%=i%>").setAttribute("onClick", movInfo.jsp?movcode=<%=data.get(i).getCode()%>);
 	        <%}%>
 	    }
 	 </script>
@@ -36,7 +37,7 @@
             <div class="item_poster" >
                <div class="thumb_item">
                   <div class="poster_movie">
-                     <img id="img0" src="" class="img_thumb">
+                     <img id="img0" src="" class="img_thumb" onclick=""><%--movieInfo.jsp?movcode= --%>
                                         
                   </div>                             
                </div>
