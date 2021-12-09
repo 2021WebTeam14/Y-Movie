@@ -1,17 +1,19 @@
+<%@page import="sessionServlet.storeSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="movie.*"%>
 <%@ page import="api_DB.*"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.io.PrintWriter"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>Y-Movie</title>
-<link href="css/kategorie.css" rel="stylesheet" type="text/css">
+<link href="kategorie.css" rel="stylesheet" type="text/css">
 <script>
 	 function getRecommand() {
-		 <%--
+		 
 		 <%
 		 storeSession sessionDAO = new storeSession();
 		 if (sessionDAO.getSession(session) == ""){
@@ -21,28 +23,32 @@
 			 outA.flush();
 		 }
 		 %>
-		 --%>
+		
 	       <%movieDAO dao = new movieDAO();%>
 		 <%posterAPI posterAPI = new posterAPI();%>
-	        <%ArrayList<mem_favGenre> favgenre = dao.getMemberFav;%> 
+	        <% ArrayList<ArrayList<CodeNameYearDTO>> fav = dao.getRecommandsByCate(sessionDAO.getSession(session));%>
+	        
 	        
 	        <%for(int i=0;i<8;i++){%>
-	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getMov_code())%>';
-	        document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getMov_name()%>";
-	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getMov_year()%>년";	       
-	        <%}}%> 
-	    } 
-	}
-	 <%for (int i = 8; i < 16; i++) {%>
-     document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
-     document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
-     document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";
+	        document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(fav.get(0).get(i).getCode())%>';
+	        document.getElementById("Name<%=i%>").innerText = "<%=fav.get(0).get(i).getName()%>";
+	        document.getElementById("Year<%=i%>").innerText = "<%=fav.get(0).get(i).getYear()%>년";	    
+	        document.getElementById("img<%=i%>").setAttribute('onClick', "location.href='movieinfo.jsp?movcode=<%=fav.get(0).get(i).getCode()%>'");
+	        <%}%> 
+	    
+	
+	 <%for (int i = 0; i < 8; i++) {%>
+     document.getElementById("img<%=i+8%>").src = '<%=posterAPI.getPoster(fav.get(1).get(i).getCode())%>';
+     document.getElementById("Name<%=i+8%>").innerText = "<%=fav.get(1).get(i).getName()%>";
+     document.getElementById("Year<%=i+8%>").innerText = "<%=fav.get(i).get(i).getYear()%>년";
+     document.getElementById("img<%=i%>").setAttribute('onClick', "location.href='movieinfo.jsp?movcode=<%=fav.get(1).get(i).getCode()%>'");
 <%}%>
-}
-<%for (int i = 16; i < 24; i++) {%>
-document.getElementById("img<%=i%>").src = '<%=posterAPI.getPoster(data.get(i).getCode())%>';
-document.getElementById("Name<%=i%>").innerText = "<%=data.get(i).getName()%>";
-document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년";
+
+<%for (int i = 0; i < 8; i++) {%>
+     document.getElementById("img<%=i+16%>").src = '<%=posterAPI.getPoster(fav.get(2).get(i).getCode())%>';
+     document.getElementById("Name<%=i+16%>").innerText = "<%=fav.get(2).get(i).getName()%>";
+     document.getElementById("Year<%=i+16%>").innerText = "<%=fav.get(2).get(i).getYear()%>년";
+     document.getElementById("img<%=i%>").setAttribute('onClick', "location.href='movieinfo.jsp?movcode=<%=fav.get(2).get(i).getCode()%>'");
 <%}%>
 }
 </script>
@@ -64,7 +70,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img0" src="" class="img_thumb">
+									<img id="img0" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -80,7 +86,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img1" src="" class="img_thumb">
+									<img id="img1" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -96,7 +102,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img2" src="" class="img_thumb">
+									<img id="img2" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -112,7 +118,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img3" src="" class="img_thumb">
+									<img id="img3" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -128,7 +134,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img4" src="" class="img_thumb">
+									<img id="img4" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -144,7 +150,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img5" src="" class="img_thumb">
+									<img id="img5" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -160,7 +166,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img6" src="" class="img_thumb">
+									<img id="img6" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -176,7 +182,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img7" src="" class="img_thumb">
+									<img id="img7" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -199,7 +205,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img8" src="" class="img_thumb">
+									<img id="img8" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -215,7 +221,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img9" src="" class="img_thumb">
+									<img id="img9" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -231,7 +237,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img10" src="" class="img_thumb">
+									<img id="img10" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -247,7 +253,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img11" src="" class="img_thumb">
+									<img id="img11" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -263,7 +269,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img12" src="" class="img_thumb">
+									<img id="img12" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -279,7 +285,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img13" src="" class="img_thumb">
+									<img id="img13" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -295,7 +301,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img14" src="" class="img_thumb">
+									<img id="img14" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -311,7 +317,7 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img15" src="" class="img_thumb">
+									<img id="img15" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
@@ -335,12 +341,12 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img16" src="" class="img_thumb">
+									<img id="img16" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name8"></strong> <span
+								<strong class="tit_item" id="Name16"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year16" class="txt_num"></span></span>
 								</span>
@@ -351,12 +357,12 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img17" src="" class="img_thumb">
+									<img id="img17" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name9"></strong> <span
+								<strong class="tit_item" id="Name17"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year17" class="txt_num"></span></span>
 								</span>
@@ -367,12 +373,12 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img18" src="" class="img_thumb">
+									<img id="img18" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name10"></strong> <span
+								<strong class="tit_item" id="Name18"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year18" class="txt_num"></span></span>
 								</span>
@@ -383,12 +389,12 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img19" src="" class="img_thumb">
+									<img id="img19" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name11"></strong> <span
+								<strong class="tit_item" id="Name19"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year19" class="txt_num"></span></span>
 								</span>
@@ -399,12 +405,12 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img20" src="" class="img_thumb">
+									<img id="img20" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name12"></strong> <span
+								<strong class="tit_item" id="Name20"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year20" class="txt_num"></span></span>
 								</span>
@@ -415,12 +421,12 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img21" src="" class="img_thumb">
+									<img id="img21" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name13"></strong> <span
+								<strong class="tit_item" id="Name21"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year21" class="txt_num"></span></span>
 								</span>
@@ -431,12 +437,12 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img22" src="" class="img_thumb">
+									<img id="img22" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name14"></strong> <span
+								<strong class="tit_item" id="Name22"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year22" class="txt_num"></span></span>
 								</span>
@@ -447,12 +453,12 @@ document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>년
 						<div class="item_poster">
 							<div class="thumb_item">
 								<div class="poster_movie">
-									<img id="img23" src="" class="img_thumb">
+									<img id="img23" src="" class="img_thumb" onclick="">
 
 								</div>
 							</div>
 							<div class="thumb_cont">
-								<strong class="tit_item" id="Name15"></strong> <span
+								<strong class="tit_item" id="Name23"></strong> <span
 									class="txt_info"> <span class="info_txt">개봉<span
 										id="Year23" class="txt_num"></span></span>
 								</span>

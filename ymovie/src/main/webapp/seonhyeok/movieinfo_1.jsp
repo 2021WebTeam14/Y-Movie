@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <title>영화 상세 정보</title>
-<link href="movieinfo.css" rel="stylesheet" />
+<link href="movieinfo_1.css" rel="stylesheet" />
 
 <style>	body{margin: 10vh 15vw 10vh 15vw;}</style>
 <script>
@@ -50,7 +50,7 @@
 </script>
 </head>
 <body onload="getAPIAboutMovie()">
-    <iframe src="../header.jsp" style="width: 69vw; border: none;"></iframe>
+
     <h2>영화 상세 정보</h2>
     <div class="movie-info">
 	<div class="poster-box">
@@ -78,6 +78,5 @@
 	<a id="writing_review" onclick="">리뷰 작성</a>
 </div>
 	
-    <iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
 </body>
 </html>

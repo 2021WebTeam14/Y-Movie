@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
  body{margin: 10vh 15vw 10vh 15vw;}
+ 
+ h1, h2
+ {
+ 	text-align: center;
+ }
 
 .top_container
  {
@@ -132,4 +137,9 @@ button
 	margin: 10px 0px;   
 	border: none;   
 	cursor: pointer;   
+}
+
+input[type=radio]
+{
+	display: none;
 }     	

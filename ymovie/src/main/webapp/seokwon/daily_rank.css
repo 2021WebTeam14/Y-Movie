@@ -131,3 +131,21 @@ body{
 .item_poster .thumb_cont .txt_num {
   padding-left: 5px;
   }
+ 
+ .item_poster .rank_num {
+     margin-left: -10px;
+  position: absolute;
+  z-index: 1;
+  top: 7px;
+  left: 0px;
+  font-family: 'SF-UI-Display-Thin', sans-serif;
+  font-style: italic;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.2); 
+  background-color: #ff4e00;
+  text_align: center;
+  padding: 0px 9px 0px 5px;
+  
+  }

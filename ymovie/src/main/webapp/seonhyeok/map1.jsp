@@ -58,7 +58,7 @@
 		var ps = new kakao.maps.services.Places(); 
 		
 
-		var keyword ="영화관";
+		var keyword ="원주 영화관";
 
 		//키워드로 장소를 검색합니다
 		ps.keywordSearch(keyword, placesSearchCB); 
