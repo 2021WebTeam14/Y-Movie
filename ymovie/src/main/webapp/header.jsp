@@ -70,9 +70,10 @@
         {        
             <%if (sessionDAO.getSession(session) != "")
             {%>
-                document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+            	if (document.getElementById("loggedInUser") != null) {
+            		document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+				}                
             <%}%>
-            
             document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
         }
     </script>
