@@ -4,8 +4,8 @@
 body{
 	margin: 0;
 }
-a {
-	font-size: 1.5vw;
+li > a{
+	font-size: 1vw;
 	text-decoration: none;
 	color: white;
 }
@@ -46,6 +46,7 @@ input{
 	font-size: 1.5vw;
 	font-family: 'Nanum Gothic', sans-serif;
 	margin-top:10vh;
+	margin-bottom:0;
 	z-index: 0;
 }
 #nav li{
@@ -61,7 +62,7 @@ input{
 #nav li li{
 	border-bottom: none;
 	list-style: none;
-	font-size: 1vw;
+	font-size: 0.5vw;
 	margin: 13px 0 0 0;
     padding: 15px 0 15px 0;
     width: 33%;

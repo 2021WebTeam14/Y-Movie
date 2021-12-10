@@ -20,11 +20,14 @@
 </head>
 <body>
     <iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
-	<h1 class="title">영화 검색</h1>
-	<div>
-		<input type="text" id="inputString">
-		<input type="button" onclick="search()" value="검색">
-	</div>
+	<div class="movieSearch">
+        <h1 id="title">영화 검색</h1>
+        <div class="searchBar">
+            <input type="text" id="searchbar" name="searchMovie">
+            <button type="submit" id="searchButton">&#128269;</button>
+        </div>
+
+    </div>
    
 	<iframe id="result" src="about:blank" style="width: 100%; height: 80vh; border: 2px solid black;"></iframe>
     <iframe src="../footer.html" style="width: 69vw; border: none"></iframe>

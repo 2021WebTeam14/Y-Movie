@@ -78,7 +78,7 @@
 </head>
 <body onload="getData()">
     <%@include file="./header.jsp" %>
-    
+    <div style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
     <div class="outer border centered">
     	<div class="centered noMP"><h1 id="heading"></h1></div>
 	    <div class="centered flex">
@@ -182,7 +182,7 @@
 			    	<div id="reviewThumb01" class="noMP"></div>
 			    	<div id="reviewStar01" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review"></div>
+		    	<div id="reviewText00" class="review"></div>
 		    </div>
  			<div class="">
  				<div class="flex left noMP">	
@@ -190,7 +190,7 @@
 			    	<div id="reviewThumb01" class="noMP"></div>
 			    	<div id="reviewStar01" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText1" class="border review"></div>
+		    	<div id="reviewText1" class="review"></div>
 		    </div>
  			<div class="">
  				<div class="flex left noMP">
@@ -198,7 +198,7 @@
 			    	<div id="reviewThumb02" class="noMP"></div>
 			    	<div id="reviewStar02" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText2" class="border review"></div>
+		    	<div id="reviewText2" class="review"></div>
 		    </div>
 		</div>
 	</div>
@@ -211,7 +211,7 @@
 			    	<div id="reviewThumb11" class="noMP"></div>
 			    	<div id="reviewStar11" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review"></div>
+		    	<div id="reviewText00" class="review"></div>
 		    </div>
  			<div class="">
  				<div class="flex left noMP">	
@@ -219,7 +219,7 @@
 			    	<div id="reviewThumb12" class="noMP"></div>
 			    	<div id="reviewStar12" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review"></div>
+		    	<div id="reviewText00" class="review"></div>
 		    </div>
  			<div class="">
  				<div class="flex left noMP">
@@ -227,7 +227,7 @@
 			    	<div id="reviewThumb13" class="noMP"></div>
 			    	<div id="reviewStar13" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review"></div>
+		    	<div id="reviewText00" class="review"></div>
 		    </div>
 		</div>
 	</div>
@@ -240,7 +240,7 @@
 			    	<div id="reviewThumb21" class="noMP"></div>
 			    	<div id="reviewStar21" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review"></div>
+		    	<div id="reviewText00" class="review"></div>
 		    </div>
  			<div class="">
  				<div class="flex left noMP">	
@@ -248,7 +248,7 @@
 			    	<div id="reviewThumb22" class="noMP"></div>
 			    	<div id="reviewStar22" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review"></div>
+		    	<div id="reviewText00" class="review"></div>
 		    </div>
  			<div class="">
  				<div class="flex left noMP">
@@ -256,7 +256,7 @@
 			    	<div id="reviewThumb23" class="noMP"></div>
 			    	<div id="reviewStar23" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review"></div>
+		    	<div id="reviewText00" class="review"></div>
 		    </div>
 		</div>
 	</div>
@@ -341,7 +341,7 @@
 		}
 		
 	</script>
-    
-    <iframe src="footer.html" style="width: 69vw; border: none"></iframe>
+    </div>
+    <iframe src="footer.html" style="width: 100%; border: none"></iframe>
 </body>
 </html>

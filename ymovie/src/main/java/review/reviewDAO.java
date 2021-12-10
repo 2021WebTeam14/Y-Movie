@@ -98,6 +98,43 @@ public class reviewDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		
+		query = "update member set mem_reviewCount = mem_reviewCount + 1 where mem_id = ?";
+		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, dto.getMem_id());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(con != null) con.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		query = "update movie set starCount = starCount + 1 starSum = starSum + ? where mem_id = ?";
+		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, dto.getMem_id());
+			pstmt.setInt(2, dto.getRev_star());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(con != null) con.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		return result;
 	}
 	

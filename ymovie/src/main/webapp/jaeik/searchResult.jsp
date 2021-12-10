@@ -31,7 +31,7 @@ body {
 				<div class="item_poster">
 					<div class="thumb_item">
 						<div class="poster_movie">
-							<img id="img<%=i%>" src="<%=posterAPI.getPoster(data.get(i).getMov_code())%>" class="img_thumb" onclick="location.href='movieinfo.jsp?movcode=<%=data.get(i).getMov_code()%>">
+							<img id="img<%=i%>" src="<%=posterAPI.getPoster(data.get(i).getMov_code())%>" class="img_thumb" onclick="window.top.location.replace('../seokwon/movieinfo.jsp?movcode=<%=data.get(i).getMov_code()%>')">
 						</div>
 					</div>
 					<div class="thumb_cont">

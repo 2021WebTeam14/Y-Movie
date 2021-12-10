@@ -1,0 +1,40 @@
+@charset "UTF-8";
+h1#title
+{
+    text-align: center;
+}
+
+.movieSearch
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.searchBar
+{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+}
+
+#searchbar
+{
+    display: inline-block;
+    width: 75%;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border: 3px solid #262223;
+}
+
+#searchButton
+{
+    background-color: #262223;
+    color: white;
+    padding: 10px;
+    margin: 10px 0px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
