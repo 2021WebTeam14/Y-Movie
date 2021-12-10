@@ -26,7 +26,8 @@
 </head>
 <body onload="getRecommand()">
 	<iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
-	<h1 class="title">주간순위</h1>
+	
+		<h1 class="title">주간순위</h1>
 
 	<div class="box_boxoffice">
 		<ol class="list_movieranking">

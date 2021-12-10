@@ -4,9 +4,8 @@
 	text-align: center;
 }
 
-
 div {
-	width: 100%;
+	
 	margin-bottom: 30px;
 }
 
@@ -29,7 +28,7 @@ div {
   width:140px;
   height:50px;
   border:2px solid #34495e;
-  float:left;
+  float:right;
   text-align:center;
   cursor:pointer;
   position:relative;
@@ -46,6 +45,7 @@ div {
   transition:all .5s ease;
   z-index:2;
   position:relative;
+  
 }
 .effect{
   width:140px;
@@ -61,4 +61,93 @@ div {
 }
 .button:hover a{
   color:#34495e;
+}
+.review1
+{
+    border: 2px solid #D8D8D8;
+    margin-bottom: 100px;
+    padding: 5px;
+}
+p
+{
+    overflow-wrap: break-word;
+}
+label
+{
+    display: inline-block;
+    margin-right: 20px;
+}
+.star-rating {
+  clear: both;
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+}
+ 
+.star-rating input {
+  display: none;
+}
+ 
+.star-rating label {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+ 
+.star-rating :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
+}
+.reviewStars {
+	-webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #2b2a29;
+    -webkit-text-fill-color: gold;
+}
+.review_table {
+	clear: both;
+	width: 100%;
+	
+}
+.pagination
+{
+    height: 50px;
+    padding: 0px 5px;
+    width: auto;
+    float: right;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pagination li
+{
+    list-style: none; 
+    padding: 5px 10px;
+    font-weight: bold;
+    border: 1px solid black;
+}
+.pagination li a
+{
+    text-decoration: none;
+}
+.rev_count{
+	clear: both;
+	padding: 10px 0 0 0;
+	margin-right:auto;
+}
+.item {
+	clear: both;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
