@@ -3,13 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
+
 <meta charset="UTF-8">
 <title>Y-Movie</title>
 <link href="map2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
+<%@include file="../header.jsp" %>
+<div id="map2" style="padding: 10vh 10vw 15vh 13vw; background-color: #f2f2f2">
 <h3>지역별 영화관 검색</h3>
 <div id="menu_wrap" class="bg_white">
     <div class="option">
@@ -36,7 +37,7 @@
     <div id="pagination"></div>
 </div>
 	
-	<div id="map" style="width: 100%; height: 80vh;"></div>
+	<div id="map" style="width: 1300px; height: 800px; margin-left: 50px;"></div>
 		
 	
 	<script type="text/javascript"
@@ -183,7 +184,8 @@
 	}
 
 </script>
-<iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
+</div>
+<iframe src="../footer.html" style="width: 100vw; border: none"></iframe>
 </body>
 
 </html>

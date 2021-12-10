@@ -9,11 +9,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
+
 <title>Y-Movie</title>
 <link href="re_in.css" rel="stylesheet" type="text/css">
 <script>
 	 function getRecommand() {
+		 
 		 <%storeSession sessionDAO = new storeSession();
 if (sessionDAO.getSession(session) == "") {
 	response.setContentType("text/html; charset=UTF-8");
@@ -37,9 +38,9 @@ if (sessionDAO.getSession(session) == "") {
 </head>
 <body onload="getRecommand()">
 
-	<iframe src="../header.jsp"
-		style="width: 100%; border: none; height: 15vw"></iframe>
-
+<%@include file="../header.jsp" %>
+    <div id="re_in" style="padding: 10vh 10vw 185vh 10vw; background-color: #f2f2f2">
+	
 	<div class="head_section">
 		<h1 class=tit_section>통합추천</h1>
 	</div>
@@ -306,6 +307,7 @@ if (sessionDAO.getSession(session) == "") {
 		</ol>
 	</div>
 
-	<iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
+</div>
+	<iframe src="../footer.html" style="width: 100vw; border: none"></iframe>
 </body>
 </html>

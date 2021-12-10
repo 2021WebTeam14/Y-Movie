@@ -7,19 +7,19 @@
 }
 .list_movieranking{
 	padding: 0;
-	padding-left:20px;
+	padding-left: 120px;
 }
 .list_movieranking li{
 	padding-top:40px;
 	padding-left:-10px;
 }
-div{
+#re_in div{
 	margin:0;
 	display: block;
 	padding: 0 5px;
 }
 
-ol{
+#re_in ol{
 	display: block;
     list-style-type: decimal;
     margin-block-start: 1em;
@@ -31,14 +31,14 @@ ol{
 }
 
 
-ol, li{
+#re_in ol,#re_in li{
 	list-style:none;
 	list-style-position: initial;
 	list-style-image: initial;
 	list-style-type: none;
 	float:left;
 }
-li{
+#re_in li{
 	float: left;
 	display: list-item;
 	text-align: -webkit-match-parent;
@@ -47,7 +47,7 @@ li{
 .os_windows body {
     letter-spacing: -0.05em;
 }
-body{
+#re_in body{
     font-size: 14px;
     line-height: 1.5;
     font-family: 'SF Pro Display','AppleSDGothicNeo','Malgun Gothic','\B9D1\C740 \ACE0\B515','\B3CB\C6C0',dotum,sans-serif;

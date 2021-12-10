@@ -2,23 +2,27 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
 
-footer {
+#map1 footer {
 	border: 2px solid black;
 	text-align: center;
+}
+#map1 .map{
+	position:relative;
+	
 }
 #center {
 	border: 2px solid black;
 	margin: 50vh;
 	text-align: center;
 }
-a {
+#map1 a {
 	text-decoration: none;
 }
-.header {
+#map1 .header {
 	display: flex;
   	align-content: right;
 }
-.signNav{
+#map1.signNav{
 	background-color: #507CD9;
 	margin-left:0;
 	width: 100%;
@@ -26,10 +30,10 @@ a {
 	display: flex;
 	margin-left: auto;
 }
-.sign{
+#map1 .sign{
 	margin-left: auto;
 }
-.nav{
+#map1 .nav{
 	margin-top: auto;
 	text-align: center;
 	height: 30px;
@@ -38,15 +42,19 @@ a {
 	font-size: 40px;
 	font-family: 'Do Hyeon', sans-serif;
 }
-.searchbar{
+#map1 .searchbar{
     position: absolute;
     left: 50%;
-    top: 30%;
+    top: 90%;
     transform: translate(-50%,-50%);
-	margin-top: 100px;
+    /* margin-top: 100px; */
 }
-.container{
+#map1 .container{
 	top: 50px;
     width:50%;
     height:350px;
+}
+
+#map1 h1{
+	margin-top:-300px;
 }
