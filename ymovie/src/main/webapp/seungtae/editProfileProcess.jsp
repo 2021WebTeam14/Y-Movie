@@ -22,6 +22,7 @@
 		try
 		{
 			storeSession sessionDAO = new storeSession();
+			request.setCharacterEncoding("UTF-8");
 			String profile = request.getParameter("avatar");
 			int prof_int = Integer.parseInt(profile);
 			String query = "update member set mem_icon = ? where mem_id = ?";

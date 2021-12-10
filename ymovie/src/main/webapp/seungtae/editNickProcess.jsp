@@ -21,6 +21,7 @@
 		try
 		{
 			storeSession sessionDAO = new storeSession();
+			request.setCharacterEncoding("UTF-8");
 			String newNickname = request.getParameter("new_nick");
 			String query = "update member set mem_nickname = ? where mem_id = ?";
 			Connection con = null;
