@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Y-Movie</title>
-<link href="../seokwon/star_rank.css" rel="stylesheet" type="text/css">
+<link href="./searchResult.css" rel="stylesheet" type="text/css">
 
 <style>
 body {
