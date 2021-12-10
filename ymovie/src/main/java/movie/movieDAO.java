@@ -114,7 +114,7 @@ public class movieDAO {
 	    Connection con = null;
 	    Statement stmt = null;
 	    ResultSet rs = null;
-	    String query = "select mov_code, mov_name, mov_year from movie order by starSum limit 10";
+	    String query = "select mov_code, mov_name, mov_year from movie order by starSum desc limit 10";
 	    //System.out.println(query);
 	    try {
 			getConn getCon = new getConn();
@@ -488,7 +488,7 @@ public class movieDAO {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query = "select * from movie order by starSum limit " + size;
+		String query = "select * from movie order by starSum desc limit " + size;
 		try {
 			getConn getCon = new getConn();
 			con = getCon.getConnection();
@@ -607,7 +607,7 @@ public class movieDAO {
 			for (int i = 0; i < size - 1; i++) {
 				query.append("mov_genre=\"" + tmp.get(i) + "\" or ");
 			}
-			query.append("mov_genre=\"" + tmp.get(size)+ "\"");
+			query.append("mov_genre=\"" + tmp.get(size-1)+ "\"");
 		}
 		query.append(" order by rand() limit 6");
 		//System.out.println(query.toString());
@@ -639,7 +639,7 @@ public class movieDAO {
 			for (int i = 0; i < size - 1; i++) {
 				query.append("dir_director=\"" + tmp.get(i) + "\" or ");
 			}
-			query.append("dir_director=\"" + tmp.get(size)+ "\"");
+			query.append("dir_director=\"" + tmp.get(size-1)+ "\"");
 		}
 		query.append(" order by rand() limit 6");
 		//System.out.println(query.toString());
@@ -678,7 +678,7 @@ public class movieDAO {
 			for (int i = 0; i < size - 1; i++) {
 				query.append("act_actor=\"" + tmp.get(i) + "\" or ");
 			}
-			query.append("act_actor=\"" + tmp.get(size)+ "\"");
+			query.append("act_actor=\"" + tmp.get(size-1)+ "\"");
 		}
 		query.append(" order by rand() limit 6");
 		//System.out.println(query.toString());

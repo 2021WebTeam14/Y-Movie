@@ -271,7 +271,7 @@ public class memberDAO {
 	    Connection con = null;
 	    Statement stmt = null;
 	    ResultSet rs = null;
-	    String query = "select mem_nickname, mem_reviewCount, mem_favGenre, mem_favDirector from member order by mem_reviewCount limit 20";
+	    String query = "select mem_nickname, mem_reviewCount, mem_favGenre, mem_favDirector from member order by mem_reviewCount desc limit 20";
 	    //System.out.println(query);
 	    try {
 			getConn getCon = new getConn();

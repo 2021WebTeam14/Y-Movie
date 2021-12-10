@@ -117,13 +117,13 @@ public class reviewDAO {
 			}
 		}
 		
-		query = "update movie set starCount = starCount + 1 starSum = starSum + ? where mem_id = ?";
+		query = "update movie set starCount = starCount + 1, starSum = starSum + ? where mov_code = ?";
 		try {
 			getConn getCon = new getConn();
 			con = getCon.getConnection();
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, dto.getMem_id());
-			pstmt.setInt(2, dto.getRev_star());
+			pstmt.setInt(1, dto.getRev_star());
+			pstmt.setString(2, dto.getMov_code());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

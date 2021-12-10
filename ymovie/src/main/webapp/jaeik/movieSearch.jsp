@@ -11,7 +11,7 @@
 <link href="movieSearch.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function search() {
-		const name = document.getElementById("inputString").value
+		const name = document.getElementById("searchbar").value
 		document.getElementById("result").src = "./searchResult.jsp?movName=" + name;
 	}
 </script>
@@ -23,7 +23,7 @@
         <h1 id="title">영화 검색</h1>
         <div class="searchBar">
             <input type="text" id="searchbar" name="searchMovie">
-            <button type="submit" id="searchButton">&#128269;</button>
+            <button type="submit" id="searchButton" onclick="search()">&#128269;</button>
         </div>
 
     </div>
