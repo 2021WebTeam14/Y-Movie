@@ -10,12 +10,6 @@
 <title>Y-Movie</title>
 <link href="daily_rank.css" rel="stylesheet" type="text/css">
 
-<style>
-body {
-	margin: 10vh 15vw 10vh 15vw;
-}
-</style>
-
 <script>
 	 function getRecommand() {
 		 <%apiDAO dao = new apiDAO();%>
@@ -31,7 +25,8 @@ body {
 </script>
 </head>
 <body onload="getRecommand()">
-	<iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
+	<%@include file="../header.jsp" %>
+    <div id="dwa" style="height: 900px; padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
 	<h1 class="title">일간순위</h1>
 
 	<div class="box_boxoffice">
@@ -211,8 +206,9 @@ body {
 
 		</ol>
 	</div>
+	</div>
 
 
-	<iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
+	<iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>
 </html>

@@ -36,7 +36,7 @@
 	}
 	function getStart() {
 		 <%storeSession sessionDAO = new storeSession();
-		 if (sessionDAO.getSession(session) != "god") {
+		 if (sessionDAO.getSession(session) == "") {
 		 	response.setContentType("text/html; charset=UTF-8");
 		 	PrintWriter outA = response.getWriter();
 		 	outA.println("<script>alert('관리자 전용 페이지입니다.'); location.href='../initPage.jsp';</script>");
@@ -100,22 +100,22 @@
 .noPadding{
 	padding: 0;
 }
-input[type="button"]{
-	background-color: white;
+#adP input[type="button"]{
+	background-color: #f2f2f2;
 	border: 2px solid black;
 	border-radius: 10px;
 	width: 20%;
 	margin: 5% 10%;
 }
-img{
+#adP img{
 	width: 192px; height: 280px; border: 1px solid black; margin: 0; padding: 0; white-space:pre
 }
-li{
+#adP li{
 	list-style: none;
 	padding-left: 0;
 	text-align: left;
 }
-ul{
+#adP ul{
 	text-align: left;
 }
 #DBConchecker{
@@ -127,7 +127,8 @@ margin-bottom: 20px;
 </style>
 </head>
 <body onload="getStart()">
-    <iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
+	<%@include file="../header.jsp" %>
+    <div id="adP" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
     <div class="sTitle">
     <h1>관리자 전용 페이지</h1>
     <hr>
@@ -176,6 +177,7 @@ margin-bottom: 20px;
 	    	<input type="button" onclick="checkDBCon()" value="DB연결 확인">
 	    	<div id="DBConchecker" class="right"> </div>
 	    </div>
+    </div>
     </div>
 	    <iframe src="../footer.html" style="width: 100%; border: none;"></iframe>
 </body>

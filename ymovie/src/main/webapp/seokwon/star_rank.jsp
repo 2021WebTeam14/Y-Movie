@@ -9,8 +9,6 @@
 <meta charset="UTF-8">
 <title>Y-Movie</title>
 <link href="star_rank.css" rel="stylesheet" type="text/css">
-
-<style>	body{margin: 10vh 15vw 10vh 15vw;}</style>
 <script>
 	 function getRecommand() {
 		 <%movieDAO dao = new movieDAO();%>
@@ -26,7 +24,8 @@
 	 </script>
 </head>
 <body onload="getRecommand()">
-    <iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
+<%@include file="../header.jsp" %>
+    <div id="starRank" style="height:900px; padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
 <h1 class="title">별점순위</h1>
     
 <div class="box_boxoffice">
@@ -206,8 +205,8 @@
 
 		</ol>
 	</div>
-
+</div>
 	
-    <iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
+    <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>
 </html>

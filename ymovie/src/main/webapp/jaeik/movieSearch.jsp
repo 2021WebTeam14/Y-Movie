@@ -9,8 +9,6 @@
 <meta charset="UTF-8">
 <title>Y-Movie</title>
 <link href="movieSearch.css" rel="stylesheet" type="text/css">
-
-<style>	body{margin: 10vh 15vw 10vh 15vw;}</style>
 <script type="text/javascript">
 	function search() {
 		const name = document.getElementById("inputString").value
@@ -19,7 +17,8 @@
 </script>
 </head>
 <body>
-    <iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
+	<%@include file="../header.jsp" %>
+    <div id="genre" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
 	<div class="movieSearch">
         <h1 id="title">영화 검색</h1>
         <div class="searchBar">
@@ -30,6 +29,7 @@
     </div>
    
 	<iframe id="result" src="about:blank" style="width: 100%; height: 80vh; border: 2px solid black;"></iframe>
-    <iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
+	</div>
+    <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>
 </html>

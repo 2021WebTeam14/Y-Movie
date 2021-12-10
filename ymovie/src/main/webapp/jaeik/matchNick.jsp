@@ -14,7 +14,8 @@
 	    storeSession sessionDAO = new storeSession();
 		sessionDAO.deleteSession(session);
 	%>
-	<iframe id="head" src="../header.jsp" style="width: 100%; border: none;"></iframe>
+	<%@include file="../header.jsp" %>
+    <div id="lst" style="height: 900px; padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
 	   <h1 style="text-align: center"> 비밀번호 찾기 </h1> 
 	   
 	    <form style="padding-top: 50px; padding-bottom: 50px;" method="POST" action="../jaeik/matchNickProcess.jsp">
@@ -37,6 +38,7 @@
 		        </div>	        	
 	        </div>    
 	    </form>
+	    </div>
 	    <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>   
 </html>
