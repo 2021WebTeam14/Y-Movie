@@ -26,6 +26,7 @@
 		{
 			storeSession sessionDAO = new storeSession();
 			memberDAO dao = new memberDAO();
+			request.setCharacterEncoding("UTF-8");
 			String currPW = request.getParameter("curr_pwd");
 			String newPW = request.getParameter("new_pwd");
 			String query = "update member set mem_pw = sha1(?) where mem_id = ?";
