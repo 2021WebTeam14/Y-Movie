@@ -30,7 +30,7 @@
 <body onload="getRank()">
     <iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
 <div class="head">
-    <h2>리뷰어 랭킹 TOP20</h2>
+    <h1 class="title">리뷰어 랭킹 TOP20</h1>
 </div>
     <table>
     		<tr>
