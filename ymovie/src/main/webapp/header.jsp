@@ -10,10 +10,10 @@
 </head>
 <body onload="init()">
 	<div class="header">
-		<div class="imgWrapper">
-		<img src="img/logo.png" alt="Y-Movie" width="100%" height="100%" onclick="window.top.location.replace('/ymovie/initPage.jsp')"/>
-		</div>
 		<div class = "signNav">
+		<div class="imgWrapper">
+		<img src="img/logo.png" alt="Y-Movie" width="30%" height="100%" onclick="window.top.location.replace('/ymovie/initPage.jsp')"/>
+		</div>
 		    <div class="sign">
 			<%
 				storeSession sessionDAO = new storeSession();
@@ -27,6 +27,7 @@
 				}
 			%>	    
 		    </div>
+		 </div>
 		    <ul id="nav">
 		    	<li><a href="./seonhyeok/re_in.jsp" target="_top">영화 추천&nbsp;</a>
 			    	<ul>
@@ -35,9 +36,9 @@
 			    		<li><a href="./seonhyeok/genre_h.jsp" target="_top">카테고리</a></li>
 			    	</ul>
 		    	</li>
-		    	<li><a href="./seokwon/movieinfo.jsp" target="_top">&nbsp;영화 리뷰&nbsp;</a>
+		    	<li><a href="./jaeik/movieSearch.jsp" target="_top">&nbsp;영화 리뷰&nbsp;</a>
 			    	<ul>
-			    		<li><a href="./seokwon/movieinfo.jsp" target="_top">영화별 보기</a></li>
+			    		<li><a href="./jaeik/movieSearch.jsp" target="_top">영화 검색</a></li>
 			    		<li><a href="./seokwon/review_rank.jsp" target="_top">리뷰 랭킹</a></li>
 			    	</ul>
 		    	</li>
@@ -64,7 +65,6 @@
 		    	</li>
 		    </ul>
    		</div>
-	</div>
 	<script type="text/javascript">
         function init() 
         {        

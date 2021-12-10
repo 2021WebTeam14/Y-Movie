@@ -17,7 +17,6 @@
 		document.getElementById("result").src = "./searchResult.jsp?movName=" + name;
 	}
 </script>
-
 </head>
 <body>
     <iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
