@@ -44,22 +44,20 @@
 				<p id="userActor">This user's favActor</p>
 			</div>
 			
-			<div class="container" style="flex-direction: column;">
+			<div class="container1">
 				<button onclick="window.top.location.href='editUser.jsp';" style="height: 50px; cursor: pointer;">회원정보 수정</button>
-				<button onclick="window.top.location.href='editUser.jsp';" style="height: 50px; cursor: pointer;">선호 설정 변경</button>
+				<button onclick="window.top.location.href='seonhyeok/interest_movie.jsp';" style="height: 50px; cursor: pointer;">선호 설정 변경</button>
 			</div>
 			
 		</div>
 		
 		<label style="display: inherit; margin-bottom: 5px;">최근 작성한 리뷰</label>
-		<div style="display: flex;justify-content: center;align-items: center;">
-			<div>
-				<label id="recentReviewTitle" style="text-align: left;"></label>
-				<label id="recentReviewThumbs"></label>
-				<label id="recentReviewStars"></label>
-			</div>
-			
-			<p id="recentReview" style="overflow-wrap: break-word; width: 75%;">
+		<div class="lastReview">
+				<label id="recentReviewTitle">리뷰 없음</label>
+				<label id="recentReviewThumbs">&#128078;</label>
+				<label id="recentReviewStars">★</label>
+						
+			<p id="recentReview" style="overflow-wrap: break-word;">
 				Error!
 			</p>
 		</div>
@@ -135,12 +133,12 @@
 	           			int size = reviews.size();
 	           			ArrayList<movieDTO> name = mov.selectByCode(con, reviews.get(size - 1).getMov_code());
 	           		%>
-	           		var nameContent = "<%=name.get(0).getMov_name()%>";
+	           		var nameContent = <%=name.get(0).getMov_name()%>;
 	           		
 	           		document.getElementById("recentReviewTitle").innerText = nameContent;
-	           		document.getElementById("recentReviewThumbs").innerText = "<%=reviews.get(size - 1).getRev_thumbs()%>" ? "&#128077;" : "&#128078;";
-	           		document.getElementById("recentReviewStars").innerText = star.repeat("<%=reviews.get(size - 1).getRev_star()%>");
-	           		document.getElementById("recentReview").innerText = "<%=reviews.get(size - 1).getRev_context()%>";
+	           		document.getElementById("recentReviewThumbs").innerHTML = <%=reviews.get(size - 1).getRev_thumbs()%> ? "&#128077;" : "&#128078;";
+	           		document.getElementById("recentReviewStars").innerText = star.repeat(<%=reviews.get(size - 1).getRev_star()%>);
+	           		document.getElementById("recentReview").innerText = <%=reviews.get(size - 1).getRev_context()%>;
 	           		
 	         <%}%>
 		}

@@ -6,16 +6,17 @@
 	height:400px;
 }
 .list_movieranking{
-	padding: 0 200px;
+	padding: 0;
 
 }
 .list_movieranking li{
 	padding-top:40px;
+	padding-left:-20px;
 }
 div{
 	margin:0;
 	display: block;
-	padding:0 10px;
+	padding:0 5px;
 }
 
 ol{
@@ -82,7 +83,7 @@ body{
   color: #000; }
 
 .head_section  {
-  width: 100px;
+  width: 80px;
   height: 16px;
   margin: 2px 6px 0 0;
   background-position: -240px -100px; }
@@ -93,12 +94,13 @@ body{
   .tit_section {
   font-size: 24px;
   line-height: 28px;
-  color: #000; }
+  color: #000;
+  width: 1250px;
+  }
   .head_section .tit_section {
   float: left; }
   .list_movieranking{
-	padding: 0 200px;
-
+	padding: 0 -100px;
 }
 .list_movieranking li{
 	padding-top:40px;
@@ -109,6 +111,7 @@ body{
 }
 .section_ranking {
     padding-top: 80px;
+
 
 }
 .item_poster .img_thumb {
@@ -196,3 +199,7 @@ body{
 
 .item_poster .thumb_cont .txt_num {
   padding-left: 5px; }
+
+   .tit_section {
+  	text-align:center;
+  }
