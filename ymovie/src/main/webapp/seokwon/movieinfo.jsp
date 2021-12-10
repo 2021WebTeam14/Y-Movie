@@ -17,8 +17,6 @@
 <meta charset="UTF-8">
 <title>영화 상세 정보</title>
 <link href="movieinfo.css" rel="stylesheet" />
-
-<style>	body{margin: 10vh 15vw 10vh 15vw;}</style>
 <script>
 	function getAPIAboutMovie() {
 		<%
@@ -54,7 +52,9 @@
 </script>
 </head>
 <body onload="getAPIAboutMovie()">
-    <iframe src="../header.jsp" style="width: 69vw; border: none;"></iframe>
+    <%@include file="../header.jsp" %>
+    <div id="mi" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
+	
     <h1 class="title">영화상세정보</h1>
     <div class="movie-info">
 	<div class="poster-box">
@@ -104,7 +104,7 @@
 
 </div>
 
-
+</div>
 	
     <iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
 </body>
