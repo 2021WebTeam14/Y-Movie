@@ -14,15 +14,6 @@
 	 <link href="re_in.css" rel="stylesheet" type="text/css">
 	 <script>
 	 function getRecommand() {
-		 <%
-		 storeSession sessionDAO = new storeSession();
-		 if (sessionDAO.getSession(session) == ""){
-			 response.setContentType("text/html; charset=UTF-8");
-			 PrintWriter outA = response.getWriter();
-			 outA.println("<script>alert('로그인이 필요합니다.'); location.href='../initPage.jsp';</script>");
-			 outA.flush();
-		 }
-		 %> 
 		 <% 
          request.setCharacterEncoding("UTF-8");
          String genre=request.getParameter("genre");

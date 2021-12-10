@@ -543,8 +543,8 @@ public class movieDAO {
 				String mem_favDirector = rs.getString("mem_favDirector");
 				String buf ="";
 				if (mem_favGenre != null) {
-					for (int i = 0; (tmp = mem_favGenre.charAt(i)) != '\0'; i++) {
-						if (tmp != ',')
+					for (int i = 0; i < mem_favGenre.length()-1 && (tmp = mem_favGenre.charAt(i)) != '\0'; i++) {
+						if (tmp != ',' && tmp != ' ')
 							buf += tmp;
 						else {
 							Genre.add(buf);
@@ -553,8 +553,8 @@ public class movieDAO {
 					}
 				}
 				if (mem_favActor != null) {
-					for (int i = 0; (tmp = mem_favActor.charAt(i)) != '\0'; i++) {
-						if (tmp != ',')
+					for (int i = 0; i < mem_favGenre.length()-1 && (tmp = mem_favActor.charAt(i)) != '\0'; i++) {
+						if (tmp != ',' && tmp != ' ')
 							buf += tmp;
 						else {
 							Actor.add(buf);
@@ -563,8 +563,8 @@ public class movieDAO {
 					}
 				}
 				if (mem_favDirector != null) {
-					for (int i = 0; (tmp = mem_favDirector.charAt(i)) != '\0'; i++) {
-						if (tmp != ',')
+					for (int i = 0; i < mem_favGenre.length()-1 && (tmp = mem_favDirector.charAt(i)) != '\0'; i++) {
+						if (tmp != ',' && tmp != ' ')
 							buf += tmp;
 						else {
 							Director.add(buf);
@@ -754,7 +754,7 @@ public ArrayList<ArrayList<CodeNameYearDTO>> getRecommandsByCate(String targetId
 			for (int i = 0; i < size - 1; i++) {
 				query.append("mov_genre=\"" + tmp.get(i) + "\" or ");
 			}
-			query.append("mov_genre=\"" + tmp.get(size)+ "\"");
+			query.append("mov_genre=\"" + tmp.get(size - 1)+ "\"");
 		}
 		query.append(" order by rand() limit 8");
 		//System.out.println(query.toString());
@@ -786,7 +786,7 @@ public ArrayList<ArrayList<CodeNameYearDTO>> getRecommandsByCate(String targetId
 			for (int i = 0; i < size - 1; i++) {
 				query.append("dir_director=\"" + tmp.get(i) + "\" or ");
 			}
-			query.append("dir_director=\"" + tmp.get(size)+ "\"");
+			query.append("dir_director=\"" + tmp.get(size-1)+ "\"");
 		}
 		query.append(" order by rand() limit 8");
 		//System.out.println(query.toString());
@@ -825,7 +825,7 @@ public ArrayList<ArrayList<CodeNameYearDTO>> getRecommandsByCate(String targetId
 			for (int i = 0; i < size - 1; i++) {
 				query.append("act_actor=\"" + tmp.get(i) + "\" or ");
 			}
-			query.append("act_actor=\"" + tmp.get(size)+ "\"");
+			query.append("act_actor=\"" + tmp.get(size-1)+ "\"");
 		}
 		query.append(" order by rand() limit 8");
 		//System.out.println(query.toString());

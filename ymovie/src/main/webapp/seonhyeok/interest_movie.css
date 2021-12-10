@@ -13,13 +13,13 @@
 .list_movieranking li{
 	padding-top:40px;
 }
-div{
+#inter div{
 	margin:0;
 	display: block;
 	padding:0 5px;
 }
 
-ol{
+#inter ol{
 	display: block;
     list-style-type: decimal;
     margin-block-start: 1em;
@@ -30,13 +30,13 @@ ol{
 }
 
 
-ol, li{
+#inter ol, #inter li{
 	list-style:none;
 	list-style-position: initial;
 	list-style-image: initial;
 	list-style-type: none;
 }
-li{
+#inter li{
 	float: left;
 	display: list-item;
 	text-align: -webkit-match-parent;
@@ -45,7 +45,7 @@ li{
 .os_windows body {
     letter-spacing: -0.05em;
 }
-body{
+#inter body{
     font-size: 14px;
     line-height: 1.5;
     font-family: 'SF Pro Display','AppleSDGothicNeo','Malgun Gothic','\B9D1\C740 \ACE0\B515','\B3CB\C6C0',dotum,sans-serif;

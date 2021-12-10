@@ -16,8 +16,8 @@
 		</div>
 		    <div class="sign">
 			<%
-				storeSession sessionDAO = new storeSession();
-				if (sessionDAO.getSession(session) != ""){
+				storeSession sessionsDAO = new storeSession();
+				if (sessionsDAO.getSession(session) != ""){
                     out.print("<input type=\"button\" id=\"loggedInUser\" disabled= \"disabled\" value=\"\"/>");
 					out.print("<input class = \"signOut\" type=\"button\" value=\"SignOut\" onclick=\"window.top.location.replace('/ymovie//jaeik/signOut.jsp');\"/>");
 				}
@@ -29,31 +29,31 @@
 		    </div>
 		 </div>
 		    <ul id="nav">
-		    	<li><a href="./seonhyeok/re_in.jsp" target="_top">영화 추천&nbsp;</a>
+		    	<li><a href="/ymovie/seonhyeok/re_in.jsp" target="_top">영화 추천&nbsp;</a>
 			    	<ul>
-			    		<li><a href="./seonhyeok/re_in.jsp" target="_top">통합</a></li>
-			    		<li><a href="./seonhyeok/kategorie.jsp" target="_top">장르/배우/감독</a></li>
-			    		<li><a href="./seonhyeok/genre_h.jsp" target="_top">카테고리</a></li>
+			    		<li><a href="/ymovie/seonhyeok/re_in.jsp" target="_top">통합</a></li>
+			    		<li><a href="/ymovie/seonhyeok/kategorie.jsp" target="_top">장르/배우/감독</a></li>
+			    		<li><a href="/ymovie/seonhyeok/genre_h.jsp" target="_top">카테고리</a></li>
 			    	</ul>
 		    	</li>
-		    	<li><a href="./jaeik/movieSearch.jsp" target="_top">&nbsp;영화 리뷰&nbsp;</a>
+		    	<li><a href="/ymovie/jaeik/movieSearch.jsp" target="_top">&nbsp;영화 리뷰&nbsp;</a>
 			    	<ul>
-			    		<li><a href="./jaeik/movieSearch.jsp" target="_top">영화 검색</a></li>
-			    		<li><a href="./seokwon/review_rank.jsp" target="_top">리뷰 랭킹</a></li>
+			    		<li><a href="/ymovie/jaeik/movieSearch.jsp" target="_top">영화 검색</a></li>
+			    		<li><a href="/ymovie/seokwon/review_rank.jsp" target="_top">리뷰 랭킹</a></li>
 			    	</ul>
 		    	</li>
-		    	<li><a href="./seokwon/daily_rank.jsp" target="_top">&nbsp;박스오피스&nbsp;</a>
+		    	<li><a href="/ymovie/seokwon/daily_rank.jsp" target="_top">&nbsp;박스오피스&nbsp;</a>
 			    	<ul>
-			    		<li><a href="./seokwon/weekly_rank.jsp" target="_top">주간</a></li>
-			    		<li><a href="./seokwon/daily_rank.jsp" target="_top">일간</a></li>
-			    		<li><a href="./seokwon/star_rank.jsp" target="_top">별점</a></li>
+			    		<li><a href="/ymovie/seokwon/weekly_rank.jsp" target="_top">주간</a></li>
+			    		<li><a href="/ymovie/seokwon/daily_rank.jsp" target="_top">일간</a></li>
+			    		<li><a href="/ymovie/seokwon/star_rank.jsp" target="_top">별점</a></li>
 			    	</ul>
 		    	</li>
-		    	<li><a href="./seonhyeok/map1.jsp" target="_top">&nbsp;영화관 찾기&nbsp;</a>
+		    	<li><a href="/ymovie/seonhyeok/map1.jsp" target="_top">&nbsp;영화관 찾기&nbsp;</a>
 			    	<ul>
-			    		<li><a href="./seonhyeok/map1.jsp" target="_top">내 주변</a></li>
-			    		<li><a href="./seonhyeok/map2.jsp" target="_top">지역별</a></li>
-			    		<li><a href="./seonhyeok/map3.jsp" target="_top">영화관별</a></li>
+			    		<li><a href="/ymovie/seonhyeok/map1.jsp" target="_top">내 주변</a></li>
+			    		<li><a href="/ymovie/seonhyeok/map2.jsp" target="_top">지역별</a></li>
+			    		<li><a href="/ymovie/seonhyeok/map3.jsp" target="_top">영화관별</a></li>
 			    	</ul>
 		    	</li>
 		    	<li><a href="./seungtae/myPage.jsp" target="_top">&nbsp;마이페이지</a>
@@ -68,10 +68,10 @@
 	<script type="text/javascript">
         function init() 
         {        
-            <%if (sessionDAO.getSession(session) != "")
+            <%if (sessionsDAO.getSession(session) != "")
             {%>
             	if (document.getElementById("loggedInUser") != null) {
-            		document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+            		document.getElementById("loggedInUser").value = "<%=sessionsDAO.getSession(session)%>" + "님";
 				}                
             <%}%>
             document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';

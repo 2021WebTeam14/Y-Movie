@@ -320,7 +320,8 @@ if (tmpActor.size() != 0)
 </script>
 </head>
 <body onload="getRecommand()">
-    <iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
+	<%@include file="../header.jsp" %>
+    <div id="inter" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
 
 	<div class="head_section">
 		<h1 class=tit_section>관심 영화 설정</h1>
@@ -729,6 +730,7 @@ if (tmpActor.size() != 0)
 			<button type="submit" class="submit">관심 영화 설정</button>
 		</div>
 	</form>
+	</div>
 	    <iframe src="../footer.html" style="width: 100%; border: none;"></iframe>
 </body>
 </html>
