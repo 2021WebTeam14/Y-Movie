@@ -19,12 +19,7 @@
         if(check == 0) {
         	storeSession sessionDao = new storeSession();
         	if(sessionDao.insertSession(session, request.getParameter("username"))){
-            	if(request.getParameter("username").equals("god")){
-                    msg = "../jaeik/AdminPage.jsp";
-            	}
-            	else {
-                    msg = "../initPage.jsp";        		
-            	}
+        		msg = "../initPage.jsp";
         	}
         }
         else

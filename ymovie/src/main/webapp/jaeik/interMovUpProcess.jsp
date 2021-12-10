@@ -14,7 +14,6 @@
 		StringBuilder favActor = new StringBuilder();
 		StringBuilder favDirec = new StringBuilder();
 		StringBuilder favGenre = new StringBuilder();
-		System.out.println("-------------------------------");	
         memberDAO dao = new memberDAO();
 		for (int i = 0; i < 18; i++) {
 			if (i != 0) {
@@ -34,13 +33,12 @@
 				}
 			}
 		}
-		System.out.println(favActor.toString());
-		System.out.println(favDirec.toString());
-		System.out.println(favGenre.toString());
-    	//storeSession sesDao = new storeSession();
-    	//sesDao.insertSession(session, request.getParameter("username"));
+		storeSession sesDao = new storeSession();
+    	dao.updateInter(sesDao.getSession(session), favActor.toString(), favDirec.toString(), favGenre.toString());
+    	
     %>
-	history.back();
+    alert("적용되었습니다!");
+	location.href="../initPage.jsp";
 	}
 </script>
 

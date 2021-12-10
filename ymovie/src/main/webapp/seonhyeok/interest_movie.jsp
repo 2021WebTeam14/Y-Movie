@@ -22,6 +22,15 @@
 <style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
 <script>
 	 function getRecommand() {
+		 
+		 <%storeSession sessionDAO = new storeSession();
+		 if (sessionDAO.getSession(session) == "") {
+		 	response.setContentType("text/html; charset=UTF-8");
+		 	PrintWriter outA = response.getWriter();
+		 	outA.println("<script>alert('로그인이 필요합니다.'); location.href='../initPage.jsp';</script>");
+		 	outA.flush();
+		 }%>
+		 
 		<%movieDAO dao = new movieDAO();%>
 		<%actorDAO Adao = new actorDAO();%>
 		<%directorDAO Ddao = new directorDAO();%>
@@ -37,13 +46,13 @@ request.setCharacterEncoding("EUC-KR");%>
         document.getElementById("Name0").innerText = "<%=data0.get(0).getMov_name()%>";
         document.getElementById("Year0").innerText = "<%=data0.get(0).getMov_year()%>년";
         document.getElementById("director0").value = "<%for (int i = 0; i < tmpDirec.size() - 1; i++)
-	out.write(tmpDirec.get(i).getDir_director() + ", ");
-if (tmpDirec.size() != 0)
-	out.write(tmpDirec.get(tmpDirec.size() - 1).getDir_director());%>";	
+															out.write(tmpDirec.get(i).getDir_director() + ", ");
+														if (tmpDirec.size() != 0)
+															out.write(tmpDirec.get(tmpDirec.size() - 1).getDir_director());%>";	
         document.getElementById("actor0").value = "<%for (int i = 0; i < tmpActor.size() - 1; i++)
-	out.write(tmpActor.get(i).getAct_actor() + ", ");
-if (tmpActor.size() != 0)
-	out.write(tmpActor.get(tmpActor.size() - 1).getAct_actor());%>";
+															out.write(tmpActor.get(i).getAct_actor() + ", ");
+														if (tmpActor.size() != 0)
+															out.write(tmpActor.get(tmpActor.size() - 1).getAct_actor());%>";
         
         <%ArrayList<movieDTO> data1 = dao.selectByGenre(con, "전쟁");%> 
         <%tmpActor = Adao.selectByMovie(con, data1.get(1).getMov_code());%>
@@ -52,13 +61,13 @@ if (tmpActor.size() != 0)
         document.getElementById("Name1").innerText = "<%=data1.get(1).getMov_name()%>";
         document.getElementById("Year1").innerText = "<%=data1.get(1).getMov_year()%>년";	
         document.getElementById("director1").value = "<%for (int i = 0; i < tmpDirec.size() - 1; i++)
-	out.write(tmpDirec.get(i).getDir_director() + ", ");
-if (tmpDirec.size() != 0)
-	out.write(tmpDirec.get(tmpDirec.size() - 1).getDir_director());%>";		
+															out.write(tmpDirec.get(i).getDir_director() + ", ");
+														if (tmpDirec.size() != 0)
+															out.write(tmpDirec.get(tmpDirec.size() - 1).getDir_director());%>";		
         document.getElementById("actor1").value = "<%for (int i = 0; i < tmpActor.size() - 1; i++)
-	out.write(tmpActor.get(i).getAct_actor() + ", ");
-if (tmpActor.size() != 0)
-	out.write(tmpActor.get(tmpActor.size() - 1).getAct_actor());%>";
+															out.write(tmpActor.get(i).getAct_actor() + ", ");
+														if (tmpActor.size() != 0)
+															out.write(tmpActor.get(tmpActor.size() - 1).getAct_actor());%>";
         
         <%ArrayList<movieDTO> data2 = dao.selectByGenre(con, "서부극");%> 
         <%tmpActor = Adao.selectByMovie(con, data2.get(2).getMov_code());%>

@@ -63,11 +63,10 @@ input{
 	font-family: 'Nanum Gothic', sans-serif;
 }
 #nav li li{
-	height: 5px;
-	list-style: none;
-	font-size: 1.5vw;
-	margin: 30px 0 0 0;
-    padding: 30px 0 0 0;
+	list-style: disc;
+	font-size: 1vw;
+	margin: 20px 0 0 0;
+    padding: 20px 0 0 0;
     width: 33%;
 	float: left;
 	font-family: 'Nanum Gothic', sans-serif;

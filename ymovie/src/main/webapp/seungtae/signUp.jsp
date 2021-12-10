@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="signUp.css">
     <script type="text/javascript">
         var profile = null;
-        var radio = document.getElementsByName("avvatar");
+        var radio = document.getElementsByName("avatar");
         function checkForm() 
         {
             var userID = document.getElementById("account").value;

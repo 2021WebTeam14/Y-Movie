@@ -100,6 +100,37 @@ public class memberDAO {
 		return result;
 	}
 	
+	public String findNick(String targetId)  {
+		String result = "";
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		String query = "select mem_nickname from member where mem_id =\"" + targetId + "\"";
+		//System.out.println(query);
+		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+
+			if (rs.next()) {
+				result = rs.getString("mem_nickname");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
 	public void resetPW(String targetId, String targetPw)  {
 
 		Connection con = null;		
@@ -284,4 +315,30 @@ public class memberDAO {
 		}
 		return result;
 	}	
+	public void updateInter(String targetId, String mem_favActor, String mem_favDirector, String mem_favGenre)  {
+
+		Connection con = null;		
+		PreparedStatement pstmt = null;
+		String query = "update member set mem_favActor = ?, mem_favDirector = ?, mem_favGenre = ? where mem_id = ?";
+		//System.out.println(query);
+		try {
+			getConn getCon = new getConn();
+			con = getCon.getConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, mem_favActor);
+			pstmt.setString(2, mem_favDirector);
+			pstmt.setString(3, mem_favGenre);
+			pstmt.setString(4, targetId);
+			pstmt.execute();
+			pstmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

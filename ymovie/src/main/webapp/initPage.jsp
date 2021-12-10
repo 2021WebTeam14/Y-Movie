@@ -1,3 +1,8 @@
+<%@page import="defaultConn.getConn"%>
+<%@page import="review.reviewDTO"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="review.reviewDAO"%>
+<%@page import="member.memberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="movie.*" %>
 <%@ page import="api_DB.*" %>
@@ -15,13 +20,59 @@
 	<%
 	 	storeSession sessionDAO = new storeSession();
 		movieDAO dao = new movieDAO();
+		memberDAO memDao = new memberDAO();
 		posterAPI posterAPI = new posterAPI();
 		apiDAO api = new apiDAO();
 	%>
 	<%
+		Connection con = null;
+		getConn getCon = new getConn();
+		con = getCon.getConnection();
 		ArrayList<CodeNameYearDTO> dataWeek = api.getAPIBoxOfficeWeekly();
 		ArrayList<CodeNameYearDTO> dataDay = api.getAPIBoxOfficeDaily();
 		ArrayList<movieDTO> dataStar = dao.getStarRank(3);
+		
+		ArrayList<reviewDTO> dataRev = new ArrayList<reviewDTO>();
+		reviewDAO revDao = new reviewDAO();
+		String star = "★";
+		
+		%>
+		document.getElementById("poster0").src =  "<%=posterAPI.getPoster(dataWeek.get(0).getCode())%>";
+		document.getElementById("poster1").src =  "<%=posterAPI.getPoster(dataDay.get(0).getCode())%>";
+		document.getElementById("poster2").src =  "<%=posterAPI.getPoster(dataStar.get(0).getMov_code())%>";
+		<%
+		dataRev = revDao.selectByMovie(con, dataWeek.get(0).getCode());
+		if(dataRev.size() != 0){
+			for(int j=1; j<dataRev.size() && j<4; j++){
+				%>
+					document.getElementById("reviewName0<%=j%>").innerText =  "<%=memDao.findNick(dataRev.get(j).getMem_id())%>";
+					document.getElementById("reviewThumb0<%=j%>").innerHtml = "<%if (dataRev.get(j).getRev_thumbs()==1) out.print("&#128077;"); else out.print("&#128078;");%>";
+					document.getElementById("reviewStar0<%=j%>").innerText = "<%=star.repeat(dataRev.get(j).getRev_star())%>";
+				<%
+			}
+		}
+		
+		dataRev = revDao.selectByMovie(con, dataDay.get(0).getCode());
+		if(dataRev.size() != 0){
+			for(int j=1; j<dataRev.size() && j<4; j++){
+				%>
+					document.getElementById("reviewName1<%=j%>").innerText =  "<%=memDao.findNick(dataRev.get(j).getMem_id())%>";
+					document.getElementById("reviewThumb1<%=j%>").innerHtml = "<%if (dataRev.get(j).getRev_thumbs()==1) out.print("&#128077;"); else out.print("&#128078;");%>";
+					document.getElementById("reviewStar1<%=j%>").innerText = "<%=star.repeat(dataRev.get(j).getRev_star())%>";
+				<%
+			}
+		}
+		
+		dataRev = revDao.selectByMovie(con, dataStar.get(0).getMov_code());
+		if(dataRev.size() != 0){
+			for(int j=1; j<dataRev.size() && j<4; j++){
+				%>
+					document.getElementById("reviewName2<%=j%>").innerText =  "<%=memDao.findNick(dataRev.get(j).getMem_id())%>";
+					document.getElementById("reviewThumb2<%=j%>").innerHtml = "<%if (dataRev.get(j).getRev_thumbs()==1) out.print("&#128077;"); else out.print("&#128078;");%>";
+					document.getElementById("reviewStar2<%=j%>").innerText = "<%=star.repeat(dataRev.get(j).getRev_star())%>";
+				<%
+			}
+		}
 	%>
 		
 	}
@@ -125,89 +176,89 @@
 		<input type="button" value="가입하기" onclick="location.href='seungtae/signUp.jsp'">
     </div>
     <div class="outer border flex">
-	    <img id="poster" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" alt="poster">
+	    <img id="poster0" src="" alt="poster">
  		<div class="leftNoMargin centered">
  			<div class="">
  				<div class="outer flex left noMP">	
-			    	<div id="reviewName0" class="noMP">Nick&nbsp;</div>
-			    	<div id="reviewThumb0" class="noMP">Thumb&nbsp;</div>
-			    	<div id="reviewStar0" class="noMP">Star</div>
+			    	<div id="reviewName01" class="noMP"></div>
+			    	<div id="reviewThumb01" class="noMP"></div>
+			    	<div id="reviewStar01" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review">TextTextTextTextTextTextTextTextTextText</div>
+		    	<div id="reviewText00" class="border review"></div>
 		    </div>
  			<div class="">
  				<div class="outer flex left noMP">	
-			    	<div id="reviewName1" class="noMP">Nick&nbsp;</div>
-			    	<div id="reviewThumb1" class="noMP">Thumb&nbsp;</div>
-			    	<div id="reviewStar1" class="noMP">Star</div>
+			    	<div id="reviewName01" class="noMP"></div>
+			    	<div id="reviewThumb01" class="noMP"></div>
+			    	<div id="reviewStar01" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText1" class="border review">TextTextTextTextTextTextTextTextTextText</div>
+		    	<div id="reviewText1" class="border review"></div>
 		    </div>
  			<div class="">
  				<div class="outer flex left noMP">
-			    	<div id="reviewName2" class="noMP">Nick&nbsp;</div>
-			    	<div id="reviewThumb2" class="noMP">Thumb&nbsp;</div>
-			    	<div id="reviewStar2" class="noMP">Star</div>
+			    	<div id="reviewName02" class="noMP"></div>
+			    	<div id="reviewThumb02" class="noMP"></div>
+			    	<div id="reviewStar02" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText2" class="border review">TextTextTextTextTextTextTextTextTextText</div>
+		    	<div id="reviewText2" class="border review"></div>
 		    </div>
 		</div>
 	</div>
 	    <div class="outer border flex">
-    	<img id="poster" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" alt="poster">
+    	<img id="poster1" src="" alt="poster">
  		<div class="leftNoMargin centered">
  			<div class="">
  				<div class="outer flex left noMP">	
-			    	<div id="reviewName00" class="noMP">Nick&nbsp;</div>
-			    	<div id="reviewThumb00" class="noMP">Thumb&nbsp;</div>
-			    	<div id="reviewStar00" class="noMP">Star</div>
+			    	<div id="reviewName11" class="noMP"></div>
+			    	<div id="reviewThumb11" class="noMP"></div>
+			    	<div id="reviewStar11" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review">TextTextTextTextTextTextTextTextTextText</div>
+		    	<div id="reviewText00" class="border review"></div>
 		    </div>
  			<div class="">
  				<div class="outer flex left noMP">	
-			    	<div id="reviewName00" class="noMP">Nick&nbsp;</div>
-			    	<div id="reviewThumb00" class="noMP">Thumb&nbsp;</div>
-			    	<div id="reviewStar00" class="noMP">Star</div>
+			    	<div id="reviewName12" class="noMP"></div>
+			    	<div id="reviewThumb12" class="noMP"></div>
+			    	<div id="reviewStar12" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review">TextTextTextTextTextTextTextTextTextText</div>
+		    	<div id="reviewText00" class="border review"></div>
 		    </div>
  			<div class="">
  				<div class="outer flex left noMP">
-			    	<div id="reviewName00" class="noMP">Nick&nbsp;</div>
-			    	<div id="reviewThumb00" class="noMP">Thumb&nbsp;</div>
-			    	<div id="reviewStar00" class="noMP">Star</div>
+			    	<div id="reviewName13" class="noMP"></div>
+			    	<div id="reviewThumb13" class="noMP"></div>
+			    	<div id="reviewStar13" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review">TextTextTextTextTextTextTextTextTextText</div>
+		    	<div id="reviewText00" class="border review"></div>
 		    </div>
 		</div>
 	</div>
 	    <div class="outer border flex">
-    	<img id="poster" src="https://kobis.or.kr/common/mast/movie/2016/10/thumb_x192/thn_08b4cda6ba9b49bb8f31b79fd0f1af64.jpg" alt="poster">
+    	<img id="poster2" src="" alt="poster">
  		<div class="leftNoMargin centered">
  			<div class="">
  				<div class="outer flex left noMP">	
-			    	<div id="reviewName00" class="noMP">Nick&nbsp;</div>
-			    	<div id="reviewThumb00" class="noMP">Thumb&nbsp;</div>
-			    	<div id="reviewStar00" class="noMP">Star</div>
+			    	<div id="reviewName21" class="noMP"></div>
+			    	<div id="reviewThumb21" class="noMP"></div>
+			    	<div id="reviewStar21" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review">TextTextTextTextTextTextTextTextTextText</div>
+		    	<div id="reviewText00" class="border review"></div>
 		    </div>
  			<div class="">
  				<div class="outer flex left noMP">	
-			    	<div id="reviewName00" class="noMP">Nick&nbsp;</div>
-			    	<div id="reviewThumb00" class="noMP">Thumb&nbsp;</div>
-			    	<div id="reviewStar00" class="noMP">Star</div>
+			    	<div id="reviewName22" class="noMP"></div>
+			    	<div id="reviewThumb22" class="noMP"></div>
+			    	<div id="reviewStar22" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review">TextTextTextTextTextTextTextTextTextText</div>
+		    	<div id="reviewText00" class="border review"></div>
 		    </div>
  			<div class="">
  				<div class="outer flex left noMP">
-			    	<div id="reviewName00" class="noMP">Nick&nbsp;</div>
-			    	<div id="reviewThumb00" class="noMP">Thumb&nbsp;</div>
-			    	<div id="reviewStar00" class="noMP">Star</div>
+			    	<div id="reviewName23" class="noMP"></div>
+			    	<div id="reviewThumb23" class="noMP"></div>
+			    	<div id="reviewStar23" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="border review">TextTextTextTextTextTextTextTextTextText</div>
+		    	<div id="reviewText00" class="border review"></div>
 		    </div>
 		</div>
 	</div>
