@@ -1,5 +1,9 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
+.title{
+	text-align: center;
+}
+
 
 div {
 	width: 100%;

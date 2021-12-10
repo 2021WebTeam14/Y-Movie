@@ -1,13 +1,12 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
-
-div {
-	margin-bottom: 30px;
+.title{
+	text-align: center;
 }
 
-.info-star{
-	display: flex;
-	flex-direction: column;	
+div {
+	width: 100%;
+	margin-bottom: 30px;
 }
 
 .poster-box {
@@ -19,6 +18,14 @@ div {
 }
 
 .info-box {
+	width:auto;
+	object-fit:cover;
+	float: left;
+	font-size: 20px;
+}
+
+.info-box {
+	display: inline-block;
 	float: left;
 	font-size: 20px;
 }
@@ -38,6 +45,7 @@ div {
 }
 
 .star-rating {
+	clear: both;
   display: flex;
   flex-direction: row-reverse;
   font-size: 2.25rem;

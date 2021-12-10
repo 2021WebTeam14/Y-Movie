@@ -51,7 +51,7 @@
 </head>
 <body onload="getAPIAboutMovie()">
     <iframe src="../header.jsp" style="width: 69vw; border: none;"></iframe>
-    <h2>영화 상세 정보</h2>
+   <h1 class="title">영화상세정보</h1>
     <div class="movie-info">
 	<div class="poster-box">
 		<img class="poster-thumbnail" id="img" src="" width="197px" height="273"><!-- src="DB 이미지 주소" -->

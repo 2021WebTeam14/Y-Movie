@@ -27,9 +27,7 @@
 </head>
 <body onload="getRecommand()">
     <iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
-<div class="head">
-   <h2 class="title">별점순위</h2>
-</div>
+<h1 class="title">별점순위</h1>
     
 <div class="box_boxoffice">
 		<ol class="list_movieranking">
