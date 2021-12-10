@@ -1,8 +1,6 @@
 @charset "UTF-8";
-     
-     body{margin: 10vh 15vw 10vh 15vw;}
-     
-	 input[type=text], input[type=password] 
+   
+	 #lst input[type=text], input[type=password] 
 	 {   
         width: 100%;   
         margin: 8px 0;  
@@ -12,7 +10,7 @@
         box-sizing: border-box;          
     }  
     
-    button {   
+    #lst button {   
        background-color: blue;   
        width: 100px;  
         color: white;   
@@ -22,7 +20,7 @@
         cursor: pointer;   
          }   
          
-    .inner1
+    #lst .inner1
 	{
 		display: flex;
 		flex-direction: column;
@@ -32,7 +30,7 @@
 		width: 430px;
 	}
 	
-	.inner2
+	#lst .inner2
 	{
 		display: flex;
 		flex-direction: column;
@@ -43,7 +41,7 @@
 		padding: 50px;
 	}
 	
-	.container
+	#lst .container
 	{
 		display: flex;
 		align-items: center;
@@ -51,20 +49,20 @@
 		height: 300px;
 	}
 	
-	.loginbox
+	#lst .loginbox
 	{
 		display: flex;
 		flex-direction: column;
 	}
 	
-	.buttons
+	#lst .buttons
 	{
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
 
-	.innerButtons
+	#lst .innerButtons
 	{
 		display: flex;
 		flex-direction: row;
@@ -72,7 +70,7 @@
 		width: 100%;
 	}
 	
-	.innerBoxes
+	#lst .innerBoxes
 	{
 		display: flex;
 		flex-direction: row;

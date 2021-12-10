@@ -1,37 +1,35 @@
 @charset "UTF-8";
 
-body{margin: 10vh 15vw 10vh 15vw;}
-
-h1
+#lst h1
 {
 	text-align: center;	
 }
 
-.container *
+#lst .container *
 {
 	margin-left: 20px;
 	margin-right: 20px;
 }
 
-#userID, #userNick
+ #lst #userID, #lst #userNick
 {
 	margin-top: 10px;
 	text-align: center;
 }
 
 
-label
+#lst label
 {
 	text-align: center;
 }
 
-#userProfile
+#lst #userProfile
 {
 	width: 130px;
 	height: 130px;
 }
 
-.container
+#lst .container
 {
 	display: flex;
 	flex-direction: row;
@@ -44,7 +42,7 @@ label
 	padding: 5px;
 }
 
-.container1
+#lst .container1
 {
 	display: flex;
 	flex-direction: column;
@@ -52,7 +50,7 @@ label
 	align-items: center;
 }
 			
-.userInfo
+#lst .userInfo
 {
 	display: flex;
 	flex-direction: column;
@@ -60,7 +58,7 @@ label
 }
 			
 			
-button 
+#lst button 
 {   
 	background-color: blue;     
 	color: white;   
@@ -70,7 +68,7 @@ button
 	cursor: pointer;   
 }
 
-.lastReview
+#lst .lastReview
 {
 	border: 2px solid blue;
 	padding: 5px;
@@ -78,20 +76,20 @@ button
 	width: 75%;
 }
 
-.lastReview label
+#lst .lastReview label
 {
 	margin-left: 5px;
 	margin-right: 5px;
 }   
 
-#recentReview
+#lst #recentReview
 {
 	margin: 0px;
 	padding-top: 16px;
 	padding-bottom: 16px;
 }
 
-#recentReviewStars
+#lst #recentReviewStars
 {
 	-webkit-text-stroke-width: 1.5px;
  	-webkit-text-stroke-color: #2b2a29;

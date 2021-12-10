@@ -80,7 +80,8 @@
     
 </head>
 <body>
-    <iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
+    <%@include file="../header.jsp" %>
+    <div id="lst" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
     <h1 style="text-align: center"> Sign up for Y-Movie </h1> 
     <form onsubmit="return checkForm()" action="../jaeik/signUpProcess.jsp" method="post">
     <div>
@@ -141,7 +142,7 @@
                 out.println("<font color='red' size='5'>아이디 혹은 닉네임이 중복입니다.</font>");
             }
         %>    
-    
+    </div>
     <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>
 </html>

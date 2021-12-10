@@ -21,7 +21,8 @@
 		
 	</head>
 	<body onload="init()">
-		<iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
+		<%@include file="../header.jsp" %>
+   		<div id="lst" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">	
 		<h1>Change user info</h1>
 		<div class="buttons">
 			<button onclick="document.getElementById('chg_pwd').style.display='block'" class="btn">비밀번호 변경</button>
@@ -114,7 +115,7 @@
 			</div>
 			</form>
 		</div>
-		
+		</div>
 		<iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 	</body>
 	

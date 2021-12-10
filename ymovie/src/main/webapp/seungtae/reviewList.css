@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-body{margin: 10vh 15vw 10vh 15vw;}
-
-table
+#lst table
 {
 	width: 100%;
 	padding: 10px;
@@ -10,31 +8,31 @@ table
 	border-radius: 10px;
 }
 
-h1
+#lst h1
 {
 	text-align: center;		
 }
 
-.reviewList
+#lst .reviewList
 {
 	display: flex;
 	flex-direction: column;
 }
 
-.review
+#lst .review
 {
 	border: 2px solid blue;
 	margin-bottom: 100px;
 	padding: 5px;
 }
 
-.pageBox
+#lst .pageBox
 {
 	display: flex;
 	justify-content: center;
 }
 
-ul
+#lst ul
 {
 	height: 50px;
 	padding: 0px 5px;
@@ -45,7 +43,7 @@ ul
 	align-items: center;
 }
 
-ul li
+#lst ul li
 {
 	list-style: none; 
 	padding: 5px 10px;
@@ -53,23 +51,23 @@ ul li
 	border: 1px solid black;	
 }
 
-label
+#lst label
 {
 	display: inline-block;
 	margin-right: 20px;
 }
 
-a
+#lst a
 {
 	text-decoration: none;
 }
 
-p
+#lst p
 {
 	overflow-wrap: break-word;
 }
 
-button
+#lst button
 {   
 	background-color: blue;   
 	width: 100px;  
@@ -80,14 +78,14 @@ button
 	cursor: pointer;   
 }   
 
-button.edit
+#lst button.edit
 {
 	float: right;
 	margin: auto;
 	margin-top: 20px;
 }
 
-.editing
+#lst .editing
  {
   display: none;
   position: fixed;
@@ -102,7 +100,7 @@ button.edit
   padding-top: 60px;
 }
 
-.contents 
+#lst .contents 
 {
   background-color: #fefefe;
   margin: 5% auto 15% auto; 
@@ -110,7 +108,7 @@ button.edit
   width: 50%; 
 }
 
-.close 
+#lst .close 
 {
   position: absolute;
   right: 25px;
@@ -120,13 +118,13 @@ button.edit
   font-weight: bold;
 }
 
-.close:hover, .close:focus 
+#lst .close:hover, #lst .close:focus 
 {
   color: red;
   cursor: pointer;
 }
 
-.editingReview
+#lst .editingReview
 {
 	display: flex;
 	justify-content: center;
@@ -134,13 +132,13 @@ button.edit
 	align-items: center;
 }
 
-.editReviewBtn button
+#lst .editReviewBtn button
 {
 	margin-left: 20px;
 	margin-right: 20px;
 }
 
-.star-rating {
+#lst .star-rating {
   display: flex;
   position: bottom;
   font-size: 2.25rem;
@@ -153,34 +151,34 @@ button.edit
   margin: auto;
 }
  
-.star-rating input {
+#lst .star-rating input {
   display: none;
 }
  
-.star-rating label {
-  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+#lst .star-rating label {
+  -webkit-text-fill-color: transparent; 
   -webkit-text-stroke-width: 2.3px;
   -webkit-text-stroke-color: #2b2a29;
   cursor: pointer;
 }
  
-.star-rating :checked ~ label {
+#lst .star-rating :checked ~ label {
   -webkit-text-fill-color: gold;
 }
  
-.star-rating label:hover,
-.star-rating label:hover ~ label {
+#lst .star-rating label:hover,
+#lst .star-rating label:hover ~ label {
   -webkit-text-fill-color: #fff58c;
 }
 
-.reviewStars
+#lst .reviewStars
 {
 	-webkit-text-stroke-width: 1.5px;
  	-webkit-text-stroke-color: #2b2a29;
 	-webkit-text-fill-color: gold;
 }
 
-textarea
+#lst textarea
 {
 	resize: none;
 	margin: 20px;

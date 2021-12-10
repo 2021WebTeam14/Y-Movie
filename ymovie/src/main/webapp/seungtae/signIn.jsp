@@ -14,7 +14,9 @@
         storeSession sessionDAO = new storeSession();
 		sessionDAO.deleteSession(session);
 	%>
-	<iframe id="head" src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
+	
+	<%@include file="../header.jsp" %>
+    <div id="lst" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
 	   <h1 style="text-align: center"> Login </h1> 
 	   
 	    <form style="padding-top: 50px; padding-bottom: 50px;" method="POST" action="signInProcess.jsp">
@@ -52,6 +54,7 @@
                 out.println("<font color='red' size='5'>아이디 혹은 비밀번호가 일치하지 않습니다</font>");
             }
         %>    
+       </div>
 	    <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>   
 </html>

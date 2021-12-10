@@ -23,7 +23,8 @@
 	
 	<body onload="start()">
 		
-		<iframe src="../header.jsp" style="width: 100%; border: none;"></iframe>
+		<%@include file="../header.jsp" %>
+    <div id="lst" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">	
 		<h1>내 정보</h1>
 		<div class="container">
 		
@@ -65,7 +66,7 @@
 			<br><br>
 			<button style="width: 100%;" onclick="document.location='reviewList.jsp';">내 리뷰 보기</button>
 		</div>
-		
+		</div>
 		
 		<iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 	</body>
