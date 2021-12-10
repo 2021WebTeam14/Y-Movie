@@ -49,7 +49,7 @@ function getAPIAboutMovie() {
 </head>
 <body onload="getAPIAboutMovie()">
 	<iframe src="../header.jsp" style="width: 69vw; border: none; height: 15vw"></iframe>
-<h2>리뷰작성</h2>
+<h1 class="title">리뷰작성</h1>
 <div class="movie-info">
   	<div class="info-star">
     <div class="poster-box">
