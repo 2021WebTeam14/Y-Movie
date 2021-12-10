@@ -39,7 +39,7 @@ if (sessionDAO.getSession(session) == "") {
 <body onload="getRecommand()">
 
 <%@include file="../header.jsp" %>
-    <div id="re_in" style="padding: 10vh 10vw 185vh 10vw; background-color: #f2f2f2">
+    <div id="re_in" style="padding: 10vh 10vw 197vh 10vw; background-color: #f2f2f2">
 	
 	<div class="head_section">
 		<h1 class=tit_section>통합추천</h1>

@@ -9,24 +9,24 @@
 	padding: 0;
 
 }
-.list_movieranking li{
+#kate .list_movieranking li{
 	padding-top:40px;
-	padding-left:-20px;
+	margin-left: -20px;
 }
 #kate div{
 	margin:0;
 	display: block;
-	padding:0 5px;
+	padding: 0 35px;
 }
 
 #kate ol{
 	display: block;
-    list-style-type: decimal;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 10px;
-    margin-inline-end: 10px;
-    padding-inline-start: 40px;
+	list-style-type: decimal;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 10px;
+	margin-inline-end: 10px;
+	padding-inline-start: 30px;
 }
 
 
@@ -100,10 +100,12 @@
   .head_section .tit_section {
   float: left; }
   .list_movieranking{
-	padding: 0 -100px;
+	margin: 0 -98px;
 }
-.list_movieranking li{
-	padding-top:40px;
+#kate .list_movieranking li{
+	margin-top: 40px;
+	margin-left: 30px;
+	margin-right: 10px;
 }
 .img_thumb {
     display: block;
@@ -202,4 +204,4 @@
 
    .tit_section {
   	text-align:center;
-  }
+  }  

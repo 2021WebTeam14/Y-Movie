@@ -1,15 +1,15 @@
 @charset "UTF-8";
-.item_poster{
+#re_in .item_poster{
 	display: block;
 	width: 204px;
 	margin: 0 50px;
 	height:400px;
 }
-.list_movieranking{
+#re_in .list_movieranking{
 	padding: 0;
 	padding-left: 120px;
 }
-.list_movieranking li{
+#re_in .list_movieranking li{
 	padding-top:40px;
 	padding-left:-10px;
 }
@@ -37,6 +37,7 @@
 	list-style-image: initial;
 	list-style-type: none;
 	float:left;
+	padding-left: 10px;
 }
 #re_in li{
 	float: left;
