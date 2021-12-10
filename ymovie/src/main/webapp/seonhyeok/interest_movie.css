@@ -6,7 +6,8 @@
 	height:400px;
 }
 .list_movieranking{
-	padding: 0 200px;
+	padding: 0;
+	padding-left:20px;
 
 }
 .list_movieranking li{
@@ -15,7 +16,7 @@
 div{
 	margin:0;
 	display: block;
-	padding:0 10px;
+	padding:0 5px;
 }
 
 ol{
@@ -172,3 +173,6 @@ body{
 
     
 }
+ .tit_section {
+  	text-align:center;
+  }
