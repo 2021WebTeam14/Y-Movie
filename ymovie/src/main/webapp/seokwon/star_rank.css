@@ -1,4 +1,7 @@
 @charset "UTF-8";
+.title{
+	text-align: center;
+}
 .item_poster{
 	display: block;
 	width: 204px;
