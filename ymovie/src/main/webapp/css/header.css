@@ -5,6 +5,7 @@ body{
 	margin: 0;
 }
 a {
+	font-size: 1.5vw;
 	text-decoration: none;
 	color: white;
 }
@@ -40,7 +41,6 @@ input{
 }
 #nav{
 	list-style: none;
-	border-bottom: 3px solid black;
 	background-color: #2e64f2;
 	height: auto;
 	font-size: 1.5vw;
@@ -49,19 +49,21 @@ input{
 	z-index: 0;
 }
 #nav li{
+	border-bottom: 3px solid black;
 	height: 100%;
 	list-style: none;
 	width: 19%;
 	text-align: center;
 	float: left;
-    padding: 20px 0 20px 0;
+    padding: 10px 0 10px 0;
 	font-family: 'Nanum Gothic', sans-serif;
 }
 #nav li li{
+	border-bottom: none;
 	list-style: none;
 	font-size: 1vw;
-	margin: 20px 0 0 0;
-    padding: 20px 0 0 0;
+	margin: 13px 0 0 0;
+    padding: 15px 0 15px 0;
     width: 33%;
 	float: left;
 	font-family: 'Nanum Gothic', sans-serif;
@@ -72,23 +74,24 @@ input{
 	list-style: none;
 }
 
-#nav li:hover ul, #nav li:focus ul{
+#nav > li:hover ul, #nav > li:focus ul{
 	display: list-item;
 	position: relative; 
 	width: 600px;
 	float: left;
 	z-index: 100;
 }
-#nav li:hover ul li, #nav li:focus ul li{
-	border-top: 3px solid black;
+#nav > li:hover ul li, #nav > li:focus ul li{
+	background-color: #3e74f2;
 }
-#nav li:hover, #nav li:focus{
+#nav > li:hover, #nav > li:focus{
+	border-bottom: none;
+    padding: 10px 0 0 0;
 	z-index: 100;
 	background-color: #3e74f2;
-	
 }
-#nav > li:last-child ul, #nav > li:nth-child(n+3) ul{
-	right: 370px;
+#nav > li:last-child ul{
+	right: 240px;
 }
 ul#nav:after {
     content: '';

@@ -14,11 +14,9 @@
 <link href="css/initPage.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>Y-Movie</title>
-<style>	body{margin: 10vh 15vw 10vh 15vw;}</style>
 <script type="text/javascript">
 	function getData() {
 	<%
-	 	storeSession sessionDAO = new storeSession();
 		movieDAO dao = new movieDAO();
 		memberDAO memDao = new memberDAO();
 		posterAPI posterAPI = new posterAPI();
@@ -79,7 +77,7 @@
 </script>
 </head>
 <body onload="getData()">
-    <iframe src="header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
+    <%@include file="./header.jsp" %>
     
     <div class="outer border centered">
     	<div class="centered noMP"><h1 id="heading"></h1></div>
@@ -179,7 +177,7 @@
 	    <img id="poster0" src="" alt="poster">
  		<div class="leftNoMargin centered">
  			<div class="">
- 				<div class="outer flex left noMP">	
+ 				<div class="flex left noMP">	
 			    	<div id="reviewName01" class="noMP"></div>
 			    	<div id="reviewThumb01" class="noMP"></div>
 			    	<div id="reviewStar01" class="noMP"></div>
@@ -187,7 +185,7 @@
 		    	<div id="reviewText00" class="border review"></div>
 		    </div>
  			<div class="">
- 				<div class="outer flex left noMP">	
+ 				<div class="flex left noMP">	
 			    	<div id="reviewName01" class="noMP"></div>
 			    	<div id="reviewThumb01" class="noMP"></div>
 			    	<div id="reviewStar01" class="noMP"></div>
@@ -195,7 +193,7 @@
 		    	<div id="reviewText1" class="border review"></div>
 		    </div>
  			<div class="">
- 				<div class="outer flex left noMP">
+ 				<div class="flex left noMP">
 			    	<div id="reviewName02" class="noMP"></div>
 			    	<div id="reviewThumb02" class="noMP"></div>
 			    	<div id="reviewStar02" class="noMP"></div>
@@ -208,7 +206,7 @@
     	<img id="poster1" src="" alt="poster">
  		<div class="leftNoMargin centered">
  			<div class="">
- 				<div class="outer flex left noMP">	
+ 				<div class="flex left noMP">	
 			    	<div id="reviewName11" class="noMP"></div>
 			    	<div id="reviewThumb11" class="noMP"></div>
 			    	<div id="reviewStar11" class="noMP"></div>
@@ -216,7 +214,7 @@
 		    	<div id="reviewText00" class="border review"></div>
 		    </div>
  			<div class="">
- 				<div class="outer flex left noMP">	
+ 				<div class="flex left noMP">	
 			    	<div id="reviewName12" class="noMP"></div>
 			    	<div id="reviewThumb12" class="noMP"></div>
 			    	<div id="reviewStar12" class="noMP"></div>
@@ -224,7 +222,7 @@
 		    	<div id="reviewText00" class="border review"></div>
 		    </div>
  			<div class="">
- 				<div class="outer flex left noMP">
+ 				<div class="flex left noMP">
 			    	<div id="reviewName13" class="noMP"></div>
 			    	<div id="reviewThumb13" class="noMP"></div>
 			    	<div id="reviewStar13" class="noMP"></div>
@@ -237,7 +235,7 @@
     	<img id="poster2" src="" alt="poster">
  		<div class="leftNoMargin centered">
  			<div class="">
- 				<div class="outer flex left noMP">	
+ 				<div class="flex left noMP">	
 			    	<div id="reviewName21" class="noMP"></div>
 			    	<div id="reviewThumb21" class="noMP"></div>
 			    	<div id="reviewStar21" class="noMP"></div>
@@ -245,7 +243,7 @@
 		    	<div id="reviewText00" class="border review"></div>
 		    </div>
  			<div class="">
- 				<div class="outer flex left noMP">	
+ 				<div class="flex left noMP">	
 			    	<div id="reviewName22" class="noMP"></div>
 			    	<div id="reviewThumb22" class="noMP"></div>
 			    	<div id="reviewStar22" class="noMP"></div>
@@ -253,7 +251,7 @@
 		    	<div id="reviewText00" class="border review"></div>
 		    </div>
  			<div class="">
- 				<div class="outer flex left noMP">
+ 				<div class="flex left noMP">
 			    	<div id="reviewName23" class="noMP"></div>
 			    	<div id="reviewThumb23" class="noMP"></div>
 			    	<div id="reviewStar23" class="noMP"></div>
