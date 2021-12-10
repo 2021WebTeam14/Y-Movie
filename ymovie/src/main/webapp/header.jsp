@@ -6,13 +6,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Y-Movie</title>
-    <link href="css/header.css" rel="stylesheet" />
+    <link href="/ymovie/css/header.css" rel="stylesheet" />
 </head>
 <body onload="init()">
 	<div class="header">
 		<div class = "signNav">
 		<div class="imgWrapper">
-		<img src="img/logo.png" alt="Y-Movie" width="30%" height="100%" onclick="window.top.location.replace('/ymovie/initPage.jsp')"/>
+		<img src="/ymovie/img/logo.png" alt="Y-Movie" width="30%" height="100%" onclick="window.top.location.replace('/ymovie/initPage.jsp')"/>
 		</div>
 		    <div class="sign">
 			<%

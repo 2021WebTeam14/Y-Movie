@@ -15,11 +15,10 @@
 </script>
 </head>
 
-<header>
-<iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
-</header>
 <body>
-	<div>
+	<%@include file="../header.jsp" %>
+    <div style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
+	<div id="genre">
 		<ul class="genre_list">
 			<li><a class="drama" onclick="getgenre('드라마')">드라마</a></li>
 			<li><a class="war" onclick="getgenre('전쟁')">전쟁</a></li>
@@ -44,9 +43,9 @@
 
 	</div>
 
-<iframe src="genre.jsp?genre=드라마" width="1800px" height="1800px" style="border: none; float:left; margin-left:-250px" id="asdf"></iframe>
+	<iframe src="genre.jsp?genre=드라마" width="1800px" height="1800px" style="border: none; float:left; margin-left:-250px" id="asdf"></iframe>
 
-
+</div>
 <iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
 
 </body>
