@@ -10,15 +10,18 @@
 
 </head>
 <body>
-
+<header>
 	<iframe src="../header.jsp" style="width: 100%; border: none; height: 15vw"></iframe>
+</header>
+	
 	
 	<label for="adress"></label>
 	<div class=searchbar>
 		<div class="container">
-			<div id="map" style="width:1500px; height:700px;"></div>
+			<div id="map" style="width:1300px; height:800px; margin-top: 200px;"></div>
 		</div>
 	</div>
+	<div class="map">
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=22e4124c161041fc832c09fac32fb1b1&libraries=services"></script>
 	<script>
@@ -132,8 +135,11 @@
 		
 	
 	</script>
+	</div>
+	<footer>
+		<iframe src="../footer.html" style="width: 69vw; border: none; "></iframe>
+	</footer>
 	
-	<iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
 </body>
 
 </html>
