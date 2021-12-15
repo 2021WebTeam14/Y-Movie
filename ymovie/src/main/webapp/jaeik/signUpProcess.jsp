@@ -12,25 +12,28 @@
 
 	function onstart() {
 	<%
-		int ava = 1;
-		if (request.getParameter("avatar") != null){
-			ava = Integer.parseInt(request.getParameter("avatar"));
-		}
-        request.setCharacterEncoding("UTF-8"); 
-        memberDAO dao = new memberDAO();
-        int check = dao.signUpCheck(request.getParameter("username"), request.getParameter("password"));
+    	String msg = "../seungtae/signUp.jsp?msg=2";
 
-        String msg = "";
-        
-        if(check == 1) {
-            memberDTO dto = new memberDTO(request.getParameter("username"), request.getParameter("password"), request.getParameter("nickname"),  ava);
-        	dao.insertMember(dto);
-        	msg = "../seungtae/signIn.jsp";    
-        }
-        else
-        	msg = "../seungtae/signUp.jsp?msg=1";
+    	request.setCharacterEncoding("UTF-8"); 
+		if (request.getParameter("password").equals(request.getParameter("password_check"))){
+			int ava = 1;
+			if (request.getParameter("avatar") != null){
+				ava = Integer.parseInt(request.getParameter("avatar"));
+			}
+	        memberDAO dao = new memberDAO();
+	        int check = dao.signUpCheck(request.getParameter("username"), request.getParameter("password"));
+	
+	        
+	        if(check == 1) {
+	            memberDTO dto = new memberDTO(request.getParameter("username"), request.getParameter("password"), request.getParameter("nickname"),  ava);
+	        	dao.insertMember(dto);
+	        	msg = "../seungtae/signIn.jsp";    
+	        }
+	        else
+	        	msg = "../seungtae/signUp.jsp?msg=1";
+
+		}
     %>
-    alert("회원가입을 환영합니다!");
 	location.href="<%=msg%>";
 	<%
 	request.removeAttribute("username");

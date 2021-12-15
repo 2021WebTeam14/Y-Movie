@@ -141,6 +141,12 @@
                 out.println("<br>");
                 out.println("<font color='red' size='5'>아이디 혹은 닉네임이 중복입니다.</font>");
             }
+            
+            if(msg!=null && msg.equals("2")) 
+            {
+                out.println("<br>");
+                out.println("<font color='red' size='5'>비밀번호가 일치하지 않습니다.</font>");
+            }
         %>    
     </div>
     <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
