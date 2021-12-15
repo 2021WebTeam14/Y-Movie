@@ -38,16 +38,16 @@
 	    
 	
 	 <%for (int i = 0; i < 8; i++) {%>
-     document.getElementById("img<%=i+8%>").src = '<%=posterAPI.getPoster(fav.get(0).get(i).getCode())%>';
-     document.getElementById("Name<%=i+8%>").innerText = "<%=fav.get(0).get(i).getName()%>";
-     document.getElementById("Year<%=i+8%>").innerText = "<%=fav.get(0).get(i).getYear()%>년";
+     document.getElementById("img<%=i+8%>").src = '<%=posterAPI.getPoster(fav.get(1).get(i).getCode())%>';
+     document.getElementById("Name<%=i+8%>").innerText = "<%=fav.get(1).get(i).getName()%>";
+     document.getElementById("Year<%=i+8%>").innerText = "<%=fav.get(1).get(i).getYear()%>년";
      document.getElementById("img<%=i%>").setAttribute('onClick', "location.href='movieinfo.jsp?movcode=<%=fav.get(0).get(i).getCode()%>'");
 <%}%>
 
 <%for (int i = 0; i < 8; i++) {%>
-     document.getElementById("img<%=i+16%>").src = '<%=posterAPI.getPoster(fav.get(0).get(i).getCode())%>';
-     document.getElementById("Name<%=i+16%>").innerText = "<%=fav.get(0).get(i).getName()%>";
-     document.getElementById("Year<%=i+16%>").innerText = "<%=fav.get(0).get(i).getYear()%>년";
+     document.getElementById("img<%=i+16%>").src = '<%=posterAPI.getPoster(fav.get(2).get(i).getCode())%>';
+     document.getElementById("Name<%=i+16%>").innerText = "<%=fav.get(2).get(i).getName()%>";
+     document.getElementById("Year<%=i+16%>").innerText = "<%=fav.get(2).get(i).getYear()%>년";
      document.getElementById("img<%=i%>").setAttribute('onClick', "location.href='movieinfo.jsp?movcode=<%=fav.get(0).get(i).getCode()%>'");
 <%}%>
 }
