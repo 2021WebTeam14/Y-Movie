@@ -19,7 +19,7 @@
 <head>
 <title>Y-Movie</title>
 <link href="interest_movie.css" rel="stylesheet" type="text/css">
-<style>	body{ margin: 10vh 15vw 10vh 15vw; }</style>
+
 <script>
 	 function getRecommand() {
 		 
@@ -321,7 +321,7 @@ if (tmpActor.size() != 0)
 </head>
 <body onload="getRecommand()">
 	<%@include file="../header.jsp" %>
-    <div id="inter" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
+    <div id="inter" style="padding: 10vh 10vw 12vh 10vw; background-color: #f2f2f2">
 
 	<div class="head_section">
 		<h1 class=tit_section>관심 영화 설정</h1>
