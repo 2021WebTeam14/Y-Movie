@@ -28,7 +28,7 @@
     <div id="lst" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
 	   <h1 style="text-align: center"> Login </h1> 
 	   
-	    <form style="padding-top: 7px; padding-bottom: 50px;" method="POST" action="signInProcess.jsp">
+	    <form style="padding-top: 7px; padding-bottom: 50px;" method="POST" action="../jaeik/signInProcess.jsp">
 	        <div class="container"> 
 		        <div class="inner1">
 			        <div class="inner2">	

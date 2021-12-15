@@ -55,15 +55,14 @@ function getAPIAboutMovie() {
    		document.getElementById("actor<%=i%>").innerText = '<%=data1.get(i).getAct_actor()%>';
    		<%}%>
    		document.getElementById("genre").innerText = '<%=data.get(0).getMov_genre()%>';
-   		document.getElementById("avg_star").innerText = '<%=data.get(0).getStarAvg()%>';
-   		<%storeSession sessionDAO = new storeSession();%>
+   		document.getElementById("avg_star").innerText = '<%=data.get(0).getStarAvg()%>'
    	    <%if (sessionDAO.getSession(session) != "")
    	    {%>
    	        if (document.getElementById("loggedInUser") != null) {
    	            document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+   	    	    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
    	            }
    	    <%}%>
-   	    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
 }
 
     

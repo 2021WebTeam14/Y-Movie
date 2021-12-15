@@ -27,9 +27,9 @@
 	    {%>
 		if (document.getElementById("loggedInUser") != null) {
 			document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+		    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
 				}                
 	    <%}%>
-	    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
 		
 	<%
 		Connection con = null;
@@ -230,7 +230,7 @@
  				<div class="flex left noMP">	
 			    	<div id="reviewName11" class="noMP"></div>
 			    	<div id="reviewThumb11" class="noMP"></div>
-			    	<div id="reviewStar11 class="noMP"></div>
+			    	<div id="reviewStar11" class="noMP"></div>
 			   	</div>
 		    	<div id="reviewText11" class="review"></div>
 		    </div>

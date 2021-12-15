@@ -49,9 +49,9 @@
 	    {%>
 	        if (document.getElementById("loggedInUser") != null) {
 	            document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+	    	    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
 	            }
 	    <%}%>
-	    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
 		
 	}
 	// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다

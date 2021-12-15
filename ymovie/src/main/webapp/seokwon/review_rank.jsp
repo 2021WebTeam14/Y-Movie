@@ -30,9 +30,9 @@
 	        {%>
 	            if (document.getElementById("loggedInUser") != null) {
 	                document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+	    	        document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
 	                }
 	        <%}%>
-	        document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
 	    }
 	 
 	 </script>

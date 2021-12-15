@@ -39,9 +39,9 @@
 	    {%>
 	        if (document.getElementById("loggedInUser") != null) {
 	            document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+	    	    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
 	            }
 	    <%}%>
-	    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
 
        		document.getElementById("img").src = '<%=posterAPI.getPoster(movcode)%>';
        		document.getElementById("movie_name").innerText = '<%=data.get(0).getMov_name()%>';
