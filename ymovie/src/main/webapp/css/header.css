@@ -56,7 +56,6 @@ input{
 }
 #nav li{
 	border-bottom: 3px solid black;
-	height: 100%;
 	list-style: none;
 	width: 19%;
 	text-align: center;

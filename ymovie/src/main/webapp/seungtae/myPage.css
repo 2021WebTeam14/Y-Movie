@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "UTF-8";	
 
 #lst h1
 {
@@ -28,7 +28,10 @@
 	width: 130px;
 	height: 130px;
 }
-
+#lst .container p{
+	text-align: center;
+	overflow-wrap: break-word;
+}
 #lst .container
 {
 	display: flex;

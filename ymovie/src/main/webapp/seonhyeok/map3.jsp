@@ -11,7 +11,7 @@
 <body onload="loginname()">
 <%@include file="../header.jsp" %>
 <div id="map3" style="padding: 10vh 10vw 15vh 13vw; background-color: #f2f2f2">
-<h3>지역별 영화관 검색</h3>
+<h3>영화관별 검색</h3>
 <div id="menu_wrap" class="bg_white">
     <div class="option">
         <div>

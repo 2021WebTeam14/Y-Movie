@@ -1,4 +1,4 @@
-/ymovie<%@page import="director.directorDTO"%>
+<%@page import="director.directorDTO"%>
 <%@page import="director.directorDAO"%>
 <%@page import="actor.actorDAO"%>
 <%@page

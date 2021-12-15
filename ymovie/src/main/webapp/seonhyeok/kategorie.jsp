@@ -64,7 +64,7 @@
 </head>
 <body onload="getRecommand()">
 	<%@include file="../header.jsp" %>
-    <div id="kate" style="height:4000px;  padding: 10vh 10vw 12vh 10vw; background-color: #f2f2f2">
+    <div id="kate" style="height:3000px;  padding: 10vh 10vw 12vh 10vw; background-color: #f2f2f2">
 
 	<div class="section_ranking">
 		<div class="box_ranking" data-tiara-layer="list">
