@@ -22,6 +22,15 @@
 		posterAPI posterAPI = new posterAPI();
 		apiDAO api = new apiDAO();
 	%>
+	<%storeSession sessionDAO = new storeSession();%>
+	    <%if (sessionDAO.getSession(session) != "")
+	    {%>
+		if (document.getElementById("loggedInUser") != null) {
+			document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+				}                
+	    <%}%>
+	    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
+		
 	<%
 		Connection con = null;
 		getConn getCon = new getConn();
