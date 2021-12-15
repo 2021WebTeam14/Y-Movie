@@ -68,14 +68,40 @@
 
 			displayMarker(locPosition, message);
 		}
-		
+		var keyword = "";
+		var geocoder = new kakao.maps.services.Geocoder();
 		var ps = new kakao.maps.services.Places(); 
+		function displayCenterInfo(result, status) {
+		    if (status === kakao.maps.services.Status.OK) {
+		    	keyword = "";
+		        for(var i = 0; i < result.length; i++) {
+		            if (result[i].region_type === 'H') {
+		            	for (var k = 0; result[i].address_name[k] != ' '; k++) {
+		            	}
+		            	k++;
+		            	for (var h = k; result[i].address_name[h] != ' '; h++) {
+							keyword += result[i].address_name[h];
+						}
+						keyword += " 영화관";		
+		                break;
+		            }
+		        }
+		    }    
+		}
+		kakao.maps.event.addListener(map, 'idle', function() {
+		    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+			ps.keywordSearch(keyword, placesSearchCB); 
+		});
+		
+		
+		function searchAddrFromCoords(coords, callback) {
+		    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+		}
+        
 		
 
-		var keyword ="원주 영화관";
 
 		//키워드로 장소를 검색합니다
-		ps.keywordSearch(keyword, placesSearchCB); 
 
 		//키워드 검색 완료 시 호출되는 콜백함수 입니다
 		function placesSearchCB (data, status, pagination) {
@@ -87,11 +113,7 @@
 
 		     for (var i=0; i<data.length; i++) {
 		         displayMarker2(data[i]);    
-		         bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
 		     }       
-
-		     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-		     map.setBounds(bounds);
 		 } 
 		}
 

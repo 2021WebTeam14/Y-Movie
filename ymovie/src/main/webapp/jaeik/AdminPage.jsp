@@ -36,7 +36,7 @@
 	}
 	function getStart() {
 		 <%storeSession sessionDAO = new storeSession();
-		 if (sessionDAO.getSession(session) == "") {
+		 if (!sessionDAO.getSession(session).equals("god")) {
 		 	response.setContentType("text/html; charset=UTF-8");
 		 	PrintWriter outA = response.getWriter();
 		 	outA.println("<script>alert('관리자 전용 페이지입니다.'); location.href='../initPage.jsp';</script>");

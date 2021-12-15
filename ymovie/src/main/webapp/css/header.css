@@ -4,7 +4,12 @@
 body{
 	margin: 0;
 }
-li > a{
+#nav li > a{
+	font-size: 1vw;
+	text-decoration: none;
+	color: white;
+}
+li > ul > li > a{
 	font-size: 1vw;
 	text-decoration: none;
 	color: white;

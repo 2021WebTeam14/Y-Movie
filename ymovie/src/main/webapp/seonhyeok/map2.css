@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+hr{
+	display: table;
+}
+
 #map2 .area_list li{
 	list-style-type:none;
 	display: list-item;
@@ -17,6 +21,7 @@
 	border: 1px solid black;
 	border-radius: 10px;
 	color: #151515;
+	padding: 7px;
 }
 
 #map2 body{
@@ -47,6 +52,7 @@
 	border: 1px solid black;
 	border-radius: 10px;
 	color: #151515;
+	padding: 7px;
 }
 
 #map3 body{
