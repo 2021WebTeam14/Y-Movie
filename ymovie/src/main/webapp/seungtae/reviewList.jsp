@@ -19,10 +19,29 @@
 	<%@include file="../header.jsp" %>
     <div id="lst" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
 	<h1>나의 리뷰</h1>
-		<table>	
-			<tbody>
+	
+	<div id="tableInfo">
+		<label>페이지 당 표시할 리뷰 개수:</label><select name="itemsPerPage" id="itemsPerPage">
+				<option value="3" selected>3</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+		</select>
+		<label id="totalReviews" style="float: right;"></label>
+	</div>
+	
+		<table> 	
+			<tbody id="onScreen">
 			</tbody>
 		</table>
+		
+		<table style="display: none;">	
+			<tbody id="offScreen">
+			</tbody>
+		</table>
+
+
 		
 		<div id="editReview" class="editing">
 			<form class="contents" onsubmit="return confirm('정말 리뷰를 수정하시겠습니까?');" method="post" action="../jaeik/reviewEditProcess.jsp">
@@ -58,13 +77,7 @@
 			</form>
 		</div>
 				
-		<select name="itemsPerPage" id="itemsPerPage">
-			<option value="3" selected>3</option>
-			<option value="5">5</option>
-			<option value="10">10</option>
-			<option value="15">15</option>
-			<option value="20">20</option>
-		</select>
+		
 		
 		<ul class="pagination">
 			<li class="prev"><a href="#" id="prev">&#139;</a></li>
@@ -77,7 +90,8 @@
 	<script type="text/javascript">
 		//DB에서 리뷰 로딩하기
 		//putMovie와  createMovieDiv 이용 putMovie(createMovieDiv(title, reviewText, thumbs, starRating, reviewNum));
-		let tbd = document.querySelector('tbody');
+		let tbd = document.getElementById('onScreen');
+		let tbd1 = document.getElementById('offScreen');
 		let tr = tbd.getElementsByTagName('tr');
 		let select = document.querySelector('select');
 		let ul = document.querySelector('.pagination');		
@@ -94,6 +108,15 @@
 			 outA.flush();
 			}
 			%>
+			
+		    <%if (sessionDAO.getSession(session) != "")
+		    {%>
+		    	if (document.getElementById("loggedInUser") != null) {
+		    		document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+					}                
+		    <%}%>
+		    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
+			
 			<%
 			movieDAO movDao = new movieDAO();
 			Connection con = null;
@@ -114,10 +137,22 @@
 				<%
 				}
 			}%>	
+			
+			document.getElementById('totalReviews').innerText = "내가 쓴 리뷰 개수: " + "<%=data.size()%>";			
 			for(let i = 0; i < tr.length; i++)
 			{
 				arrayTr.push(tr[i]);		
 			}
+			
+			var btns = tbd.getElementsByTagName('button');
+			for(let k = 0; k < tr.length; k++)
+			{
+				btns[k].addEventListener("click", function() {extract(k+1)});
+			}
+			
+			displayPage(3);
+			
+			
 		}		
 		
 		select.onchange=rowCount;
@@ -139,7 +174,7 @@
 		  buttonGenerator(limit);
 		}
 		
-		displayPage(3);
+		
 		function buttonGenerator(limit) 
 		{
 		  const nofTr=arrayTr.length;
@@ -205,7 +240,7 @@
 		function extract(index) 
 		{
 			var hiddenCode = document.getElementById("movieCode_hidden");
-			var targetReviewRow = tbd.childNodes[index];
+			var targetReviewRow = tbd1.childNodes[index];
 			var targetReviewCell = targetReviewRow.firstChild;
 			var targetReview = targetReviewCell.firstChild;
 			
@@ -246,7 +281,8 @@
 			var cell = document.createElement("td");
 			cell.appendChild(movie);
 			row.appendChild(cell);
-			tbd.appendChild(row);
+			tbd1.appendChild(row);
+			tbd.appendChild(row.cloneNode(true));			
 		}
 		
 		function createMovieDiv(title, code, reviewText, thumbs, starRating, reviewNum) 

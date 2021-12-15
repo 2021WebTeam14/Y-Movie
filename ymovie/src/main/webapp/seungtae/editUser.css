@@ -92,7 +92,12 @@
 	display: inline-block;   
 	border: 2px solid blue;   
 	box-sizing: border-box;                  	   
-}  
+} 
+
+#lst input[type=text], #lst input[type=password]
+{
+	font-size: 15px;
+}
 
 #lst .normal
 {
@@ -114,6 +119,12 @@
 	display: inline;
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+#lst #curr_avatar
+{
+	margin-top: 16px;
+	margin-bottom: 16px;
 }
 
 #lst #chg_profile img

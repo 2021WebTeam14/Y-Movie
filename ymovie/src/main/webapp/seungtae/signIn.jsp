@@ -8,18 +8,27 @@
 <meta charset="UTF-8">
 <title>Sign in</title>
 	 <link rel="stylesheet" type="text/css" href="signIn.css">
+	 <script type="text/javascript">
+	 function init() 
+     {        
+		 <%storeSession sessionDAO = new storeSession();%>
+         <%if (sessionDAO.getSession(session) != "")
+         {%>
+         	if (document.getElementById("loggedInUser") != null) {
+         		document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+				}                
+         <%}%>
+         document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
+     }
+	 </script>
 </head>
-<body> 
-	<%
-        storeSession sessionDAO = new storeSession();
-		sessionDAO.deleteSession(session);
-	%>
+<body onload="init()"> 
 	
 	<%@include file="../header.jsp" %>
     <div id="lst" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
 	   <h1 style="text-align: center"> Login </h1> 
 	   
-	    <form style="padding-top: 50px; padding-bottom: 50px;" method="POST" action="signInProcess.jsp">
+	    <form style="padding-top: 7px; padding-bottom: 50px;" method="POST" action="signInProcess.jsp">
 	        <div class="container"> 
 		        <div class="inner1">
 			        <div class="inner2">	
@@ -48,12 +57,14 @@
         	request.setCharacterEncoding("UTF-8");
             String msg=request.getParameter("msg");
             
-            if(msg!=null && msg.equals("1")) 
+           if(msg!=null && msg.equals("1")) 
             {
                 out.println("<br>");
                 out.println("<font color='red' size='5'>아이디 혹은 비밀번호가 일치하지 않습니다</font>");
             }
         %>    
+        
+       
        </div>
 	    <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>   
