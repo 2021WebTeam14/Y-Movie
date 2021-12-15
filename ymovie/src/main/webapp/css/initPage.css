@@ -111,6 +111,7 @@ a {
 	margin: 0;
 	padding: 0;
 	cursor: pointer;
+	user-select: none; 
 }
 td {
 	width: 30%;
