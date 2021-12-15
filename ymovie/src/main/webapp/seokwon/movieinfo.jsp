@@ -106,7 +106,7 @@
 
 </div>
 	
-    <iframe src="../footer.html" style="width: 69vw; border: none"></iframe>
+    <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>
 <script type="text/javascript">
         let tbd = document.querySelector('tbody');
