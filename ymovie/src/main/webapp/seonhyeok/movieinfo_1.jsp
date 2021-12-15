@@ -33,6 +33,15 @@
 	 	<%posterAPI posterAPI = new posterAPI();%>
 	 	<%ArrayList<movieDTO> data = dao.selectByCode(movcode);%> 
 	 	<%ArrayList<actorDTO> data1 = dao1.selectByMovie(con, movcode);%>
+	 	
+	 	<%storeSession sessionDAO = new storeSession();%>
+	    <%if (sessionDAO.getSession(session) != "")
+	    {%>
+	        if (document.getElementById("loggedInUser") != null) {
+	            document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+	            }
+	    <%}%>
+	    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
 
        		document.getElementById("img").src = '<%=posterAPI.getPoster(movcode)%>';
        		document.getElementById("movie_name").innerText = '<%=data.get(0).getMov_name()%>';
@@ -45,7 +54,7 @@
        		<%}%>
        		document.getElementById("genre").innerText = '<%=data.get(0).getMov_genre()%>';
        		document.getElementById("avg_star").innerText = '<%=data.get(0).getStarAvg()%>';
-       		document.getElementById("writing_review").setAttribute('onClick', "location.href='writingreview.jsp?movcode=<%=movcode%>'");
+       		document.getElementById("writing_review").setAttribute('onClick', "location.href='../seokwon/writingreview.jsp?movcode=<%=movcode%>'");
        		insertReview();
    }
 

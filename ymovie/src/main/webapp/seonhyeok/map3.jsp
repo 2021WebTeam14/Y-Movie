@@ -8,7 +8,7 @@
 <title>Y-Movie</title>
 <link href="map2.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body onload="loginname()">
 <%@include file="../header.jsp" %>
 <div id="map3" style="padding: 10vh 10vw 15vh 13vw; background-color: #f2f2f2">
 <h3>지역별 영화관 검색</h3>
@@ -33,6 +33,17 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=22e4124c161041fc832c09fac32fb1b1&libraries=services"></script>
 	<script>
+	function loginname() {
+		<%storeSession sessionDAO = new storeSession();%>
+	    <%if (sessionDAO.getSession(session) != "")
+	    {%>
+	        if (document.getElementById("loggedInUser") != null) {
+	            document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+	            }
+	    <%}%>
+	    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
+		
+	}
 	// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 

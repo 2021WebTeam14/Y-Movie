@@ -13,7 +13,9 @@
 <title>Y-Movie</title>
 <link href="re_in.css" rel="stylesheet" type="text/css">
 <script>
+
 	 function getRecommand() {
+		 
 		 
 		 <%storeSession sessionDAO = new storeSession();
 if (sessionDAO.getSession(session) == "") {
@@ -22,6 +24,14 @@ if (sessionDAO.getSession(session) == "") {
 	outA.println("<script>alert('로그인이 필요합니다.'); location.href='../initPage.jsp';</script>");
 	outA.flush();
 }%>
+<%if (sessionDAO.getSession(session) != "")
+{%>
+    if (document.getElementById("loggedInUser") != null) {
+        document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+        }
+<%}%>
+document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
+
 		 <%movieDAO dao = new movieDAO();
 			posterAPI posterAPI = new posterAPI();
 			apiDAO asdf = new apiDAO();

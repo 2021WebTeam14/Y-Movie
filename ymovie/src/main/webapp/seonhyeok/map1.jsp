@@ -9,7 +9,7 @@
 <link href="map1.css" rel="stylesheet" />
 
 </head>
-<body>
+<body onload="loginname()">
 <%@include file="../header.jsp" %>
 	<div id="map1" style="padding: 100vh 10vw 15vh 10vw; background-color: #f2f2f2">
 	
@@ -24,6 +24,17 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=22e4124c161041fc832c09fac32fb1b1&libraries=services"></script>
 	<script>
+	function loginname() {
+		<%storeSession sessionDAO = new storeSession();%>
+	    <%if (sessionDAO.getSession(session) != "")
+	    {%>
+	        if (document.getElementById("loggedInUser") != null) {
+	            document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+	            }
+	    <%}%>
+	    document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
+		
+	}
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
