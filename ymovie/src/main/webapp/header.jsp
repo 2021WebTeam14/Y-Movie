@@ -56,11 +56,11 @@
 			    		<li><a href="/ymovie/seonhyeok/map3.jsp" target="_top">영화관별</a></li>
 			    	</ul>
 		    	</li>
-		    	<li><a href="./seungtae/myPage.jsp" target="_top">&nbsp;마이페이지</a>
+		    	<li><a href="/ymovie/seungtae/myPage.jsp" target="_top">&nbsp;마이페이지</a>
 			    	<ul>
-			    		<li><a href="./seungtae/editUser.jsp" target="_top">회원 정보 수정</a></li>
-			    		<li><a href="./seungtae/reviewList.jsp" target="_top">나의 리뷰</a></li>
-			    		<li><a href="./seonhyeok/interest_movie.jsp" target="_top">관심 영화 설정</a></li>
+			    		<li><a href="/ymovie/seungtae/editUser.jsp" target="_top">회원 정보 수정</a></li>
+			    		<li><a href="/ymovie/seungtae/reviewList.jsp" target="_top">나의 리뷰</a></li>
+			    		<li><a href="/ymovie/seonhyeok/interest_movie.jsp" target="_top">관심 영화 설정</a></li>
 			    	</ul>
 		    	</li>
 		    </ul>

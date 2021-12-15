@@ -1,4 +1,4 @@
-<%@page import="movie.movieDTO"%>
+/ymovie/ymovie<%@page import="movie.movieDTO"%>
 <%@page import="org.eclipse.jdt.internal.compiler.ast.IfStatement"%>
 <%@page import="org.apache.el.util.ConcurrentCache"%>
 <%@page import="member.memberDTO"%>

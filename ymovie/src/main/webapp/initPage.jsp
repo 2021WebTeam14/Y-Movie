@@ -41,33 +41,37 @@
 		<%
 		dataRev = revDao.selectByMovie(con, dataWeek.get(0).getCode());
 		if(dataRev.size() != 0){
-			for(int j=1; j<dataRev.size() && j<4; j++){
+			for(int j=0; j<dataRev.size() && j<4; j++){
 				%>
 					document.getElementById("reviewName0<%=j%>").innerText =  "<%=memDao.findNick(dataRev.get(j).getMem_id())%>";
 					document.getElementById("reviewThumb0<%=j%>").innerHtml = "<%if (dataRev.get(j).getRev_thumbs()==1) out.print("&#128077;"); else out.print("&#128078;");%>";
 					document.getElementById("reviewStar0<%=j%>").innerText = "<%=star.repeat(dataRev.get(j).getRev_star())%>";
+					document.getElementById("reviewText0<%=j%>").innerText = "<%=dataRev.get(j).getRev_context()%>";
 				<%
 			}
 		}
 		
 		dataRev = revDao.selectByMovie(con, dataDay.get(0).getCode());
 		if(dataRev.size() != 0){
-			for(int j=1; j<dataRev.size() && j<4; j++){
+			for(int j=0; j<dataRev.size() && j<4; j++){
 				%>
 					document.getElementById("reviewName1<%=j%>").innerText =  "<%=memDao.findNick(dataRev.get(j).getMem_id())%>";
 					document.getElementById("reviewThumb1<%=j%>").innerHtml = "<%if (dataRev.get(j).getRev_thumbs()==1) out.print("&#128077;"); else out.print("&#128078;");%>";
 					document.getElementById("reviewStar1<%=j%>").innerText = "<%=star.repeat(dataRev.get(j).getRev_star())%>";
+					document.getElementById("reviewText1<%=j%>").innerText = "<%=dataRev.get(j).getRev_context()%>";
+					
 				<%
 			}
 		}
 		
 		dataRev = revDao.selectByMovie(con, dataStar.get(0).getMov_code());
 		if(dataRev.size() != 0){
-			for(int j=1; j<dataRev.size() && j<4; j++){
+			for(int j=0; j<dataRev.size() && j<4; j++){
 				%>
 					document.getElementById("reviewName2<%=j%>").innerText =  "<%=memDao.findNick(dataRev.get(j).getMem_id())%>";
 					document.getElementById("reviewThumb2<%=j%>").innerHtml = "<%if (dataRev.get(j).getRev_thumbs()==1) out.print("&#128077;"); else out.print("&#128078;");%>";
 					document.getElementById("reviewStar2<%=j%>").innerText = "<%=star.repeat(dataRev.get(j).getRev_star())%>";
+					document.getElementById("reviewText2<%=j%>").innerText = "<%=dataRev.get(j).getRev_context()%>";
 				<%
 			}
 		}
@@ -178,9 +182,9 @@
  		<div class="leftNoMargin centered">
  			<div class="">
  				<div class="flex left noMP">	
-			    	<div id="reviewName01" class="noMP"></div>
-			    	<div id="reviewThumb01" class="noMP"></div>
-			    	<div id="reviewStar01" class="noMP"></div>
+			    	<div id="reviewName00" class="noMP"></div>
+			    	<div id="reviewThumb00" class="noMP"></div>
+			    	<div id="reviewStar00" class="noMP"></div>
 			   	</div>
 		    	<div id="reviewText00" class="review"></div>
 		    </div>
@@ -190,7 +194,7 @@
 			    	<div id="reviewThumb01" class="noMP"></div>
 			    	<div id="reviewStar01" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText1" class="review"></div>
+		    	<div id="reviewText01" class="review"></div>
 		    </div>
  			<div class="">
  				<div class="flex left noMP">
@@ -198,7 +202,7 @@
 			    	<div id="reviewThumb02" class="noMP"></div>
 			    	<div id="reviewStar02" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText2" class="review"></div>
+		    	<div id="reviewText02" class="review"></div>
 		    </div>
 		</div>
 	</div>
@@ -207,27 +211,27 @@
  		<div class="leftNoMargin centered">
  			<div class="">
  				<div class="flex left noMP">	
-			    	<div id="reviewName11" class="noMP"></div>
-			    	<div id="reviewThumb11" class="noMP"></div>
-			    	<div id="reviewStar11" class="noMP"></div>
+			    	<div id="reviewName10" class="noMP"></div>
+			    	<div id="reviewThumb10" class="noMP"></div>
+			    	<div id="reviewStar10" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="review"></div>
+		    	<div id="reviewText10" class="review"></div>
 		    </div>
  			<div class="">
  				<div class="flex left noMP">	
+			    	<div id="reviewName11" class="noMP"></div>
+			    	<div id="reviewThumb11" class="noMP"></div>
+			    	<div id="reviewStar11 class="noMP"></div>
+			   	</div>
+		    	<div id="reviewText11" class="review"></div>
+		    </div>
+ 			<div class="">
+ 				<div class="flex left noMP">
 			    	<div id="reviewName12" class="noMP"></div>
 			    	<div id="reviewThumb12" class="noMP"></div>
 			    	<div id="reviewStar12" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="review"></div>
-		    </div>
- 			<div class="">
- 				<div class="flex left noMP">
-			    	<div id="reviewName13" class="noMP"></div>
-			    	<div id="reviewThumb13" class="noMP"></div>
-			    	<div id="reviewStar13" class="noMP"></div>
-			   	</div>
-		    	<div id="reviewText00" class="review"></div>
+		    	<div id="reviewText12" class="review"></div>
 		    </div>
 		</div>
 	</div>
@@ -236,27 +240,27 @@
  		<div class="leftNoMargin centered">
  			<div class="">
  				<div class="flex left noMP">	
+			    	<div id="reviewName20" class="noMP"></div>
+			    	<div id="reviewThumb20" class="noMP"></div>
+			    	<div id="reviewStar20" class="noMP"></div>
+			   	</div>
+		    	<div id="reviewText20" class="review"></div>
+		    </div>
+ 			<div class="">
+ 				<div class="flex left noMP">	
 			    	<div id="reviewName21" class="noMP"></div>
 			    	<div id="reviewThumb21" class="noMP"></div>
 			    	<div id="reviewStar21" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="review"></div>
+		    	<div id="reviewText21" class="review"></div>
 		    </div>
  			<div class="">
- 				<div class="flex left noMP">	
+ 				<div class="flex left noMP">
 			    	<div id="reviewName22" class="noMP"></div>
 			    	<div id="reviewThumb22" class="noMP"></div>
 			    	<div id="reviewStar22" class="noMP"></div>
 			   	</div>
-		    	<div id="reviewText00" class="review"></div>
-		    </div>
- 			<div class="">
- 				<div class="flex left noMP">
-			    	<div id="reviewName23" class="noMP"></div>
-			    	<div id="reviewThumb23" class="noMP"></div>
-			    	<div id="reviewStar23" class="noMP"></div>
-			   	</div>
-		    	<div id="reviewText00" class="review"></div>
+		    	<div id="reviewText22" class="review"></div>
 		    </div>
 		</div>
 	</div>
