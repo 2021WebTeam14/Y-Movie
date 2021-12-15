@@ -1,0 +1,154 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
+.title{
+	text-align: center;
+}
+
+#mi div {
+	
+	margin-bottom: 30px;
+}
+
+.poster-box {
+    width:197px;
+    overflow:hidden;
+    float: left;
+    margin-right: 10px;
+    margin:0 auto;
+}
+
+.info-box {
+	width:auto;
+	object-fit:cover;
+	float: left;
+	font-size: 20px;
+}
+
+.button{
+  width:140px;
+  height:50px;
+  border:2px solid #34495e;
+  float:right;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  box-sizing:border-box;
+  overflow:hidden;
+  margin:0 0 40px 50px;
+}
+.button a{
+  font-family:arial;
+  font-size:16px;
+  color:#fff;
+  text-decoration:none;
+  line-height:50px;
+  transition:all .5s ease;
+  z-index:2;
+  position:relative;
+  
+}
+.effect{
+  width:140px;
+  height:50px;
+  border:70px solid #34495e;
+  position:absolute;
+  transition:all .5s ease;
+  z-index:1;
+  box-sizing:border-box;
+}
+.button:hover .effect{
+  border:0px solid #34495e;
+}
+.button:hover a{
+  color:#34495e;
+}
+.review1
+{
+    border: 2px solid #D8D8D8;
+    margin-bottom: 100px;
+    padding: 5px;
+}
+#mi p
+{
+    overflow-wrap: break-word;
+}
+#mi label
+{
+    display: inline-block;
+    margin-right: 20px;
+}
+.star-rating {
+  clear: both;
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+}
+ 
+.star-rating input {
+  display: none;
+}
+ 
+.star-rating label {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+ 
+.star-rating :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
+}
+.reviewStars {
+	-webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #2b2a29;
+    -webkit-text-fill-color: gold;
+}
+.review_table {
+	clear: both;
+	width: 100%;
+	
+}
+.pagination
+{
+    height: 50px;
+    padding: 0px 5px;
+    width: auto;
+    float: right;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pagination li
+{
+    list-style: none; 
+    padding: 5px 10px;
+    font-weight: bold;
+    border: 1px solid black;
+}
+.pagination li a
+{
+    text-decoration: none;
+	color: black;
+}
+.rev_count{
+	clear: both;
+	padding: 10px 0 0 0;
+	margin-right:auto;
+}
+.item {
+	clear: both;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}

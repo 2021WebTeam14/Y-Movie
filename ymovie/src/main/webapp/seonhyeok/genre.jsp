@@ -11,7 +11,7 @@
 <html>
 <head>
 	<title>Y-Movie</title>
-	 <link href="re_in.css" rel="stylesheet" type="text/css">
+	 <link href="genre.css" rel="stylesheet" type="text/css">
 	 <script>
 	 function getRecommand() {
 		 <% 

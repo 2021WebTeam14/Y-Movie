@@ -52,6 +52,7 @@
 </script>
 </head>
 <body onload="getAPIAboutMovie()">
+    <%@include file="../header.jsp" %>
     <div id="mi" style="padding: 10vh 10vw 10vh 10vw; background-color: #f2f2f2">
 	
     <h1 class="title">영화상세정보</h1>
@@ -104,6 +105,8 @@
 </div>
 
 </div>
+	
+    <iframe src="../footer.html" style="width: 100%; border: none"></iframe>
 </body>
 <script type="text/javascript">
         let tbd = document.querySelector('tbody');
