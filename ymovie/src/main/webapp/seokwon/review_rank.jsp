@@ -5,6 +5,7 @@
 <%@ page import="movie.*" %>
 <%@ page import="api_DB.*" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="sessionServlet.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,16 @@
 	        document.getElementById("genre<%=i%>").innerText = "<%=data.get(i).getMem_favGenre()%>";
 	        document.getElementById("director<%=i%>").innerText = "<%=data.get(i).getMem_favDirector()%>";	         
 	        <%}%>
+	        <%storeSession sessionDAO = new storeSession();%>
+	        <%if (sessionDAO.getSession(session) != "")
+	        {%>
+	            if (document.getElementById("loggedInUser") != null) {
+	                document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+	                }
+	        <%}%>
+	        document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
 	    }
+	 
 	 </script>
 </head>
 <body onload="getRank()">

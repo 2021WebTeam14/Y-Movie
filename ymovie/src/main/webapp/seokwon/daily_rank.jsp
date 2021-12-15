@@ -21,7 +21,17 @@
 	        document.getElementById("Year<%=i%>").innerText = "<%=data.get(i).getYear()%>";	   
 	        document.getElementById("img<%=i%>").setAttribute('onClick', "location.href='movieinfo.jsp?movcode=<%=data.get(i).getCode()%>'");
 <%}%>
+
+<%storeSession sessionDAO = new storeSession();%>
+<%if (sessionDAO.getSession(session) != "")
+{%>
+    if (document.getElementById("loggedInUser") != null) {
+        document.getElementById("loggedInUser").value = "<%=sessionDAO.getSession(session)%>" + "님";
+        }
+<%}%>
+document.getElementById("loggedInUser").style.width = document.getElementById("loggedInUser").value.length + 1 + 'ch';
 	}
+
 </script>
 </head>
 <body onload="getRecommand()">

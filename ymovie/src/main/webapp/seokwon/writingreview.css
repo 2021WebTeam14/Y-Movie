@@ -47,11 +47,11 @@
 .star-rating {
 	clear: both;
 	float: left;
-  display: absolute;
+  display: flex;
   flex-direction: row-reverse;
   font-size: 2.25rem;
   line-height: 2.5rem;
-  justify-content: space-around;
+  justify-content: left;
   padding: 0 0.2em;
   width: 5em;
 }
@@ -74,4 +74,8 @@
 .star-rating label:hover,
 .star-rating label:hover ~ label {
   -webkit-text-fill-color: #fff58c;
+}
+
+.thumbs {
+	width: 1vw;
 }
