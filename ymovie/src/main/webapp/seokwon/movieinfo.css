@@ -139,6 +139,7 @@
 .pagination li a
 {
     text-decoration: none;
+	color: black;
 }
 .rev_count{
 	clear: both;
